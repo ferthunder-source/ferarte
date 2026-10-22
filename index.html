@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FerArte Ateliê de Artesanato | Gesso & Resina — Ribeirão Preto/SP</title>
+<meta name="description" content="FerArte Ateliê de Artesanato — esculturas devocionais em resina cristal e gesso pintado à mão. Cruz, Nossa Senhora, Sagrada Família e vasos decorativos. Ribeirão Preto/SP.">
+<meta name="theme-color" content="#030a1a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/img/logo.png">
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  --azul-900:#030a1a;
+  --azul-800:#061229;
+  --azul-700:#0a1c3d;
+  --azul-600:#102a57;
+  --dourado:#d4af37;
+  --dourado-claro:#f7e9b0;
+  --dourado-escuro:#8c6d1f;
+  --perola:#f6f3ec;
+  --preto:#050506;
+  --sombra-ouro:0 0 40px -8px rgba(212,175,55,.55);
+  --radius:20px;
+  --font-title:'Cinzel', Georgia, serif;
+  --font-body:'Jost', system-ui, -apple-system, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{
+  font-family:var(--font-body);
+  background:var(--azul-900);
+  color:#eae7df;
+  line-height:1.75;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:rgba(212,175,55,.35);color:#fff}
+
+/* scrollbar */
+::-webkit-scrollbar{width:11px}
+::-webkit-scrollbar-track{background:#050d1e}
+::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--dourado),var(--dourado-escuro));border-radius:99px;border:2px solid #050d1e}
+
+/* ============================================================
+   FUNDO / ORBES DE LUZ
+   ============================================================ */
+.bg-orbs{
+  position:fixed;inset:0;z-index:-3;pointer-events:none;
+  background:
+    radial-gradient(58vw 58vw at 8% -5%, rgba(16,42,87,.75), transparent 62%),
+    radial-gradient(48vw 48vw at 96% 6%, rgba(212,175,55,.13), transparent 62%),
+    radial-gradient(64vw 64vw at 50% 108%, rgba(16,42,87,.6), transparent 62%),
+    linear-gradient(180deg,#030a1a 0%,#050f22 45%,#030a1a 100%);
+}
+.bg-grain{
+  position:fixed;inset:0;z-index:-2;pointer-events:none;opacity:.30;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+
+/* ============================================================
+   TEXTOS DOURADOS / BRILHO
+   ============================================================ */
+.gold{
+  background:linear-gradient(100deg,#8c6d1f 0%,#d4af37 18%,#f9efc0 38%,#d4af37 58%,#a8811f 78%,#e8cd72 100%);
+  background-size:220% auto;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  animation:shimmerText 7s linear infinite;
+  filter:drop-shadow(0 0 22px rgba(212,175,55,.28));
+}
+@keyframes shimmerText{to{background-position:220% center}}
+
+.glow-title{
+  font-family:var(--font-title);
+  letter-spacing:.04em;
+  line-height:1.18;
+  text-shadow:0 0 34px rgba(212,175,55,.18);
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:14px clamp(16px,4vw,44px);
+  background:rgba(3,10,26,.5);
+  backdrop-filter:blur(16px) saturate(140%);
+  -webkit-backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid rgba(212,175,55,.16);
+  transition:background .4s, box-shadow .4s, padding .4s;
+}
+.topbar::after{
+  content:'';position:absolute;left:0;right:0;bottom:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.85),transparent);
+  opacity:.65;
+  animation:headerGlow 5s ease-in-out infinite;
+}
+@keyframes headerGlow{0%,100%{opacity:.35}50%{opacity:1}}
+.topbar.scrolled{
+  background:rgba(3,10,26,.94);
+  box-shadow:0 16px 50px -22px rgba(212,175,55,.55);
+  padding-top:9px;padding-bottom:9px;
+}
+
+.brand{display:flex;align-items:center;gap:13px;min-width:0}
+.brand-logo{
+  width:50px;height:50px;border-radius:50%;object-fit:cover;flex:0 0 auto;
+  border:1.5px solid rgba(212,175,55,.6);
+  box-shadow:0 0 24px rgba(212,175,55,.42), inset 0 0 18px rgba(0,0,0,.55);
+  transition:.45s;
+}
+.brand:hover .brand-logo{box-shadow:0 0 44px rgba(212,175,55,.85), inset 0 0 18px rgba(0,0,0,.55);transform:rotate(-4deg) scale(1.05)}
+.brand-txt{display:flex;flex-direction:column;line-height:1.1}
+.brand-txt strong{font-family:var(--font-title);font-size:1.18rem;letter-spacing:.09em}
+.brand-txt span{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(246,243,236,.55)}
+
+.nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav a{
+  position:relative;padding:8px 13px;font-size:.82rem;letter-spacing:.09em;
+  text-transform:uppercase;color:rgba(246,243,236,.78);border-radius:99px;transition:.3s;
+}
+.nav a::after{
+  content:'';position:absolute;left:50%;bottom:3px;width:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--dourado),transparent);
+  transform:translateX(-50%);transition:width .35s;
+}
+.nav a:hover{color:var(--dourado-claro);text-shadow:0 0 18px rgba(212,175,55,.7)}
+.nav a:hover::after{width:74%}
+
+.nav-cta{
+  padding:10px 20px !important;border-radius:99px;
+  border:1px solid rgba(212,175,55,.5);
+  background:rgba(212,175,55,.08);
+  color:var(--dourado-claro) !important;
+  box-shadow:0 0 22px -8px rgba(212,175,55,.7);
+}
+.nav-cta:hover{background:rgba(212,175,55,.2);box-shadow:0 0 32px -6px rgba(212,175,55,.95)}
+
+.burger{display:none;flex-direction:column;gap:5px;padding:9px;border-radius:10px;border:1px solid rgba(212,175,55,.35)}
+.burger span{width:22px;height:2px;background:var(--dourado);border-radius:2px;transition:.35s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;min-height:100svh;display:grid;place-items:center;
+  text-align:center;padding:150px clamp(16px,5vw,40px) 110px;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(46vw 46vw at 50% 22%, rgba(212,175,55,.13), transparent 66%),
+    radial-gradient(60vw 60vw at 50% 110%, rgba(16,42,87,.75), transparent 66%);
+}
+.hero-inner{max-width:960px;position:relative;z-index:2}
+
+.logo-halo{
+  position:relative;width:min(280px,58vw);aspect-ratio:1;margin:0 auto 42px;
+  display:grid;place-items:center;
+}
+.logo-halo::before{
+  content:'';position:absolute;inset:-16px;border-radius:50%;z-index:0;
+  background:conic-gradient(from 0deg,
+      transparent 0deg, rgba(212,175,55,.95) 40deg, transparent 110deg,
+      transparent 200deg, rgba(247,233,176,.75) 250deg, transparent 320deg);
+  filter:blur(3px);animation:spin 11s linear infinite;opacity:.9;
+}
+.logo-halo::after{
+  content:'';position:absolute;inset:-56px;border-radius:50%;z-index:0;
+  background:radial-gradient(circle, rgba(212,175,55,.30), transparent 66%);
+  filter:blur(26px);animation:pulseGlow 5s ease-in-out infinite;
+}
+.logo-halo img{
+  position:relative;z-index:2;width:100%;height:100%;object-fit:cover;border-radius:50%;
+  border:2px solid rgba(212,175,55,.6);
+  box-shadow:
+    0 0 70px rgba(212,175,55,.45),
+    0 0 140px rgba(212,175,55,.18),
+    inset 0 0 60px rgba(0,0,0,.75);
+  animation:floatLogo 7s ease-in-out infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulseGlow{0%,100%{opacity:.55;transform:scale(.97)}50%{opacity:1;transform:scale(1.06)}}
+@keyframes floatLogo{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
+
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;
+  font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;
+  color:rgba(246,243,236,.62);
+}
+.hero-kicker::before,.hero-kicker::after{
+  content:'';width:38px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--dourado));
+}
+.hero-kicker::after{background:linear-gradient(90deg,var(--dourado),transparent)}
+
+.hero h1{
+  font-size:clamp(2.6rem,8.5vw,5.4rem);
+  margin-bottom:6px;
+}
+.hero h2{
+  font-family:var(--font-title);font-weight:400;
+  font-size:clamp(.85rem,2.3vw,1.28rem);
+  letter-spacing:.36em;text-transform:uppercase;
+  color:rgba(246,243,236,.7);margin-bottom:26px;
+}
+.hero p.lead{
+  max-width:660px;margin:0 auto 38px;font-size:clamp(.98rem,2vw,1.12rem);
+  font-weight:300;color:rgba(246,243,236,.78);
+}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+.hero-scroll{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(246,243,236,.42);
+}
+.hero-scroll i{
+  width:1px;height:46px;background:linear-gradient(180deg,var(--dourado),transparent);
+  animation:scrollLine 2.2s ease-in-out infinite;
+}
+@keyframes scrollLine{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ============================================================
+   BOTÕES
+   ============================================================ */
+.btn{
+  position:relative;display:inline-flex;align-items:center;gap:10px;
+  padding:15px 32px;border-radius:99px;overflow:hidden;
+  font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  transition:transform .35s, box-shadow .35s, background .35s, border-color .35s;
+  white-space:nowrap;
+}
+.btn::after{
+  content:'';position:absolute;top:0;left:-140%;width:60%;height:100%;
+  background:linear-gradient(115deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-22deg);transition:left .75s;
+}
+.btn:hover::after{left:150%}
+.btn-gold{
+  background:linear-gradient(135deg,#b8912a,#d4af37 40%,#f9efc0 55%,#d4af37 72%,#a8811f);
+  color:#0a1020;box-shadow:0 14px 38px -14px rgba(212,175,55,.95);
+}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 22px 52px -14px rgba(212,175,55,1)}
+.btn-ghost{
+  border:1px solid rgba(212,175,55,.5);color:var(--dourado-claro);
+  background:rgba(212,175,55,.05);
+}
+.btn-ghost:hover{background:rgba(212,175,55,.15);transform:translateY(-3px);box-shadow:0 0 36px -10px rgba(212,175,55,.9)}
+
+/* ============================================================
+   SEÇÕES / TÍTULOS
+   ============================================================ */
+.section{padding:clamp(70px,9vw,120px) clamp(16px,5vw,40px);position:relative}
+.wrap{max-width:1240px;margin:0 auto}
+.wrap-narrow{max-width:880px;margin:0 auto}
+
+.sec-head{text-align:center;margin-bottom:clamp(40px,6vw,70px)}
+.sec-kicker{
+  display:inline-block;margin-bottom:16px;
+  font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;
+  color:rgba(212,175,55,.85);
+}
+.sec-head h2{
+  font-family:var(--font-title);font-weight:600;
+  font-size:clamp(1.75rem,4.6vw,3rem);line-height:1.2;letter-spacing:.03em;
+}
+.sec-head p{
+  max-width:680px;margin:20px auto 0;font-weight:300;
+  color:rgba(246,243,236,.7);font-size:clamp(.94rem,1.8vw,1.04rem);
+}
+.divider{
+  width:118px;height:1px;margin:26px auto 0;position:relative;
+  background:linear-gradient(90deg,transparent,var(--dourado),transparent);
+}
+.divider::after{
+  content:'✦';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-size:.66rem;color:var(--dourado);background:var(--azul-900);padding:0 8px;
+  text-shadow:0 0 14px rgba(212,175,55,.95);
+}
+
+/* ============================================================
+   HISTÓRIA
+   ============================================================ */
+.story-grid{
+  display:grid;grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:clamp(34px,5vw,72px);align-items:start;
+}
+.story-aside{position:sticky;top:112px}
+.story-logo-card{
+  position:relative;border-radius:28px;overflow:hidden;padding:34px 26px;
+  background:linear-gradient(180deg,rgba(10,28,61,.85),rgba(4,11,26,.95));
+  border:1px solid rgba(212,175,55,.22);
+  box-shadow:0 40px 90px -50px rgba(0,0,0,1), 0 0 60px -28px rgba(212,175,55,.5);
+  text-align:center;
+}
+.story-logo-card::before{
+  content:'';position:absolute;inset:-2px;border-radius:28px;z-index:-1;
+  background:conic-gradient(from 0deg,transparent,rgba(212,175,55,.8),transparent 40%,transparent 60%,rgba(212,175,55,.55),transparent);
+  animation:spin 14s linear infinite;opacity:.45;
+}
+.story-logo-card img{
+  width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%;
+  border:1.5px solid rgba(212,175,55,.55);
+  box-shadow:0 0 60px rgba(212,175,55,.4), inset 0 0 40px rgba(0,0,0,.7);
+  transition:.6s;
+}
+.story-logo-card:hover img{transform:scale(1.03) rotate(1.5deg);box-shadow:0 0 100px rgba(212,175,55,.7)}
+.story-logo-card h3{
+  font-family:var(--font-title);font-size:1.5rem;letter-spacing:.12em;
+  margin-top:24px;
+}
+.story-logo-card small{
+  display:block;margin-top:8px;font-size:.62rem;letter-spacing:.36em;
+  text-transform:uppercase;color:rgba(246,243,236,.5);
+}
+.story-logo-card .sig{
+  margin-top:20px;padding-top:18px;border-top:1px solid rgba(212,175,55,.18);
+  font-style:italic;font-weight:300;font-size:.9rem;color:rgba(246,243,236,.72);
+}
+
+.story-text p{
+  font-weight:300;color:rgba(246,243,236,.82);font-size:1.02rem;
+  margin-bottom:20px;
+}
+.story-text p .dropcap{
+  float:left;font-family:var(--font-title);font-size:3.6rem;line-height:.82;
+  padding:6px 14px 0 0;color:var(--dourado);
+  text-shadow:0 0 30px rgba(212,175,55,.8);
+}
+.story-text .chapter{
+  display:flex;align-items:center;gap:14px;margin:38px 0 16px;
+  font-family:var(--font-title);font-size:1.1rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dourado-claro);
+}
+.story-text .chapter::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,rgba(212,175,55,.55),transparent);
+}
+.story-quote{
+  margin:32px 0;padding:26px 30px;border-left:2px solid var(--dourado);
+  background:linear-gradient(90deg,rgba(212,175,55,.09),transparent);
+  border-radius:0 16px 16px 0;font-style:italic;font-weight:300;
+  font-size:1.06rem;color:var(--dourado-claro);
+  box-shadow:-14px 0 44px -32px rgba(212,175,55,.9);
+}
+
+/* TIMELINE */
+.timeline{position:relative;margin-top:clamp(56px,8vw,90px);padding-left:0}
+.timeline::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:linear-gradient(180deg,transparent,rgba(212,175,55,.55),rgba(212,175,55,.55),transparent);
+  transform:translateX(-.5px);
+}
+.tl-item{
+  position:relative;width:50%;padding:0 46px 44px 0;
+  opacity:0;transform:translateY(28px);transition:.85s cubic-bezier(.2,.7,.3,1);
+}
+.tl-item.in{opacity:1;transform:none}
+.tl-item:nth-child(even){margin-left:50%;padding:0 0 44px 46px;text-align:left}
+.tl-item:nth-child(odd){text-align:right}
+.tl-dot{
+  position:absolute;top:8px;right:-6px;width:13px;height:13px;border-radius:50%;
+  background:var(--dourado);
+  box-shadow:0 0 0 5px rgba(212,175,55,.14), 0 0 26px rgba(212,175,55,.95);
+}
+.tl-item:nth-child(even) .tl-dot{right:auto;left:-6px}
+.tl-year{
+  font-family:var(--font-title);font-size:1.3rem;letter-spacing:.14em;
+  color:var(--dourado);display:block;margin-bottom:6px;
+  text-shadow:0 0 26px rgba(212,175,55,.55);
+}
+.tl-item h4{font-size:1.02rem;font-weight:600;letter-spacing:.04em;margin-bottom:7px;color:var(--perola)}
+.tl-item p{font-weight:300;font-size:.94rem;color:rgba(246,243,236,.68)}
+
+/* ============================================================
+   VALORES / PILARES
+   ============================================================ */
+.pillars{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:22px;
+}
+.pillar{
+  position:relative;padding:34px 26px;border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(10,28,61,.7),rgba(4,11,26,.88));
+  border:1px solid rgba(212,175,55,.16);
+  transition:.45s;overflow:hidden;
+}
+.pillar::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--dourado),transparent);
+  opacity:0;transition:.45s;
+}
+.pillar:hover{transform:translateY(-7px);border-color:rgba(212,175,55,.5);box-shadow:0 30px 60px -34px rgba(0,0,0,1), 0 0 44px -18px rgba(212,175,55,.85)}
+.pillar:hover::before{opacity:1}
+.pillar .ico{
+  width:52px;height:52px;display:grid;place-items:center;border-radius:14px;
+  font-size:1.5rem;margin-bottom:18px;
+  background:radial-gradient(circle at 30% 25%,rgba(212,175,55,.35),rgba(212,175,55,.06));
+  border:1px solid rgba(212,175,55,.3);
+  box-shadow:0 0 28px -10px rgba(212,175,55,.9);
+}
+.pillar h3{font-family:var(--font-title);font-size:1.05rem;letter-spacing:.08em;margin-bottom:10px;color:var(--dourado-claro)}
+.pillar p{font-weight:300;font-size:.92rem;color:rgba(246,243,236,.7)}
+
+/* ============================================================
+   PROCESSO
+   ============================================================ */
+.steps{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:20px;counter-reset:step;
+}
+.step{
+  position:relative;padding:44px 24px 28px;border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(6,18,41,.9),rgba(3,10,26,.95));
+  border:1px solid rgba(212,175,55,.14);transition:.45s;
+}
+.step:hover{border-color:rgba(212,175,55,.45);box-shadow:0 0 44px -20px rgba(212,175,55,.9);transform:translateY(-6px)}
+.step::before{
+  counter-increment:step;content:'0' counter(step);
+  position:absolute;top:14px;left:22px;
+  font-family:var(--font-title);font-size:1.55rem;letter-spacing:.1em;
+  color:rgba(212,175,55,.9);text-shadow:0 0 24px rgba(212,175,55,.75);
+}
+.step h3{font-size:1rem;font-weight:600;letter-spacing:.05em;margin-bottom:9px;color:var(--perola)}
+.step p{font-weight:300;font-size:.9rem;color:rgba(246,243,236,.66)}
+
+/* ============================================================
+   PRODUTOS
+   ============================================================ */
+.searchbar{
+  display:grid;grid-template-columns:1fr auto;gap:14px;
+  max-width:940px;margin:0 auto 26px;
+}
+.search-input-wrap{position:relative}
+.search-input-wrap::before{
+  content:'⌕';position:absolute;left:22px;top:50%;transform:translateY(-50%);
+  font-size:1.4rem;color:var(--dourado);opacity:.8;pointer-events:none;
+  text-shadow:0 0 18px rgba(212,175,55,.9);
+}
+#busca{
+  width:100%;padding:17px 54px 17px 56px;border-radius:99px;
+  background:rgba(6,18,41,.85);color:var(--perola);
+  border:1px solid rgba(212,175,55,.28);
+  font-family:inherit;font-size:.98rem;font-weight:300;
+  transition:.35s;outline:none;
+}
+#busca::placeholder{color:rgba(246,243,236,.38)}
+#busca:focus{
+  border-color:rgba(212,175,55,.85);
+  box-shadow:0 0 0 4px rgba(212,175,55,.1), 0 0 44px -12px rgba(212,175,55,.9);
+  background:rgba(10,28,61,.95);
+}
+#limpar{
+  position:absolute;right:12px;top:50%;transform:translateY(-50%);
+  width:32px;height:32px;border-radius:50%;display:grid;place-items:center;
+  color:rgba(246,243,236,.6);font-size:1rem;transition:.3s;
+}
+#limpar:hover{background:rgba(212,175,55,.18);color:var(--dourado-claro)}
+
+.chips{
+  display:flex;flex-wrap:wrap;gap:9px;justify-content:center;
+  max-width:940px;margin:0 auto 14px;
+}
+.chip{
+  padding:9px 20px;border-radius:99px;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid rgba(212,175,55,.25);
+  color:rgba(246,243,236,.7);background:rgba(212,175,55,.04);
+  transition:.3s;
+}
+.chip:hover{border-color:rgba(212,175,55,.6);color:var(--dourado-claro);box-shadow:0 0 26px -12px rgba(212,175,55,.95)}
+.chip.active{
+  background:linear-gradient(135deg,#b8912a,#f9efc0 55%,#b8912a);
+  color:#0a1020;border-color:transparent;font-weight:600;
+  box-shadow:0 10px 30px -14px rgba(212,175,55,1);
+}
+.chips-label{
+  width:100%;text-align:center;font-size:.6rem;letter-spacing:.34em;
+  text-transform:uppercase;color:rgba(246,243,236,.35);margin-bottom:2px;
+}
+
+.result-info{
+  text-align:center;font-size:.78rem;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(246,243,236,.45);
+  margin:26px 0 34px;
+}
+.result-info b{color:var(--dourado);font-weight:600}
+
+/* GRID */
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
+  gap:clamp(18px,2.6vw,30px);
+}
+.card{
+  position:relative;display:flex;flex-direction:column;
+  border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(180deg,rgba(10,28,61,.78),rgba(4,11,26,.94));
+  border:1px solid rgba(212,175,55,.16);
+  transition:transform .5s cubic-bezier(.2,.7,.3,1), box-shadow .5s, border-color .5s;
+  opacity:0;transform:translateY(26px);
+}
+.card.in{opacity:1;transform:none}
+.card:hover{
+  transform:translateY(-9px);
+  border-color:rgba(212,175,55,.55);
+  box-shadow:0 40px 70px -40px rgba(0,0,0,1), 0 0 56px -20px rgba(212,175,55,.75);
+}
+
+.card-media{
+  position:relative;aspect-ratio:1/1;overflow:hidden;
+  background:radial-gradient(circle at 50% 38%,#173361 0%,#0a1a38 45%,#050d1e 100%);
+  cursor:zoom-in;
+}
+.card-media::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.20) 44%,rgba(212,175,55,.42) 50%,rgba(255,255,255,.16) 56%,transparent 68%);
+  transform:translateX(-130%);transition:transform 1s ease;
+}
+.card:hover .card-media::after{transform:translateX(130%)}
+.card-media img.card-main{
+  width:100%;height:100%;object-fit:contain;padding:14px;
+  transition:transform .7s cubic-bezier(.2,.7,.3,1);
+  filter:drop-shadow(0 18px 34px rgba(0,0,0,.75));
+}
+.card:hover .card-media img.card-main{transform:scale(1.07)}
+
+.badge{
+  position:absolute;top:12px;right:12px;z-index:4;
+  padding:5px 13px;border-radius:99px;
+  font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;
+  background:rgba(3,10,26,.8);color:var(--dourado-claro);
+  border:1px solid rgba(212,175,55,.5);
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 22px -8px rgba(212,175,55,.95);
+}
+.thumbs{
+  position:absolute;bottom:10px;left:10px;z-index:4;
+  display:flex;gap:6px;
+}
+.thumb{
+  width:40px;height:40px;border-radius:9px;overflow:hidden;
+  border:1px solid rgba(212,175,55,.3);background:rgba(3,10,26,.8);
+  transition:.3s;padding:0;
+}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.thumb:hover{border-color:rgba(212,175,55,.85);transform:translateY(-2px)}
+.thumb.active{
+  border-color:var(--dourado);
+  box-shadow:0 0 18px rgba(212,175,55,.95);
+}
+
+.card-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.card-code{
+  font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(212,175,55,.85);margin-bottom:7px;
+}
+.card-body h3{
+  font-family:var(--font-title);font-size:1.02rem;line-height:1.38;
+  letter-spacing:.02em;color:var(--perola);margin-bottom:12px;min-height:2.7em;
+}
+.card-desc{
+  font-weight:300;font-size:.855rem;line-height:1.65;
+  color:rgba(246,243,236,.62);margin-bottom:16px;flex:1;
+}
+.specs{
+  list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;
+  padding:14px 0 0;margin-top:auto;border-top:1px solid rgba(212,175,55,.14);
+}
+.specs li{font-size:.72rem;display:flex;flex-direction:column;gap:1px}
+.specs span{
+  font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(246,243,236,.36);
+}
+.specs b{font-weight:500;color:rgba(246,243,236,.88);letter-spacing:.02em}
+.card-actions{margin-top:16px}
+.card-actions .btn{width:100%;justify-content:center;padding:12px 18px;font-size:.68rem}
+
+.empty{
+  grid-column:1/-1;text-align:center;padding:70px 20px;
+  border:1px dashed rgba(212,175,55,.3);border-radius:var(--radius);
+}
+.empty .big{font-size:2.4rem;margin-bottom:12px;opacity:.65}
+.empty h3{font-family:var(--font-title);color:var(--dourado-claro);margin-bottom:8px}
+.empty p{font-weight:300;color:rgba(246,243,236,.6);font-size:.92rem}
+
+/* ============================================================
+   MATERIAIS
+   ============================================================ */
+.materials{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
+.material{
+  position:relative;padding:40px 32px;border-radius:var(--radius);overflow:hidden;
+  background:linear-gradient(160deg,rgba(16,42,87,.7),rgba(4,11,26,.95));
+  border:1px solid rgba(212,175,55,.18);transition:.45s;
+}
+.material::after{
+  content:'';position:absolute;top:-60%;right:-30%;width:70%;height:180%;
+  background:radial-gradient(circle,rgba(212,175,55,.16),transparent 68%);
+  pointer-events:none;
+}
+.material:hover{border-color:rgba(212,175,55,.55);box-shadow:0 0 60px -22px rgba(212,175,55,.85);transform:translateY(-6px)}
+.material h3{
+  font-family:var(--font-title);font-size:1.45rem;letter-spacing:.1em;
+  margin-bottom:6px;
+}
+.material .tag{
+  display:inline-block;margin-bottom:18px;font-size:.6rem;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(212,175,55,.85);
+}
+.material p{font-weight:300;font-size:.94rem;color:rgba(246,243,236,.74);margin-bottom:16px}
+.material ul{list-style:none;display:grid;gap:9px}
+.material li{
+  font-size:.88rem;font-weight:300;color:rgba(246,243,236,.72);
+  padding-left:24px;position:relative;
+}
+.material li::before{
+  content:'✦';position:absolute;left:0;top:0;color:var(--dourado);
+  font-size:.72rem;text-shadow:0 0 14px rgba(212,175,55,.95);
+}
+
+/* ============================================================
+   CUIDADOS
+   ============================================================ */
+.care{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;
+}
+.care-item{
+  padding:26px 24px;border-radius:16px;
+  background:rgba(6,18,41,.6);border:1px solid rgba(212,175,55,.12);
+  transition:.4s;
+}
+.care-item:hover{background:rgba(10,28,61,.85);border-color:rgba(212,175,55,.4);box-shadow:0 0 40px -20px rgba(212,175,55,.9)}
+.care-item h4{font-size:.95rem;margin-bottom:8px;color:var(--dourado-claro);display:flex;gap:9px;align-items:center}
+.care-item h4 i{font-style:normal;font-size:1.1rem}
+.care-item p{font-weight:300;font-size:.87rem;color:rgba(246,243,236,.66)}
+
+/* ============================================================
+   DEPOIMENTOS
+   ============================================================ */
+.testi{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+.testi-card{
+  position:relative;padding:38px 30px 30px;border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(10,28,61,.68),rgba(4,11,26,.9));
+  border:1px solid rgba(212,175,55,.15);transition:.45s;
+}
+.testi-card::before{
+  content:'"';position:absolute;top:-6px;left:20px;
+  font-family:var(--font-title);font-size:5rem;line-height:1;
+  color:rgba(212,175,55,.28);
+}
+.testi-card:hover{border-color:rgba(212,175,55,.5);transform:translateY(-6px);box-shadow:0 0 56px -24px rgba(212,175,55,.9)}
+.testi-card p{font-style:italic;font-weight:300;font-size:.96rem;color:rgba(246,243,236,.8);margin-bottom:20px;position:relative}
+.testi-author{display:flex;align-items:center;gap:13px}
+.testi-avatar{
+  width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--font-title);font-size:1rem;color:#0a1020;font-weight:700;
+  background:linear-gradient(135deg,#b8912a,#f9efc0,#b8912a);
+  box-shadow:0 0 24px -8px rgba(212,175,55,.95);
+}
+.testi-author strong{display:block;font-size:.9rem;font-weight:500;color:var(--perola)}
+.testi-author small{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,243,236,.42)}
+.stars{color:var(--dourado);letter-spacing:2px;font-size:.8rem;margin-bottom:12px}
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq{max-width:860px;margin:0 auto;display:grid;gap:12px}
+.faq details{
+  border-radius:14px;overflow:hidden;
+  background:rgba(6,18,41,.66);border:1px solid rgba(212,175,55,.15);
+  transition:.4s;
+}
+.faq details[open]{
+  border-color:rgba(212,175,55,.5);
+  box-shadow:0 0 46px -22px rgba(212,175,55,.9);
+  background:rgba(10,28,61,.8);
+}
+.faq summary{
+  list-style:none;cursor:pointer;padding:20px 56px 20px 24px;position:relative;
+  font-weight:500;font-size:.95rem;color:var(--perola);transition:.3s;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--dourado-claro)}
+.faq summary::after{
+  content:'+';position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  font-size:1.3rem;font-weight:300;color:var(--dourado);
+  transition:.35s;text-shadow:0 0 16px rgba(212,175,55,.9);
+}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq .faq-body{
+  padding:0 24px 22px;font-weight:300;font-size:.92rem;
+  color:rgba(246,243,236,.7);
+}
+
+/* ============================================================
+   CONTATO
+   ============================================================ */
+.contact-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;
+}
+.contact-card{
+  padding:34px 28px;border-radius:var(--radius);text-align:center;
+  background:linear-gradient(180deg,rgba(10,28,61,.72),rgba(4,11,26,.92));
+  border:1px solid rgba(212,175,55,.16);transition:.45s;
+}
+.contact-card:hover{transform:translateY(-7px);border-color:rgba(212,175,55,.5);box-shadow:0 0 56px -24px rgba(212,175,55,.95)}
+.contact-card .ico{
+  width:56px;height:56px;margin:0 auto 18px;border-radius:50%;
+  display:grid;place-items:center;font-size:1.4rem;
+  background:radial-gradient(circle at 30% 25%,rgba(212,175,55,.32),rgba(212,175,55,.05));
+  border:1px solid rgba(212,175,55,.35);
+  box-shadow:0 0 32px -12px rgba(212,175,55,.95);
+}
+.contact-card h3{font-family:var(--font-title);font-size:1rem;letter-spacing:.1em;margin-bottom:10px;color:var(--dourado-claro)}
+.contact-card p{font-weight:300;font-size:.92rem;color:rgba(246,243,236,.72);line-height:1.7}
+.contact-card a{color:var(--dourado-claro);border-bottom:1px solid rgba(212,175,55,.3);transition:.3s}
+.contact-card a:hover{color:#fff;border-color:var(--dourado)}
+
+.cta-band{
+  margin-top:clamp(50px,7vw,80px);padding:clamp(36px,6vw,64px) clamp(24px,5vw,56px);
+  border-radius:28px;text-align:center;position:relative;overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(212,175,55,.18),transparent 55%),
+    linear-gradient(135deg,rgba(16,42,87,.9),rgba(4,11,26,.98));
+  border:1px solid rgba(212,175,55,.35);
+  box-shadow:0 40px 100px -60px rgba(212,175,55,.95), inset 0 0 80px -50px rgba(212,175,55,.7);
+}
+.cta-band h2{
+  font-family:var(--font-title);font-size:clamp(1.5rem,4vw,2.4rem);
+  margin-bottom:14px;letter-spacing:.03em;
+}
+.cta-band p{
+  max-width:600px;margin:0 auto 30px;font-weight:300;
+  color:rgba(246,243,236,.72);font-size:1rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{
+  position:relative;padding:clamp(50px,7vw,80px) clamp(16px,5vw,40px) 34px;
+  border-top:1px solid rgba(212,175,55,.18);
+  background:linear-gradient(180deg,rgba(3,10,26,.4),rgba(2,6,16,.98));
+}
+footer::before{
+  content:'';position:absolute;top:-1px;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,175,55,.9),transparent);
+}
+.foot-grid{
+  max-width:1240px;margin:0 auto;display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:38px;
+}
+.foot-brand img{
+  width:76px;height:76px;border-radius:50%;object-fit:cover;margin-bottom:18px;
+  border:1.5px solid rgba(212,175,55,.5);
+  box-shadow:0 0 40px -8px rgba(212,175,55,.9);
+}
+.foot-brand h3{font-family:var(--font-title);font-size:1.25rem;letter-spacing:.12em;margin-bottom:10px}
+.foot-brand p{font-weight:300;font-size:.88rem;color:rgba(246,243,236,.55);max-width:290px}
+.foot-col h4{
+  font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--dourado);margin-bottom:18px;
+}
+.foot-col ul{list-style:none;display:grid;gap:10px}
+.foot-col a,.foot-col li{
+  font-size:.88rem;font-weight:300;color:rgba(246,243,236,.6);transition:.3s;
+}
+.foot-col a:hover{color:var(--dourado-claro);padding-left:5px;text-shadow:0 0 18px rgba(212,175,55,.8)}
+.foot-bottom{
+  max-width:1240px;margin:44px auto 0;padding-top:24px;
+  border-top:1px solid rgba(212,175,55,.12);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-size:.76rem;font-weight:300;color:rgba(246,243,236,.38);
+}
+
+/* ============================================================
+   WHATSAPP FLUTUANTE
+   ============================================================ */
+.whats{
+  position:fixed;right:22px;bottom:22px;z-index:1200;
+  width:64px;height:64px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(145deg,#25d366,#128c4a);
+  box-shadow:0 14px 40px -10px rgba(37,211,102,.9), 0 0 0 0 rgba(37,211,102,.6);
+  animation:wppPulse 2.6s ease-out infinite;
+  transition:transform .35s;
+}
+.whats:hover{transform:scale(1.1) rotate(6deg)}
+.whats svg{width:34px;height:34px;fill:#fff;filter:drop-shadow(0 2px 5px rgba(0,0,0,.4))}
+.whats::before{
+  content:'';position:absolute;inset:-8px;border-radius:50%;
+  border:1px solid rgba(37,211,102,.55);
+  animation:wppRing 2.6s ease-out infinite;
+}
+.whats::after{
+  content:'';position:absolute;inset:-16px;border-radius:50%;
+  border:1px solid rgba(212,175,55,.35);
+  animation:wppRing 2.6s ease-out infinite .5s;
+}
+@keyframes wppPulse{
+  0%{box-shadow:0 14px 40px -10px rgba(37,211,102,.9), 0 0 0 0 rgba(37,211,102,.55)}
+  70%{box-shadow:0 14px 40px -10px rgba(37,211,102,.9), 0 0 0 20px rgba(37,211,102,0)}
+  100%{box-shadow:0 14px 40px -10px rgba(37,211,102,.9), 0 0 0 0 rgba(37,211,102,0)}
+}
+@keyframes wppRing{0%{transform:scale(.9);opacity:.9}100%{transform:scale(1.35);opacity:0}}
+.whats-label{
+  position:absolute;right:80px;top:50%;transform:translateY(-50%) translateX(10px);
+  padding:9px 16px;border-radius:99px;white-space:nowrap;
+  background:rgba(3,10,26,.95);color:var(--dourado-claro);
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid rgba(212,175,55,.4);
+  opacity:0;pointer-events:none;transition:.35s;
+  box-shadow:0 0 30px -12px rgba(212,175,55,.95);
+}
+.whats:hover .whats-label{opacity:1;transform:translateY(-50%) translateX(0)}
+
+/* BACK TO TOP */
+.to-top{
+  position:fixed;left:22px;bottom:22px;z-index:1190;
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(6,18,41,.9);border:1px solid rgba(212,175,55,.35);
+  color:var(--dourado);font-size:1rem;
+  opacity:0;pointer-events:none;transition:.4s;
+  box-shadow:0 0 28px -12px rgba(212,175,55,.95);
+}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{background:rgba(212,175,55,.2);transform:translateY(-4px)}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.lightbox{
+  position:fixed;inset:0;z-index:2000;display:none;
+  align-items:center;justify-content:center;padding:24px;
+  background:rgba(2,6,16,.94);backdrop-filter:blur(12px);
+}
+.lightbox.open{display:flex;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.lightbox-inner{position:relative;max-width:min(880px,92vw);text-align:center}
+.lightbox-inner img{
+  max-height:74vh;width:auto;margin:0 auto;border-radius:16px;
+  border:1px solid rgba(212,175,55,.35);
+  box-shadow:0 0 90px -20px rgba(212,175,55,.9);
+  object-fit:contain;
+}
+.lightbox-cap{margin-top:18px;font-size:.85rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(246,243,236,.7)}
+.lb-close{
+  position:absolute;top:-14px;right:-14px;width:44px;height:44px;border-radius:50%;
+  background:rgba(212,175,55,.15);border:1px solid rgba(212,175,55,.5);
+  color:var(--dourado-claro);font-size:1.2rem;display:grid;place-items:center;transition:.3s;
+}
+.lb-close:hover{background:rgba(212,175,55,.35);transform:rotate(90deg)}
+.lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(3,10,26,.85);border:1px solid rgba(212,175,55,.45);
+  color:var(--dourado);font-size:1.2rem;transition:.3s;
+}
+.lb-nav:hover{background:rgba(212,175,55,.3);box-shadow:0 0 30px -10px rgba(212,175,55,1)}
+.lb-prev{left:-64px}
+.lb-next{right:-64px}
+
+/* ============================================================
+   REVEAL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(34px);transition:.9s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* ============================================================
+   RESPONSIVO
+   ============================================================ */
+@media (max-width:1024px){
+  .story-grid{grid-template-columns:1fr}
+  .story-aside{position:static;max-width:400px;margin:0 auto}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:860px){
+  .nav{
+    position:fixed;top:0;right:0;height:100svh;width:min(320px,86vw);
+    flex-direction:column;justify-content:center;gap:10px;
+    background:rgba(3,10,26,.98);backdrop-filter:blur(20px);
+    border-left:1px solid rgba(212,175,55,.25);
+    transform:translateX(105%);transition:transform .45s cubic-bezier(.2,.7,.3,1);
+    padding:80px 26px;
+  }
+  .nav.open{transform:translateX(0)}
+  .nav a{font-size:.9rem;padding:12px 16px;width:100%;text-align:center}
+  .burger{display:flex}
+  .searchbar{grid-template-columns:1fr}
+  .tl-item,.tl-item:nth-child(even){width:100%;margin-left:0;padding:0 0 34px 44px;text-align:left}
+  .timeline::before{left:8px}
+  .tl-dot,.tl-item:nth-child(even) .tl-dot{left:2px;right:auto}
+  .lb-prev{left:6px}.lb-next{right:6px}
+  .story-logo-card{padding:26px 20px}
+}
+@media (max-width:560px){
+  .specs{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .whats{width:58px;height:58px;right:16px;bottom:16px}
+  .whats svg{width:30px;height:30px}
+  .to-top{left:16px;bottom:16px}
+  .brand-txt span{display:none}
+  .hero-actions .btn{width:100%;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs"></div>
+<div class="bg-grain"></div>
+
+<!-- ================= HEADER ================= -->
+<header class="topbar" id="topbar">
+  <a class="brand" href="#inicio" aria-label="FerArte Ateliê de Artesanato">
+    <img class="brand-logo" src="/img/logo.png" alt="Logo FerArte Ateliê de Artesanato"
+         onerror="this.onerror=null;this.src='/img/logo.jpg'">
+    <span class="brand-txt">
+      <strong class="gold">FerArte</strong>
+      <span>Ateliê de Artesanato</span>
+    </span>
+  </a>
+
+  <nav class="nav" id="nav">
+    <a href="#historia">Nossa História</a>
+    <a href="#valores">Valores</a>
+    <a href="#processo">Processo</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#materiais">Materiais</a>
+    <a href="#faq">Dúvidas</a>
+    <a href="#contato" class="nav-cta">Fale Conosco</a>
+  </nav>
+
+  <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div class="logo-halo">
+      <img src="/img/logo.png" alt="Logo FerArte — Ateliê de Artesanato, Gesso & Resina"
+           onerror="this.onerror=null;this.src='/img/logo.jpg'">
+    </div>
+
+    <span class="hero-kicker">Ribeirão Preto · São Paulo</span>
+
+    <h1 class="hero-title glow-title">
+      <span class="gold">FerArte</span>
+    </h1>
+    <h2>Ateliê de Artesanato · Gesso &amp; Resina</h2>
+
+    <p class="lead">
+      Peças devocionais e decorativas feitas à mão, uma a uma, com tempo, afeto e fé.
+      Aqui, cada escultura carrega uma história — e a nossa começou quando decidimos
+      que <strong style="font-weight:500;color:var(--dourado-claro)">nunca é tarde para recomeçar</strong>.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="#produtos">Conhecer as Peças</a>
+      <a class="btn btn-ghost" href="#historia">Nossa História</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <i></i>
+    <span>Role</span>
+  </div>
+</section>
+
+<!-- ================= HISTÓRIA ================= -->
+<section class="section" id="historia">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Capítulo por capítulo</span>
+      <h2 class="glow-title"><span class="gold">A História da FerArte</span></h2>
+      <p>De uma caixa de madeira esquecida no fundo do armário a um ateliê que transforma gesso e resina em símbolos de fé.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="story-grid">
+      <!-- ASIDE COM O LOGO -->
+      <aside class="story-aside reveal">
+        <div class="story-logo-card">
+          <img src="/img/logo.png" alt="Selo FerArte Ateliê de Artesanato"
+               onerror="this.onerror=null;this.src='/img/logo.jpg'">
+          <h3 class="gold">FerArte</h3>
+          <small>Ateliê de Artesanato</small>
+          <div class="sig">“Feito à mão.<br>Feito com fé.”</div>
+        </div>
+      </aside>
+
+      <!-- TEXTO -->
+      <div class="story-text reveal">
+        <div class="chapter">O começo de tudo</div>
+        <p>
+          <span class="dropcap">F</span>ernanda — a <em>Fer</em> de FerArte — passou mais de duas décadas
+          construindo uma carreira sólida na área administrativa. Foram anos de planilhas, prazos,
+          reuniões, rotinas organizadas com esmero e a sensação confortável (e, ao mesmo tempo,
+          incômoda) de saber exatamente o que faria no dia seguinte. Era uma vida estável. Era uma
+          vida segura. Mas havia, guardado no fundo de uma gaveta, um caderno de desenhos de infância
+          e uma caixa de madeira com pincéis secos, herdada de uma tia que pintava santos e enfeites
+          de presépio nas tardes de domingo.
+        </p>
+        <p>
+          Em 2019, uma reestruturação na empresa encerrou aquele ciclo. De repente, o roteiro pronto
+          desapareceu. O que poderia ter sido apenas um susto virou uma pergunta: e se, agora, fosse
+          a hora de fazer diferente? A resposta não veio de imediato — veio em forma de poeira, quando
+          ela abriu a velha caixa de madeira e reencontrou os pincéis da tia.
+        </p>
+
+        <div class="chapter">A primeira peça</div>
+        <p>
+          A primeira tentativa foi um pequeno anjo de gesso, torto, com uma asa maior que a outra.
+          Fer guardou a peça numa prateleira por semanas, sem coragem de mostrar a ninguém. Até que
+          uma amiga, ao vê-la, pediu: “você faz um para mim?”. Aquele pedido simples — o primeiro de
+          muitos — mudou tudo. Não porque o anjo fosse perfeito, mas porque alguém reconheceu ali algo
+          que a indústria não entrega: a marca da mão humana.
+        </p>
+
+        <div class="story-quote">
+          “Eu descobri que o artesanato não apaga a história de quem já viveu outras vidas.
+          Ele costura tudo. As planilhas me ensinaram a organizar; a fé me ensinou o porquê.”
+        </div>
+
+        <div class="chapter">O encontro com a resina cristal</div>
+        <p>
+          Em 2021, veio o encontro que definiria a identidade do ateliê: a resina cristal. A
+          transparência daquele material parecia traduzir exatamente o que Fer queria dizer com as
+          peças — algo leve, luminoso, que deixa a luz atravessar. A resina exigiu paciência de
+          ourives: proporções milimétricas, controle de temperatura, cura sem pressa, polimento
+          paciente até o brilho aparecer. Muitas peças foram perdidas no caminho, e cada uma delas
+          ensinou algo.
+        </p>
+        <p>
+          O gesso entrou logo depois, trazendo de volta a memória da tia. É o material do gesto
+          rápido, da pintura à mão livre, do acabamento artesanal que nunca sai igual. Hoje, os dois
+          convivem no ateliê: a resina para a delicadeza translúcida, o gesso para o calor do
+          artesanal. Duas linguagens, a mesma intenção.
+        </p>
+
+        <div class="chapter">O ateliê vira casa</div>
+        <p>
+          O que começou na mesa da cozinha tomou a varanda, depois um quarto, até ganhar um espaço
+          próprio em Ribeirão Preto. Um canto com bancada, estantes, potes de pigmento organizados
+          por tom, um rádio antigo e a janela que Fer abre todas as manhãs para que a luz entre nas
+          peças ainda úmidas. Foi nesse período que surgiu o nome: <strong>FerArte</strong> — a Fer e
+          a arte, sem separação possível.
+        </p>
+
+        <div class="chapter">O que a FerArte é hoje</div>
+        <p>
+          Hoje a FerArte produz esculturas devocionais, cruzes de mesa, porta-velas, vasos e peças
+          decorativas. Cada item nasce de um molde feito à mão, recebe acabamento individual e passa
+          por um rigoroso controle de qualidade antes de ser embalado. Nada é produzido em série
+          industrial: as peças são feitas em pequenos lotes, e é por isso que pequenas variações de
+          tom, textura e expressão não são defeitos — são a assinatura de cada exemplar.
+        </p>
+        <p>
+          A história da FerArte é, no fundo, uma história sobre recomeços. Sobre acreditar que a
+          experiência de uma vida inteira não é peso, é matéria-prima. Sobre entender que o
+          artesanato pode ser, sim, um caminho — não um passatempo, não um “enquanto isso”, mas um
+          projeto de vida inteiro, construído com as mãos e com fé.
+        </p>
+        <p>
+          Se você chegou até aqui, seja bem-vindo ao ateliê. Respire fundo. As peças foram feitas
+          devagar, e é assim que devem ser apreciadas.
+        </p>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="timeline" id="timeline">
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2019</span>
+        <h4>O ponto de virada</h4>
+        <p>O fim de um ciclo profissional de mais de 20 anos abre espaço para uma pergunta antiga: e se fosse possível viver da própria arte?</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2020</span>
+        <h4>A primeira encomenda</h4>
+        <p>Um anjinho de gesso torto, guardado por semanas, se transforma no primeiro pedido — feito por uma amiga, pago com um abraço e muitos elogios.</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2021</span>
+        <h4>O encontro com a resina cristal</h4>
+        <p>Meses de testes, proporções e erros até dominar a transparência do material. Nasce a identidade visual da FerArte.</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2022</span>
+        <h4>O ateliê ganha endereço</h4>
+        <p>A mesa da cozinha já não bastava. A FerArte passa a ocupar um espaço próprio em Ribeirão Preto, com bancada, estantes e luz natural.</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2023</span>
+        <h4>Primeira feira de artesanato</h4>
+        <p>Uma banca pequena, um banner feito em casa e a descoberta de que as peças encontram pessoas — e as pessoas voltam.</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2024</span>
+        <h4>A coleção devocional</h4>
+        <p>Cruzes, Nossas Senhoras, Sagrada Família e vasos devocionais passam a formar uma linha completa, pensada para altares e oratórios.</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2025</span>
+        <h4>Hoje</h4>
+        <p>A FerArte segue produzindo em pequenos lotes, com atendimento direto pelo WhatsApp e envio cuidadoso para todo o Brasil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VALORES ================= -->
+<section class="section" id="valores">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">O que nos move</span>
+      <h2 class="glow-title"><span class="gold">Nossos Pilares</span></h2>
+      <p>Quatro compromissos que orientam cada peça que sai do ateliê.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="pillars">
+      <article class="pillar reveal">
+        <div class="ico">✋</div>
+        <h3>Feito à Mão</h3>
+        <p>Nenhuma peça é idêntica à outra. O molde é artesanal, o acabamento é manual e a pintura é feita pincel a pincel.</p>
+      </article>
+      <article class="pillar reveal">
+        <div class="ico">✦</div>
+        <h3>Fé com Significado</h3>
+        <p>Cada escultura devocional é pensada para ocupar um lugar de oração — não apenas de decoração.</p>
+      </article>
+      <article class="pillar reveal">
+        <div class="ico">◈</div>
+        <h3>Materiais Selecionados</h3>
+        <p>Resina cristal de alta transparência e gesso de qualidade, escolhidos para garantir durabilidade e beleza.</p>
+      </article>
+      <article class="pillar reveal">
+        <div class="ico">♡</div>
+        <h3>Atendimento Próximo</h3>
+        <p>Você fala direto com quem faz. Dúvidas, prazos, personalizações e embalagens especiais são tratados um a um.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESSO ================= -->
+<section class="section" id="processo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Do molde à sua casa</span>
+      <h2 class="glow-title"><span class="gold">Como Nasce uma Peça</span></h2>
+      <p>O caminho completo de uma escultura FerArte — e por que ele leva tempo.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="steps">
+      <div class="step reveal">
+        <h3>Criação do molde</h3>
+        <p>Escultura modelada à mão em argila ou massa, até chegar à expressão desejada. É a etapa mais longa e a mais importante.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Preparação do material</h3>
+        <p>Para a resina: pesagem precisa e mistura lenta para evitar bolhas. Para o gesso: proporção e tempo de pega controlados.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Vazamento e cura</h3>
+        <p>O material é vertido no molde e descansa o tempo necessário. A pressa aqui significaria peças frágeis ou opacas.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Acabamento manual</h3>
+        <p>Lixamento delicado, remoção de rebarbas e polimento. Na resina, é essa etapa que revela a transparência cristalina.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Pintura à mão</h3>
+        <p>Feita em camadas finas, com secagem entre demãos. É onde cada peça ganha personalidade — e pequenas variações.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Inspeção e embalagem</h3>
+        <p>Checagem de detalhes, proteção individual com plástico-bolha e caixa reforçada para envio seguro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUTOS ================= -->
+<section class="section" id="produtos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Coleção FerArte</span>
+      <h2 class="glow-title"><span class="gold">Nossas Peças</span></h2>
+      <p>Esculturas devocionais e peças decorativas em resina cristal e gesso pintado à mão.
+         Pesquise por nome, código ou tema.</p>
+      <div class="divider"></div>
+    </div>
+
+    <!-- BUSCA -->
+    <div class="searchbar reveal">
+      <div class="search-input-wrap">
+        <input id="busca" type="search" placeholder="Pesquisar por nome, código ou tema…" autocomplete="off" aria-label="Pesquisar produtos">
+        <button id="limpar" type="button" title="Limpar busca" aria-label="Limpar busca">✕</button>
+      </div>
+    </div>
+
+    <div class="chips reveal" id="chips-material">
+      <span class="chips-label">Material</span>
+      <button class="chip active" data-tipo="material" data-valor="todos">Todos</button>
+      <button class="chip" data-tipo="material" data-valor="resina">Resina</button>
+      <button class="chip" data-tipo="material" data-valor="gesso">Gesso</button>
+    </div>
+
+    <div class="chips reveal" id="chips-tema">
+      <span class="chips-label">Tema</span>
+      <button class="chip active" data-tipo="tema" data-valor="todos">Todos</button>
+      <button class="chip" data-tipo="tema" data-valor="religiao">Religião</button>
+    </div>
+
+    <p class="result-info" id="resultInfo"></p>
+
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ================= MATERIAIS ================= -->
+<section class="section" id="materiais">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Conheça os materiais</span>
+      <h2 class="glow-title"><span class="gold">Resina Cristal &amp; Gesso</span></h2>
+      <p>Dois materiais, duas personalidades. Entenda as diferenças antes de escolher sua peça.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="materials">
+      <article class="material reveal">
+        <h3 class="gold">Resina Cristal</h3>
+        <span class="tag">Transparência · Leveza · Brilho</span>
+        <p>
+          A resina cristal é um material sintético de alta transparência, que permite criar peças
+          luminosas e delicadas, com um brilho que lembra vidro ou cristal lapidado.
+        </p>
+        <ul>
+          <li>Aparência translúcida e sofisticada</li>
+          <li>Excelente definição de detalhes finos</li>
+          <li>Alta resistência a impactos leves</li>
+          <li>Ideal para cruzes, esculturas e porta-velas</li>
+          <li>Pode ser polida para recuperar o brilho original</li>
+        </ul>
+      </article>
+
+      <article class="material reveal">
+        <h3 class="gold">Gesso Artesanal</h3>
+        <span class="tag">Textura · Aconchego · Pintura à mão</span>
+        <p>
+          O gesso é um material mineral, de aparência fosca e textura quente, tradicionalmente usado
+          em esculturas e imagens sacras. Na FerArte, é sempre pintado à mão.
+        </p>
+        <ul>
+          <li>Acabamento fosco e artesanal</li>
+          <li>Pintura à mão em camadas, peça por peça</li>
+          <li>Peso e presença que valorizam a peça</li>
+          <li>Ideal para vasos, esculturas grandes e presépios</li>
+          <li>Cada exemplar apresenta pequenas variações únicas</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CUIDADOS ================= -->
+<section class="section" id="cuidados">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Para durar muito</span>
+      <h2 class="glow-title"><span class="gold">Cuidados com a sua Peça</span></h2>
+      <p>Pequenos hábitos que preservam a beleza da peça por muitos anos.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="care">
+      <div class="care-item reveal">
+        <h4><i>◌</i> Limpeza suave</h4>
+        <p>Use pano macio e seco ou levemente úmido. Nunca utilize álcool, thinner ou produtos abrasivos.</p>
+      </div>
+      <div class="care-item reveal">
+        <h4><i>☀</i> Evite sol direto</h4>
+        <p>A exposição prolongada ao sol pode amarelar a resina e desbotar a pintura do gesso.</p>
+      </div>
+      <div class="care-item reveal">
+        <h4><i>⚑</i> Superfície estável</h4>
+        <p>Posicione em superfícies planas e firmes, longe de quinas e do alcance de crianças pequenas.</p>
+      </div>
+      <div class="care-item reveal">
+        <h4><i>♨</i> Longe do calor</h4>
+        <p>Não aproxime de fornos, aquecedores ou chamas. Porta-velas devem ser usados sempre com supervisão.</p>
+      </div>
+      <div class="care-item reveal">
+        <h4><i>✥</i> Transporte protegido</h4>
+        <p>Ao mover a peça, segure pela base. Guarde sempre com proteção individual em plástico-bolha.</p>
+      </div>
+      <div class="care-item reveal">
+        <h4><i>✦</i> Brilho da resina</h4>
+        <p>Com o tempo, a resina pode ficar opaca. Um pano de microfibra com polimento leve recupera o brilho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEPOIMENTOS ================= -->
+<section class="section" id="depoimentos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Quem já recebeu</span>
+      <h2 class="glow-title"><span class="gold">Depoimentos</span></h2>
+      <p>Histórias de quem encontrou uma peça FerArte e levou para casa.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="testi">
+      <article class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Comprei uma Nossa Senhora Lumina em resina para o oratório da minha mãe. A peça é ainda mais bonita ao vivo — a luz atravessa e parece que ilumina o quarto inteiro. Embalagem impecável.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div><strong>Carla M.</strong><small>Ribeirão Preto · SP</small></div>
+        </div>
+      </article>
+
+      <article class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Presenteei minha comadre com a Sagrada Família em gesso no batizado do meu afilhado. Ela chorou. Dá para ver o cuidado em cada detalhe da pintura. Voltarei com certeza.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">R</div>
+          <div><strong>Renata A.</strong><small>Sertãozinho · SP</small></div>
+        </div>
+      </article>
+
+      <article class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Atendimento humano de verdade. Tirei dúvidas pelo WhatsApp, recebi fotos reais das peças antes de fechar o pedido e chegou tudo antes do prazo. Qualidade e confiança.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">P</div>
+          <div><strong>Paulo H.</strong><small>Campinas · SP</small></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Perguntas frequentes</span>
+      <h2 class="glow-title"><span class="gold">Dúvidas</span></h2>
+      <p>Se a sua pergunta não estiver aqui, é só chamar no WhatsApp.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="faq reveal">
+      <details open>
+        <summary>Como faço para comprar uma peça?</summary>
+        <div class="faq-body">
+          Escolha a peça na seção de produtos e clique em “Tenho interesse”. Você será direcionado
+          ao WhatsApp com a mensagem do produto já preenchida. A partir daí conversamos sobre
+          disponibilidade, prazo de produção, frete e forma de pagamento.
+        </div>
+      </details>
+      <details>
+        <summary>As peças são produzidas sob encomenda?</summary>
+        <div class="faq-body">
+          Trabalhamos com pequenos lotes prontos e com produção sob encomenda. Peças em pronta-entrega
+          seguem em até 3 dias úteis. Peças sob encomenda levam em média de 7 a 15 dias úteis,
+          dependendo do modelo e do acabamento.
+        </div>
+      </details>
+      <details>
+        <summary>Qual a diferença entre resina cristal e gesso?</summary>
+        <div class="faq-body">
+          A resina cristal é translúcida, mais leve e com brilho vítreo. O gesso é fosco, mais pesado
+          e sempre pintado à mão. Ambos são duráveis, mas exigem cuidados semelhantes: longe do sol
+          direto e de produtos abrasivos.
+        </div>
+      </details>
+      <details>
+        <summary>As peças são idênticas às fotos?</summary>
+        <div class="faq-body">
+          Cada peça é feita e pintada manualmente, por isso podem existir pequenas variações de tom,
+          textura e expressão. Essas diferenças são intencionais e garantem que a sua peça seja única.
+        </div>
+      </details>
+      <details>
+        <summary>Vocês enviam para todo o Brasil?</summary>
+        <div class="faq-body">
+          Sim. As peças são embaladas individualmente em plástico-bolha e acondicionadas em caixa
+          reforçada. O frete é calculado por CEP via Correios ou transportadora, e o código de
+          rastreio é enviado assim que o pedido é despachado.
+        </div>
+      </details>
+      <details>
+        <summary>É possível personalizar uma peça?</summary>
+        <div class="faq-body">
+          Em muitos casos, sim: cor da pintura, base, tamanho e até pequenas adaptações no modelo.
+          A viabilidade e o prazo são avaliados caso a caso pelo WhatsApp.
+        </div>
+      </details>
+      <details>
+        <summary>Como funciona a troca em caso de dano no transporte?</summary>
+        <div class="faq-body">
+          Pedimos que o unboxing seja filmado ou fotografado. Em caso de avaria no transporte,
+          envie as imagens em até 72 horas após o recebimento e resolvemos a substituição ou o
+          reembolso, conforme o caso.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTATO ================= -->
+<section class="section" id="contato">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-kicker">Vamos conversar</span>
+      <h2 class="glow-title"><span class="gold">Fale com o Ateliê</span></h2>
+      <p>Atendimento direto com quem faz. Tire dúvidas, peça fotos reais ou encomende sua peça.</p>
+      <div class="divider"></div>
+    </div>
+
+    <div class="contact-grid">
+      <article class="contact-card reveal">
+        <div class="ico">✆</div>
+        <h3>WhatsApp</h3>
+        <p>
+          Atendimento de segunda a sábado, das 9h às 18h.<br>
+          <a href="https://wa.me/5516999999999?text=Ol%C3%A1%2C%20FerArte!%20Gostaria%20de%20saber%20mais%20sobre%20as%20pe%C3%A7as." target="_blank" rel="noopener">(16) 99999-9999</a>
+        </p>
+      </article>
+
+      <article class="contact-card reveal">
+        <div class="ico">✉</div>
+        <h3>E-mail</h3>
+        <p>
+          Para encomendas, parcerias e lojistas:<br>
+          <a href="mailto:contato@ferarte.com.br">contato@ferarte.com.br</a>
+        </p>
+      </article>
+
+      <article class="contact-card reveal">
+        <div class="ico">⌖</div>
+        <h3>Ateliê</h3>
+        <p>
+          Ribeirão Preto · São Paulo<br>
+          Visitas com agendamento prévio<br>
+          <span style="opacity:.6;font-size:.82rem">(endereço completo enviado no atendimento)</span>
+        </p>
+      </article>
+
+      <article class="contact-card reveal">
+        <div class="ico">◎</div>
+        <h3>Redes Sociais</h3>
+        <p>
+          Acompanhe o dia a dia do ateliê:<br>
+          <a href="#" target="_blank" rel="noopener">Instagram</a> ·
+          <a href="#" target="_blank" rel="noopener">Facebook</a> ·
+          <a href="#" target="_blank" rel="noopener">Pinterest</a>
+        </p>
+      </article>
+    </div>
+
+    <div class="cta-band reveal">
+      <h2 class="glow-title">Nunca é tarde para começar.<br><span class="gold">Nem para presentear com significado.</span></h2>
+      <p>Conte para a gente o que você procura. Se a peça ainda não existir, talvez a gente possa criar juntos.</p>
+      <a class="btn btn-gold" href="https://wa.me/5516999999999?text=Ol%C3%A1%2C%20FerArte!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">
+        Chamar no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <img src="/img/logo.png" alt="FerArte" onerror="this.onerror=null;this.src='/img/logo.jpg'">
+      <h3 class="gold">FerArte</h3>
+      <p>Ateliê de Artesanato em gesso e resina cristal. Peças devocionais e decorativas feitas à mão, uma a uma, em Ribeirão Preto/SP.</p>
+    </div>
+
+    <div class="foot-col">
+      <h4>Navegue</h4>
+      <ul>
+        <li><a href="#historia">Nossa História</a></li>
+        <li><a href="#valores">Valores</a></li>
+        <li><a href="#processo">Processo Artesanal</a></li>
+        <li><a href="#produtos">Produtos</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4>Informações</h4>
+      <ul>
+        <li><a href="#materiais">Materiais</a></li>
+        <li><a href="#cuidados">Cuidados</a></li>
+        <li><a href="#faq">Dúvidas Frequentes</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-col">
+      <h4>Atendimento</h4>
+      <ul>
+        <li>Seg a Sáb · 9h às 18h</li>
+        <li><a href="https://wa.me/5516999999999" target="_blank" rel="noopener">(16) 99999-9999</a></li>
+        <li><a href="mailto:contato@ferarte.com.br">contato@ferarte.com.br</a></li>
+        <li>Ribeirão Preto · SP</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <span>© <span id="ano"></span> FerArte Ateliê de Artesanato · Todos os direitos reservados.</span>
+    <span>Feito à mão, com fé. ✦</span>
+  </div>
+</footer>
+
+<!-- ================= WHATSAPP FLUTUANTE ================= -->
+<a class="whats" id="whatsFloat"
+   href="https://wa.me/5516999999999?text=Ol%C3%A1%2C%20FerArte!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+   target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <span class="whats-label">Fale com a FerArte</span>
+  <svg viewBox="0 0 32 32" aria-hidden="true">
+    <path d="M16.04 3.2c-7.06 0-12.8 5.73-12.8 12.79 0 2.25.59 4.45 1.71 6.39L3.2 28.8l6.6-1.73a12.77 12.77 0 0 0 6.24 1.6h.01c7.05 0 12.79-5.74 12.79-12.8 0-3.42-1.33-6.63-3.75-9.04a12.7 12.7 0 0 0-9.05-3.63zm0 23.4h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.02 1.05 1.07-3.92-.25-.4a10.55 10.55 0 0 1-1.62-5.63c0-5.86 4.77-10.63 10.64-10.63 2.84 0 5.51 1.11 7.52 3.12a10.57 10.57 0 0 1 3.11 7.52c0 5.87-4.77 10.6-10.65 10.6zm5.83-7.94c-.32-.16-1.89-.93-2.18-1.04-.29-.11-.5-.16-.72.16-.21.32-.83 1.04-1.02 1.25-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.89-1.78-2.21-.19-.32-.02-.5.14-.66.15-.15.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.73-.99-2.37-.26-.62-.53-.54-.72-.55l-.61-.01c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.66 0 1.57 1.14 3.09 1.3 3.3.16.21 2.25 3.44 5.45 4.82.76.33 1.36.53 1.82.68.77.24 1.46.21 2.01.13.61-.09 1.89-.77 2.16-1.52.27-.75.27-1.39.19-1.52-.08-.13-.29-.21-.61-.37z"/>
+  </svg>
+</a>
+
+<!-- BACK TO TOP -->
+<button class="to-top" id="toTop" aria-label="Voltar ao topo">▲</button>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
+  <div class="lightbox-inner">
+    <button class="lb-close" id="lbClose" aria-label="Fechar">✕</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Imagem anterior">‹</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Próxima imagem">›</button>
+    <div class="lightbox-cap" id="lbCap"></div>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO
+   ============================================================ */
+const WHATSAPP = '5516999999999'; // ← troque pelo número real (DDI + DDD + número)
+
+/* ============================================================
+   BASE DE PRODUTOS
+   imgs = quantidade de fotos disponíveis (a, b, c…)
+   Nomes dos arquivos: /img/{codigo}{a|b|c}.png (fallback automático .jpg)
+   ============================================================ */
+const PRODUTOS = [
+  {
+    codigo:'czr01', nome:'Cruz Devocional de Mesa - Modelo Compacto',
+    material:'Resina', medidas:'14 x 7,5 x 7,5', peso:72, tema:'Religião', imgs:2,
+    descricao:'Cruz devocional de mesa produzida em resina cristal, em versão compacta e de fácil composição. Uma peça religiosa versátil para pequenos altares, aparadores, mesas de cabeceira ou espaços de oração, além de ser uma opção simbólica para presentear.'
+  },
+  {
+    codigo:'czr02', nome:'Cruz Devocional de Mesa - Modelo Clássico Médio',
+    material:'Resina', medidas:'17 x 11 x 6,5', peso:270, tema:'Religião', imgs:2,
+    descricao:'Cruz devocional de mesa produzida em resina cristal, com presença equilibrada para composições de tamanho médio. Indicada para altares domésticos, salas, escritórios e ambientes de reflexão, unindo significado religioso e função decorativa.'
+  },
+  {
+    codigo:'czr03', nome:'Cruz Gótica de Mesa - Modelo Ornamental',
+    material:'Resina', medidas:'10 x 6 x 2,5', peso:72, tema:'Religião', imgs:2,
+    descricao:'Cruz de mesa produzida em resina cristal, com inspiração gótica e caráter ornamental marcante. Ideal para quem busca uma peça religiosa de personalidade para altares, estantes, aparadores ou composições decorativas com atmosfera clássica.'
+  },
+  {
+    codigo:'czr04', nome:'Cruz de Mesa com Relevo Sulcado',
+    material:'Resina', medidas:'6,5 x 4 x 3', peso:31, tema:'Religião', imgs:1,
+    descricao:'Cruz de mesa produzida em resina cristal, com relevo sulcado que acrescenta textura e identidade visual à peça. Adequada para espaços de oração, altares domésticos e ambientes decorativos que valorizam símbolos religiosos com acabamento expressivo.'
+  },
+  {
+    codigo:'jcr01', nome:'Porta-Vela Devocional Jesus Cristo',
+    material:'Resina', medidas:'11 x 8 x 4,5', peso:172, tema:'Religião', imgs:1,
+    descricao:'Porta-vela devocional com representação de Jesus Cristo, produzido em resina cristal para compor momentos de oração e contemplação. Une simbolismo religioso e função decorativa, sendo indicado para altares, oratórios e ambientes acolhedores. Utilize a vela sempre com supervisão e em superfície estável.'
+  },
+  {
+    codigo:'nsr01', nome:'Nossa Senhora Essenza - Escultura Contemporânea',
+    material:'Resina', medidas:'12 x 6 x 5', peso:100, tema:'Religião', imgs:1,
+    descricao:'Escultura de Nossa Senhora produzida em resina cristal, com linhas estilizadas e linguagem contemporânea. Uma peça devocional delicada para altares, oratórios, aparadores e espaços de oração, também adequada como presente de fé e devoção.'
+  },
+  {
+    codigo:'nsr02', nome:'Escultura Nossa Senhora em Contemplação',
+    material:'Resina', medidas:'14,5 x 4 x 3', peso:78, tema:'Religião', imgs:1,
+    descricao:'Escultura de Nossa Senhora em atitude contemplativa, produzida em resina cristal e pensada para transmitir serenidade e recolhimento. Ideal para altares domésticos, oratórios, mesas de cabeceira ou ambientes destinados à oração e meditação.'
+  },
+  {
+    codigo:'nsr03', nome:'Nossa Senhora Lumina - Escultura Contemporânea',
+    material:'Resina', medidas:'14 x 7,5 x 4', peso:165, tema:'Religião', imgs:1,
+    descricao:'Escultura estilizada de Nossa Senhora produzida em resina cristal, com composição de linhas contemporâneas e presença devocional. Pode ser utilizada em altares, estantes, aparadores e espaços de oração, trazendo significado e harmonia ao ambiente.'
+  },
+  {
+    codigo:'nsr04', nome:'Escultura Nossa Senhora Baby - Modelo Ternura',
+    material:'Resina', medidas:'10 x 5 x 2,5', peso:80, tema:'Religião', imgs:1,
+    descricao:'Escultura de Nossa Senhora em representação baby, produzida em resina cristal, com linguagem delicada e acolhedora. O Modelo Ternura é ideal para quartos infantis, batizados, altares, oratórios e presentes religiosos que simbolizam fé, proteção e carinho.'
+  },
+  {
+    codigo:'nsr05', nome:'Escultura Nossa Senhora Baby - Modelo Encanto',
+    material:'Resina', medidas:'9 x 5 x 3', peso:72, tema:'Religião', imgs:1,
+    descricao:'Escultura de Nossa Senhora em representação baby, produzida em resina cristal, com estilo suave e devocional. O Modelo Encanto é uma opção especial para quartos de bebê, batizados, altares, oratórios e presentes religiosos, transmitindo delicadeza, fé e proteção.'
+  },
+  {
+    codigo:'nsr06', nome:'Nossa Senhora Celeste - Escultura Contemporânea',
+    material:'Resina', medidas:'9 x 5 x 4,5', peso:78, tema:'Religião', imgs:1,
+    descricao:'Escultura estilizada de Nossa Senhora produzida em resina cristal, com expressão visual contemporânea e significado devocional. Ideal para oratórios, altares, estantes e espaços de oração, podendo também compor presentes religiosos em ocasiões especiais.'
+  },
+  {
+    codigo:'sfg01', nome:'Sagrada Família Domus Sacra - Escultura Grande',
+    material:'Gesso', medidas:'16,5 x 14,5 x 5,5', peso:585, tema:'Religião', imgs:3,
+    descricao:'Escultura da Sagrada Família produzida em gesso e pintada à mão, em modelo grande e de presença destacada. O acabamento artesanal valoriza os detalhes de cada peça. Representa união, fé e proteção, sendo indicada para altares, salas, recepções e ambientes familiares.'
+  },
+  {
+    codigo:'vsjc01', nome:'Vaso Decorativo Devocional Jesus Cristo',
+    material:'Gesso', medidas:'11 x 8,5 x 8', peso:175, tema:'Religião', imgs:2,
+    descricao:'Vaso decorativo devocional com referência a Jesus Cristo, produzido em gesso e pintado à mão. O acabamento artesanal torna cada peça especial. Pode compor arranjos e espaços religiosos em aparadores, altares, nichos ou mesas, combinando função decorativa e simbolismo de fé.'
+  },
+  {
+    codigo:'vsns01', nome:'Vaso Decorativo Devocional Nossa Senhora',
+    material:'Gesso', medidas:'10 x 7 x 8', peso:115, tema:'Religião', imgs:2,
+    descricao:'Vaso decorativo devocional com referência a Nossa Senhora, produzido em gesso e pintado à mão. Seu acabamento artesanal valoriza a expressão religiosa da peça. É apropriado para arranjos, altares, oratórios, aparadores e ambientes de inspiração devocional.'
+  },
+  {
+    codigo:'nsg01', nome:'Nossa Senhora Lumina - Escultura Contemporânea',
+    material:'Gesso', medidas:'14 x 7,5 x 4', peso:125, tema:'Religião', imgs:1,
+    descricao:'Escultura contemporânea de Nossa Senhora produzida em gesso e pintada à mão. Suas linhas estilizadas e o acabamento artesanal conferem personalidade à peça, tornando-a ideal para altares, oratórios, aparadores e ambientes de oração. Por ser feita artesanalmente, pode apresentar pequenas variações que tornam cada exemplar único.'
+  },
+  {
+    codigo:'nsg02', nome:'Nossa Senhora Serena - Escultura Artesanal',
+    material:'Gesso', medidas:'13 x 7,5 x 4', peso:120, tema:'Religião', imgs:1,
+    descricao:'Escultura de Nossa Senhora produzida em gesso e pintada à mão, com expressão serena e estética contemporânea. O acabamento artesanal valoriza os detalhes e torna a peça uma escolha delicada para altares, oratórios, estantes, aparadores ou presentes religiosos. Pequenas variações na pintura ressaltam o caráter único de cada exemplar.'
+  }
+];
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+const norm = s => (s || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+const escAttr = s => (s||'').toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+function placeholderSVG(nome){
+  const n = (nome||'FerArte').substring(0,44);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="700" height="700" viewBox="0 0 700 700">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#0d2449"/><stop offset="1" stop-color="#050d1e"/>
+      </linearGradient>
+      <radialGradient id="r" cx="50%" cy="40%" r="55%">
+        <stop offset="0" stop-color="#d4af37" stop-opacity="0.22"/>
+        <stop offset="1" stop-color="#d4af37" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <rect width="700" height="700" fill="url(#g)"/>
+    <rect width="700" height="700" fill="url(#r)"/>
+    <circle cx="350" cy="300" r="120" fill="none" stroke="#d4af37" stroke-opacity="0.55" stroke-width="2"/>
+    <circle cx="350" cy="300" r="140" fill="none" stroke="#d4af37" stroke-opacity="0.22" stroke-width="1"/>
+    <text x="350" y="318" text-anchor="middle" font-family="Georgia, serif" font-size="46" fill="#d4af37" letter-spacing="3">FerArte</text>
+    <text x="350" y="480" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#f6f3ec" fill-opacity="0.7">${escAttr(n)}</text>
+    <text x="350" y="512" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#d4af37" fill-opacity="0.55" letter-spacing="4">ATELIÊ DE ARTESANATO</text>
+  </svg>`;
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+
+/* Fallback de imagem: .png → .jpg → placeholder */
+function imgFallback(e){
+  const el = e.target;
+  const base = el.dataset.base;
+  if (!base) return;
+  if (el.dataset.tentou !== 'jpg'){
+    el.dataset.tentou = 'jpg';
+    el.src = base + '.jpg';
+  } else {
+    el.onerror = null;
+    el.src = placeholderSVG(el.dataset.nome || '');
+    el.classList.add('is-placeholder');
+  }
+}
+window.imgFallback = imgFallback;
+
+function imgTag(produto, idx, cls){
+  const letra = 'abcdefghij'[idx] || 'a';
+  const base = `/img/${produto.codigo}${letra}`;
+  return `<img class="${cls}" src="${base}.png" data-base="${base}"
+            data-nome="${escAttr(produto.nome)}"
+            alt="${escAttr(produto.nome)} — ${produto.codigo} (imagem ${idx+1})"
+            loading="lazy" onerror="imgFallback(event)">`;
+}
+
+/* ============================================================
+   RENDER DOS CARDS
+   ============================================================ */
+const grid = document.getElementById('grid');
+const resultInfo = document.getElementById('resultInfo');
+
+function cardHTML(p, pi){
+  const thumbs = Array.from({length:p.imgs}, (_,i) =>
+    `<button class="thumb ${i===0?'active':''}" data-idx="${i}" aria-label="Ver imagem ${i+1}">${imgTag(p,i,'thumb-img')}</button>`
+  ).join('');
+
+  const msg = encodeURIComponent(
+    `Olá, FerArte! Tenho interesse na peça:\n\n• ${p.nome}\n• Código: ${p.codigo}\n• Material: ${p.material}\n• Medidas: ${p.medidas} cm\n\nPoderia me passar mais informações?`
+  );
+
+  return `
+  <article class="card" data-pi="${pi}" data-codigo="${p.codigo}">
+    <div class="card-media" data-action="zoom">
+      <span class="badge">${escAttr(p.material)}</span>
+      <div class="main-wrap">${imgTag(p,0,'card-main')}</div>
+      <div class="thumbs">${thumbs}</div>
+    </div>
+    <div class="card-body">
+      <span class="card-code">${escAttr(p.codigo)}</span>
+      <h3>${escAttr(p.nome)}</h3>
+      <p class="card-desc">${escAttr(p.descricao)}</p>
+      <ul class="specs">
+        <li><span>Material</span><b>${escAttr(p.material)}</b></li>
+        <li><span>Medidas (A×L×C)</span><b>${escAttr(p.medidas)} cm</b></li>
+        <li><span>Peso</span><b>${p.peso} g</b></li>
+        <li><span>Tema</span><b>${escAttr(p.tema)}</b></li>
+      </ul>
+      <div class="card-actions">
+        <a class="btn btn-gold" href="https://wa.me/${WHATSAPP}?text=${msg}" target="_blank" rel="noopener">Tenho interesse</a>
+      </div>
+    </div>
+  </article>`;
+}
+
+/* ============================================================
+   FILTROS
+   ============================================================ */
+const estado = { q:'', material:'todos', tema:'todos' };
+
+function render(){
+  const q = norm(estado.q);
+  const lista = PRODUTOS.filter(p => {
+    const okMaterial = estado.material === 'todos' || norm(p.material) === estado.material;
+    const okTema     = estado.tema === 'todos'     || norm(p.tema) === estado.tema;
+    if (!okMaterial || !okTema) return false;
+    if (!q) return true;
+    const alvo = norm([p.nome, p.codigo, p.tema, p.material, p.descricao].join(' '));
+    return alvo.includes(q);
+  });
+
+  if (lista.length === 0){
+    grid.innerHTML = `
+      <div class="empty">
+        <div class="big">✦</div>
+        <h3>Nenhuma peça encontrada</h3>
+        <p>Tente outro nome, código ou tema. Se preferir, fale com a gente no WhatsApp — podemos produzir sob encomenda.</p>
+      </div>`;
+  } else {
+    grid.innerHTML = lista.map(p => cardHTML(p, PRODUTOS.indexOf(p))).join('');
+    requestAnimationFrame(() => {
+      grid.querySelectorAll('.card').forEach((c,i) => {
+        setTimeout(() => c.classList.add('in'), i * 55);
+      });
+    });
+  }
+
+  resultInfo.innerHTML = `<b>${lista.length}</b> ${lista.length === 1 ? 'peça encontrada' : 'peças encontradas'} de ${PRODUTOS.length}`;
+  observarCards();
+}
+
+/* ============================================================
+   INTERAÇÕES DOS CARDS
+   ============================================================ */
+grid.addEventListener('click', (e) => {
+  const thumb = e.target.closest('.thumb');
+  const card  = e.target.closest('.card');
+  if (!card) return;
+  const pi = +card.dataset.pi;
+  const produto = PRODUTOS[pi];
+
+  if (thumb){
+    e.stopPropagation();
+    const idx = +thumb.dataset.idx;
+    const mainWrap = card.querySelector('.main-wrap');
+    mainWrap.innerHTML = imgTag(produto, idx, 'card-main');
+    card.querySelectorAll('.thumb').forEach(t => t.classList.toggle('active', t === thumb));
+    return;
+  }
+
+  if (e.target.closest('[data-action="zoom"]')){
+    abrirLightbox(pi, 0);
+  }
+});
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+const lb       = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lbImg');
+const lbCap    = document.getElementById('lbCap');
+let lbProduto  = 0;
+let lbIdx      = 0;
+
+function pintarLightbox(){
+  const p = PRODUTOS[lbProduto];
+  const letra = 'abcdefghij'[lbIdx] || 'a';
+  const base = `/img/${p.codigo}${letra}`;
+  lbImg.dataset.base = base;
+  lbImg.dataset.nome = p.nome;
+  lbImg.dataset.tentou = '';
+  lbImg.onerror = imgFallback;
+  lbImg.src = base + '.png';
+  lbImg.alt = `${p.nome} — imagem ${lbIdx+1}`;
+  lbCap.textContent = `${p.codigo} · ${p.nome} · ${lbIdx+1}/${p.imgs}`;
+}
+
+function abrirLightbox(pi, idx){
+  lbProduto = pi; lbIdx = idx;
+  pintarLightbox();
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function fecharLightbox(){
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLightbox(dir){
+  const p = PRODUTOS[lbProduto];
+  lbIdx = (lbIdx + dir + p.imgs) % p.imgs;
+  pintarLightbox();
+}
+
+document.getElementById('lbClose').addEventListener('click', fecharLightbox);
+document.getElementById('lbPrev').addEventListener('click', () => navLightbox(-1));
+document.getElementById('lbNext').addEventListener('click', () => navLightbox(1));
+lb.addEventListener('click', (e) => { if (e.target === lb) fecharLightbox(); });
+document.addEventListener('keydown', (e) => {
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') fecharLightbox();
+  if (e.key === 'ArrowLeft') navLightbox(-1);
+  if (e.key === 'ArrowRight') navLightbox(1);
+});
+
+/* ============================================================
+   BUSCA E CHIPS
+   ============================================================ */
+const inputBusca = document.getElementById('busca');
+let debounce;
+inputBusca.addEventListener('input', () => {
+  clearTimeout(debounce);
+  debounce = setTimeout(() => { estado.q = inputBusca.value; render(); }, 180);
+});
+
+document.getElementById('limpar').addEventListener('click', () => {
+  inputBusca.value = '';
+  estado.q = '';
+  render();
+  inputBusca.focus();
+});
+
+document.querySelectorAll('.chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    const tipo = chip.dataset.tipo;
+    document.querySelectorAll(`.chip[data-tipo="${tipo}"]`).forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    estado[tipo] = chip.dataset.valor;
+    render();
+  });
+});
+
+/* ============================================================
+   HEADER / MENU / SCROLL
+   ============================================================ */
+const topbar = document.getElementById('topbar');
+const burger = document.getElementById('burger');
+const nav    = document.getElementById('nav');
+const toTop  = document.getElementById('toTop');
+
+burger.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  burger.classList.remove('open');
+  burger.setAttribute('aria-expanded','false');
+}));
+
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  topbar.classList.toggle('scrolled', y > 40);
+  toTop.classList.toggle('show', y > 620);
+}, { passive:true });
+
+toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+/* ============================================================
+   REVEAL / OBSERVERS
+   ============================================================ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(en => {
+    if (en.isIntersecting){
+      en.target.classList.add('in');
+      io.unobserve(en.target);
+    }
+  });
+}, { threshold:0.12, rootMargin:'0px 0px -60px 0px' });
+
+function observarCards(){
+  grid.querySelectorAll('.card:not(.in)').forEach(c => io.observe(c));
+}
+
+document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
+
+/* ============================================================
+   ANO NO FOOTER
+   ============================================================ */
+document.getElementById('ano').textContent = new Date().getFullYear();
+
+/* ============================================================
+   INIT
+   ============================================================ */
+render();
+</script>
+</body>
+</html>
