@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#030a1a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="/img/logo.png">
 
 <style>
@@ -28,6 +28,7 @@
   --sombra-ouro:0 0 40px -8px rgba(212,175,55,.55);
   --radius:20px;
   --font-title:'Cinzel', Georgia, serif;
+  --font-brand:'Great Vibes', 'Cinzel', cursive;
   --font-body:'Jost', system-ui, -apple-system, sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -87,6 +88,17 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   text-shadow:0 0 34px rgba(212,175,55,.18);
 }
 
+.hero-title{
+  font-family:var(--font-brand);
+  font-weight:400;
+  letter-spacing:0;
+  line-height:1.05;
+  font-size:clamp(4rem,14vw,9rem);
+  margin-bottom:6px;
+  text-transform:none;
+  text-shadow:0 0 60px rgba(212,175,55,.35);
+}
+
 /* ============================================================
    HEADER
    ============================================================ */
@@ -121,9 +133,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   transition:.45s;
 }
 .brand:hover .brand-logo{box-shadow:0 0 44px rgba(212,175,55,.85), inset 0 0 18px rgba(0,0,0,.55);transform:rotate(-4deg) scale(1.05)}
-.brand-txt{display:flex;flex-direction:column;line-height:1.1}
-.brand-txt strong{font-family:var(--font-title);font-size:1.18rem;letter-spacing:.09em}
-.brand-txt span{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(246,243,236,.55)}
+.brand-txt{display:flex;flex-direction:column;line-height:1}
+.brand-txt strong{
+  font-family:var(--font-brand);
+  font-weight:400;
+  font-size:2.05rem;
+  letter-spacing:.01em;
+  line-height:1;
+  text-transform:none;
+}
+.brand-txt span{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(246,243,236,.55);margin-top:2px}
 
 .nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .nav a{
@@ -208,10 +227,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 .hero-kicker::after{background:linear-gradient(90deg,var(--dourado),transparent)}
 
-.hero h1{
-  font-size:clamp(2.6rem,8.5vw,5.4rem);
-  margin-bottom:6px;
-}
 .hero h2{
   font-family:var(--font-title);font-weight:400;
   font-size:clamp(.85rem,2.3vw,1.28rem);
@@ -225,7 +240,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
 .hero-scroll{
-  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;
   display:flex;flex-direction:column;align-items:center;gap:8px;
   font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;
   color:rgba(246,243,236,.42);
@@ -235,6 +250,99 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   animation:scrollLine 2.2s ease-in-out infinite;
 }
 @keyframes scrollLine{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+/* ============================================================
+   CÉU DO HERO — ANJOS, QUERUBINS E ESTRELAS
+   ============================================================ */
+.celestial{
+  position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;
+}
+.starfield{position:absolute;inset:0}
+
+/* estrelas */
+.star{
+  position:absolute;left:var(--x);top:var(--y);
+  width:var(--s);height:var(--s);border-radius:50%;
+  background:var(--c);
+  transform:translate(-50%,-50%);
+  opacity:0;
+  box-shadow:0 0 6px var(--c), 0 0 16px var(--c);
+  animation:twinkle var(--dur) ease-in-out infinite;
+  animation-delay:var(--delay);
+  will-change:opacity,transform;
+}
+.star.sparkle{
+  border-radius:0;
+  box-shadow:none;
+  clip-path:polygon(50% 0%,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0% 50%,40% 40%);
+  filter:drop-shadow(0 0 5px var(--c)) drop-shadow(0 0 14px rgba(247,233,176,.65));
+}
+@keyframes twinkle{
+  0%,100%{opacity:.07;transform:translate(-50%,-50%) scale(.7)}
+  50%{opacity:var(--o,1);transform:translate(-50%,-50%) scale(1)}
+}
+.star--big{
+  box-shadow:0 0 10px var(--c), 0 0 26px var(--c), 0 0 46px rgba(212,175,55,.55);
+}
+
+/* estrelas cadentes */
+.shooting{
+  position:absolute;top:var(--top,20%);left:-24vw;
+  width:clamp(90px,14vw,200px);height:2px;border-radius:99px;
+  background:linear-gradient(90deg,transparent,rgba(247,233,176,.35) 38%,rgba(255,255,255,.95));
+  filter:drop-shadow(0 0 6px rgba(247,233,176,.9));
+  opacity:0;transform:rotate(14deg);
+  animation:shoot 12s linear infinite;
+  animation-delay:var(--delay,0s);
+}
+@keyframes shoot{
+  0%{opacity:0;transform:translate3d(0,0,0) rotate(14deg)}
+  2%{opacity:1}
+  13%{opacity:1}
+  21%{opacity:0;transform:translate3d(130vw,44vh,0) rotate(14deg)}
+  100%{opacity:0;transform:translate3d(130vw,44vh,0) rotate(14deg)}
+}
+
+/* ============================================================
+   ANJOS E QUERUBINS — delicados, asas emplumadas e suaves
+   ============================================================ */
+.angel{
+  position:absolute;
+  top:var(--top,auto);left:var(--left,auto);
+  right:var(--right,auto);bottom:var(--bottom,auto);
+  width:var(--s,130px);
+  opacity:var(--o,.85);
+  animation:fly var(--dur,26s) ease-in-out infinite;
+  animation-delay:var(--delay,0s);
+  will-change:transform;
+  filter:
+    drop-shadow(0 0 9px rgba(255,250,232,.75))
+    drop-shadow(0 0 26px rgba(247,233,176,.42))
+    drop-shadow(0 0 56px rgba(212,175,55,.22));
+}
+.angel svg{
+  display:block;width:100%;height:auto;
+  animation:flutter var(--fl,4.2s) ease-in-out infinite;
+  transform-origin:50% 60%;
+}
+.angel--soft{
+  filter:
+    blur(.45px)
+    drop-shadow(0 0 12px rgba(255,250,232,.6))
+    drop-shadow(0 0 34px rgba(247,233,176,.32))
+    drop-shadow(0 0 70px rgba(212,175,55,.18));
+}
+@keyframes fly{
+  0%{transform:translate3d(0,0,0) rotate(var(--r,0deg)) scale(1)}
+  25%{transform:translate3d(var(--dx1,20px),var(--dy1,-24px),0) rotate(calc(var(--r,0deg) + 2deg)) scale(1.02)}
+  50%{transform:translate3d(var(--dx2,-14px),var(--dy2,-46px),0) rotate(calc(var(--r,0deg) - 1.5deg)) scale(1.01)}
+  75%{transform:translate3d(var(--dx3,24px),var(--dy3,-18px),0) rotate(calc(var(--r,0deg) + 1.5deg)) scale(1.025)}
+  100%{transform:translate3d(0,0,0) rotate(var(--r,0deg)) scale(1)}
+}
+@keyframes flutter{
+  0%,100%{transform:scaleX(1) scaleY(1)}
+  50%{transform:scaleX(1.015) scaleY(.985)}
+}
 
 /* ============================================================
    BOTÕES
@@ -322,7 +430,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 .story-logo-card:hover img{transform:scale(1.03) rotate(1.5deg);box-shadow:0 0 100px rgba(212,175,55,.7)}
 .story-logo-card h3{
-  font-family:var(--font-title);font-size:1.5rem;letter-spacing:.12em;
+  font-family:var(--font-brand);
+  font-weight:400;
+  font-size:2.6rem;
+  letter-spacing:0;
+  line-height:1;
+  text-transform:none;
   margin-top:24px;
 }
 .story-logo-card small{
@@ -501,6 +614,64 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   margin:26px 0 34px;
 }
 .result-info b{color:var(--dourado);font-weight:600}
+
+/* ---------- GRUPOS POR TEMA / MATERIAL ---------- */
+.prod-group{margin-bottom:clamp(48px,7vw,78px)}
+.prod-group:last-child{margin-bottom:0}
+
+.prod-group-head{
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  margin-bottom:clamp(22px,3vw,32px);
+  padding-bottom:14px;
+  border-bottom:1px solid rgba(212,175,55,.14);
+  position:relative;
+}
+.prod-group-head::after{
+  content:'';position:absolute;left:0;bottom:-1px;width:110px;height:1px;
+  background:linear-gradient(90deg,var(--dourado),transparent);
+  box-shadow:0 0 16px rgba(212,175,55,.85);
+}
+.prod-group-head h3{
+  font-family:var(--font-title);font-weight:600;
+  font-size:clamp(1.02rem,2.4vw,1.34rem);
+  letter-spacing:.1em;
+  color:var(--dourado-claro);
+  display:flex;align-items:center;gap:12px;
+  white-space:nowrap;
+  text-shadow:0 0 22px rgba(212,175,55,.35);
+}
+.prod-group-head h3 .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--dourado);
+  box-shadow:0 0 16px rgba(212,175,55,.95);
+  flex:0 0 auto;
+}
+.prod-group-head h3 .mat{
+  font-family:var(--font-body);
+  font-size:.72em;
+  font-weight:400;
+  color:rgba(246,243,236,.58);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.prod-group-head .line{
+  flex:1;height:1px;min-width:30px;
+  background:linear-gradient(90deg,rgba(212,175,55,.35),transparent);
+}
+.prod-group-head .count{
+  font-size:.66rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:rgba(246,243,236,.42);
+  white-space:nowrap;
+}
+.prod-group-sub{
+  margin:-14px 0 26px;
+  font-size:.84rem;
+  font-weight:300;
+  color:rgba(246,243,236,.52);
+  max-width:720px;
+}
 
 /* GRID */
 .grid{
@@ -770,7 +941,15 @@ footer::before{
   border:1.5px solid rgba(212,175,55,.5);
   box-shadow:0 0 40px -8px rgba(212,175,55,.9);
 }
-.foot-brand h3{font-family:var(--font-title);font-size:1.25rem;letter-spacing:.12em;margin-bottom:10px}
+.foot-brand h3{
+  font-family:var(--font-brand);
+  font-weight:400;
+  font-size:2.2rem;
+  letter-spacing:0;
+  line-height:1;
+  text-transform:none;
+  margin-bottom:10px;
+}
 .foot-brand p{font-weight:300;font-size:.88rem;color:rgba(246,243,236,.55);max-width:290px}
 .foot-col h4{
   font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
@@ -841,6 +1020,90 @@ footer::before{
 .to-top:hover{background:rgba(212,175,55,.2);transform:translateY(-4px)}
 
 /* ============================================================
+   BOTÃO DE MÚSICA FLUTUANTE
+   ============================================================ */
+.music-toggle{
+  position:fixed;left:22px;bottom:82px;z-index:1195;
+  width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(6,18,41,.9);
+  border:1px solid rgba(212,175,55,.4);
+  color:var(--dourado);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  box-shadow:0 0 28px -12px rgba(212,175,55,.95);
+  transition:transform .35s, box-shadow .35s, background .35s, border-color .35s, color .35s;
+}
+.music-toggle:hover{
+  transform:translateY(-3px) scale(1.07);
+  background:rgba(212,175,55,.16);
+  border-color:rgba(212,175,55,.8);
+  box-shadow:0 0 44px -10px rgba(212,175,55,1);
+}
+.music-toggle:focus-visible{
+  outline:2px solid var(--dourado-claro);
+  outline-offset:3px;
+}
+.music-toggle::before{
+  content:'';position:absolute;inset:-7px;border-radius:50%;
+  border:1px solid rgba(212,175,55,.55);
+  opacity:0;pointer-events:none;
+}
+.music-toggle.playing{
+  color:#0a1020;
+  background:linear-gradient(135deg,#b8912a,#d4af37 45%,#f9efc0 60%,#b8912a);
+  border-color:transparent;
+  box-shadow:0 0 40px -8px rgba(212,175,55,.95);
+}
+.music-toggle.playing::before{opacity:1;animation:musicRing 2.4s ease-out infinite}
+@keyframes musicRing{0%{transform:scale(.88);opacity:.85}100%{transform:scale(1.5);opacity:0}}
+
+/* ícone de nota (estado desligado) */
+.music-toggle .mt-note{
+  position:relative;font-size:1.2rem;line-height:1;display:block;
+}
+.music-toggle .mt-note::after{
+  content:'';position:absolute;left:-4px;right:-4px;top:50%;height:1.5px;
+  background:currentColor;transform:rotate(-45deg);border-radius:2px;opacity:.85;
+  box-shadow:0 0 6px rgba(212,175,55,.6);
+}
+.music-toggle.playing .mt-note{display:none}
+
+/* equalizador (estado ligado) */
+.mt-bars{display:none;align-items:flex-end;gap:2.5px;height:17px}
+.music-toggle.playing .mt-bars{display:flex}
+.mt-bars i{
+  width:3px;height:6px;border-radius:2px;
+  background:currentColor;opacity:.95;
+}
+.music-toggle.playing .mt-bars i{animation:eq 1s ease-in-out infinite}
+.mt-bars i:nth-child(1){animation-delay:0s}
+.mt-bars i:nth-child(2){animation-delay:.18s}
+.mt-bars i:nth-child(3){animation-delay:.36s}
+@keyframes eq{0%,100%{height:5px}50%{height:17px}}
+
+/* rótulo do botão de música */
+.music-label{
+  position:absolute;left:66px;top:50%;transform:translateY(-50%) translateX(-8px);
+  padding:8px 14px;border-radius:99px;white-space:nowrap;
+  background:rgba(3,10,26,.95);color:var(--dourado-claro);
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid rgba(212,175,55,.4);
+  opacity:0;pointer-events:none;transition:.35s;
+  box-shadow:0 0 30px -12px rgba(212,175,55,.95);
+}
+.music-toggle:hover .music-label,
+.music-toggle:focus-visible .music-label{opacity:1;transform:translateY(-50%) translateX(0)}
+
+/* estado de erro (arquivo de áudio ausente) */
+.music-toggle.is-error{
+  opacity:.45;
+  border-color:rgba(200,80,80,.55);
+  color:rgba(240,180,180,.85);
+}
+.music-toggle.is-error::before{display:none}
+
+/* ============================================================
    LIGHTBOX
    ============================================================ */
 .lightbox{
@@ -906,15 +1169,32 @@ footer::before{
   .tl-dot,.tl-item:nth-child(even) .tl-dot{left:2px;right:auto}
   .lb-prev{left:6px}.lb-next{right:6px}
   .story-logo-card{padding:26px 20px}
+  .brand-txt strong{font-size:1.85rem}
+}
+@media (max-width:820px){
+  .celestial{opacity:.62}
+  .angel{width:calc(var(--s) * .68)}
+  .angel--hide-sm{display:none}
 }
 @media (max-width:560px){
   .specs{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr}
   .whats{width:58px;height:58px;right:16px;bottom:16px}
   .whats svg{width:30px;height:30px}
-  .to-top{left:16px;bottom:16px}
+  .to-top{left:16px;bottom:16px;width:44px;height:44px}
+  .music-toggle{left:16px;bottom:72px;width:46px;height:46px}
+  .music-toggle .mt-note{font-size:1.05rem}
+  .mt-bars{height:15px}
+  @keyframes eq{0%,100%{height:4px}50%{height:15px}}
+  .music-label{display:none}
   .brand-txt span{display:none}
+  .brand-txt strong{font-size:1.7rem}
   .hero-actions .btn{width:100%;justify-content:center}
+  .hero-title{font-size:clamp(3.4rem,20vw,6rem)}
+}
+@media (max-width:520px){
+  .celestial{opacity:.45}
+  .angel--hide-xs{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation:none !important;transition-duration:.01ms !important}
@@ -926,6 +1206,79 @@ footer::before{
 
 <div class="bg-orbs"></div>
 <div class="bg-grain"></div>
+
+<!-- ============================================================
+     SPRITE SVG — ANJOS E QUERUBINS (delicados, asas emplumadas)
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="angPearl" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="42%"  stop-color="#fbf8f1"/>
+      <stop offset="100%" stop-color="#e3d3a4"/>
+    </linearGradient>
+    <linearGradient id="angGold" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%"   stop-color="#fffaf0"/>
+      <stop offset="45%"  stop-color="#f7e9b0"/>
+      <stop offset="100%" stop-color="#d9b95c"/>
+    </linearGradient>
+    <linearGradient id="angBlue" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="48%"  stop-color="#e6f0ff"/>
+      <stop offset="100%" stop-color="#b8ccec"/>
+    </linearGradient>
+    <linearGradient id="angRose" x1="0" y1="0" x2="0.7" y2="1">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="48%"  stop-color="#fdeef3"/>
+      <stop offset="100%" stop-color="#ecc9d5"/>
+    </linearGradient>
+
+    <symbol id="icAngel" viewBox="0 0 140 140">
+      <g>
+        <ellipse cx="34" cy="41" rx="27" ry="8.4" transform="rotate(-38 34 41)" opacity=".55"/>
+        <ellipse cx="37" cy="53" rx="23" ry="7.6" transform="rotate(-20 37 53)" opacity=".78"/>
+        <ellipse cx="41" cy="64" rx="18" ry="6.8" transform="rotate(-5 41 64)" opacity="1"/>
+      </g>
+      <g>
+        <ellipse cx="106" cy="41" rx="27" ry="8.4" transform="rotate(38 106 41)" opacity=".55"/>
+        <ellipse cx="103" cy="53" rx="23" ry="7.6" transform="rotate(20 103 53)" opacity=".78"/>
+        <ellipse cx="99"  cy="64" rx="18" ry="6.8" transform="rotate(5 99 64)" opacity="1"/>
+      </g>
+      <path d="M70 47.5c-8.6 0-14.4 7.6-16.3 19.2-1.9 11.5-4.6 23.2-10.7 32.3
+               11.6 5.8 42.4 5.8 54 0
+               -6.1-9.1-8.8-20.8-10.7-32.3C84.4 55.1 78.6 47.5 70 47.5z"
+            opacity=".98"/>
+      <path d="M70 52c-4.2 0-7 4.6-8.2 12.4-1.2 7.6-2.6 15.6-5.6 22.6
+               4.4 1.5 9.2 2.2 13.8 2.2s9.4-.7 13.8-2.2
+               c-3-7-4.4-15-5.6-22.6C76.9 56.6 74.2 52 70 52z"
+            opacity=".22" fill="#ffffff" stroke="none"/>
+      <circle cx="70" cy="36.5" r="9.6"/>
+      <ellipse cx="70" cy="21" rx="11.4" ry="3" opacity=".9"/>
+      <ellipse cx="70" cy="21" rx="11.4" ry="3" fill="none" stroke="#ffffff" stroke-width=".7" opacity=".55"/>
+    </symbol>
+
+    <symbol id="icCherub" viewBox="0 0 120 120">
+      <g>
+        <ellipse cx="31" cy="48" rx="19" ry="7" transform="rotate(-36 31 48)" opacity=".62"/>
+        <ellipse cx="34" cy="58" rx="15" ry="6" transform="rotate(-14 34 58)" opacity="1"/>
+      </g>
+      <g>
+        <ellipse cx="89" cy="48" rx="19" ry="7" transform="rotate(36 89 48)" opacity=".62"/>
+        <ellipse cx="86" cy="58" rx="15" ry="6" transform="rotate(14 86 58)" opacity="1"/>
+      </g>
+      <path d="M60 49c-8.4 0-13.4 7.2-14.2 16.2-.8 8.3-3 15.4-7.4 20.2
+               8.8 4.2 34.4 4.2 43.2 0
+               -4.4-4.8-6.6-11.9-7.4-20.2C73.4 56.2 68.4 49 60 49z"/>
+      <path d="M60 53.5c-4 0-6.6 4.2-7.4 10.6-.7 5.8-1.9 11.6-4.3 16.2
+               3.6 1.2 7.6 1.8 11.7 1.8s8.1-.6 11.7-1.8
+               c-2.4-4.6-3.6-10.4-4.3-16.2-.8-6.4-3.4-10.6-7.4-10.6z"
+            opacity=".22" fill="#ffffff" stroke="none"/>
+      <circle cx="60" cy="38.5" r="8.6"/>
+      <ellipse cx="60" cy="24" rx="9.6" ry="2.6" opacity=".9"/>
+      <ellipse cx="60" cy="24" rx="9.6" ry="2.6" fill="none" stroke="#ffffff" stroke-width=".6" opacity=".55"/>
+    </symbol>
+  </defs>
+</svg>
 
 <!-- ================= HEADER ================= -->
 <header class="topbar" id="topbar">
@@ -957,6 +1310,58 @@ footer::before{
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="inicio">
+
+  <!-- CÉU: ANJOS, QUERUBINS E ESTRELAS -->
+  <div class="celestial" aria-hidden="true">
+
+    <i class="star star--big sparkle" style="--x:50%;--y:8%;--s:13px;--c:#fff6d5;--dur:4.6s;--delay:-1.2s;--o:1"></i>
+    <i class="star star--big sparkle" style="--x:16%;--y:30%;--s:10px;--c:#f7e9b0;--dur:5.4s;--delay:-2.6s;--o:1"></i>
+    <i class="star star--big sparkle" style="--x:84%;--y:36%;--s:11px;--c:#dbe9ff;--dur:6.1s;--delay:-3.8s;--o:1"></i>
+    <i class="star star--big sparkle" style="--x:72%;--y:78%;--s:9px;--c:#fbe3ea;--dur:5.1s;--delay:-.6s;--o:1"></i>
+    <i class="star star--big sparkle" style="--x:26%;--y:84%;--s:8px;--c:#ffffff;--dur:4.2s;--delay:-4.4s;--o:1"></i>
+
+    <div class="starfield" id="starfield"></div>
+
+    <i class="shooting" style="--top:16%;--delay:3s"></i>
+    <i class="shooting" style="--top:58%;--delay:9.5s"></i>
+
+    <span class="angel angel--soft angel--hide-xs"
+          style="--s:128px;--top:16%;--left:3%;--dur:29s;--delay:-2s;--r:-3deg;--dx1:20px;--dy1:-24px;--dx2:-14px;--dy2:-48px;--dx3:24px;--dy3:-18px;--o:.9">
+      <svg viewBox="0 0 140 140"><use href="#icAngel" fill="url(#angPearl)"/></svg>
+    </span>
+
+    <span class="angel"
+          style="--s:178px;--top:17%;--right:4%;--dur:34s;--delay:-9s;--r:4deg;--dx1:-22px;--dy1:-22px;--dx2:16px;--dy2:-52px;--dx3:-26px;--dy3:-16px;--o:.88">
+      <svg viewBox="0 0 140 140"><use href="#icAngel" fill="url(#angGold)"/></svg>
+    </span>
+
+    <span class="angel angel--hide-sm"
+          style="--s:76px;--top:52%;--left:7%;--dur:23s;--delay:-5s;--r:6deg;--dx1:18px;--dy1:-20px;--dx2:-12px;--dy2:-38px;--dx3:22px;--dy3:-14px;--o:.82">
+      <svg viewBox="0 0 120 120"><use href="#icCherub" fill="url(#angRose)"/></svg>
+    </span>
+
+    <span class="angel angel--soft"
+          style="--s:116px;--bottom:16%;--right:9%;--dur:31s;--delay:-14s;--r:-5deg;--dx1:-20px;--dy1:-24px;--dx2:14px;--dy2:-44px;--dx3:-24px;--dy3:-18px;--o:.8">
+      <svg viewBox="0 0 140 140"><use href="#icAngel" fill="url(#angBlue)"/></svg>
+    </span>
+
+    <span class="angel angel--hide-sm"
+          style="--s:68px;--top:68%;--right:24%;--dur:21s;--delay:-7.5s;--r:4deg;--dx1:16px;--dy1:-18px;--dx2:-10px;--dy2:-34px;--dx3:20px;--dy3:-12px;--o:.75">
+      <svg viewBox="0 0 120 120"><use href="#icCherub" fill="url(#angPearl)"/></svg>
+    </span>
+
+    <span class="angel angel--hide-xs"
+          style="--s:96px;--bottom:11%;--left:15%;--dur:27s;--delay:-18s;--r:3deg;--dx1:20px;--dy1:-22px;--dx2:-14px;--dy2:-42px;--dx3:26px;--dy3:-16px;--o:.85">
+      <svg viewBox="0 0 140 140"><use href="#icAngel" fill="url(#angGold)"/></svg>
+    </span>
+
+    <span class="angel angel--soft angel--hide-sm"
+          style="--s:62px;--top:8%;--left:31%;--dur:25s;--delay:-11s;--r:-5deg;--dx1:14px;--dy1:-16px;--dx2:-10px;--dy2:-30px;--dx3:18px;--dy3:-12px;--o:.6">
+      <svg viewBox="0 0 120 120"><use href="#icCherub" fill="url(#angBlue)"/></svg>
+    </span>
+
+  </div>
+
   <div class="hero-inner">
     <div class="logo-halo">
       <img src="/img/logo.png" alt="Logo FerArte — Ateliê de Artesanato, Gesso & Resina"
@@ -965,15 +1370,15 @@ footer::before{
 
     <span class="hero-kicker">Ribeirão Preto · São Paulo</span>
 
-    <h1 class="hero-title glow-title">
+    <h1 class="hero-title">
       <span class="gold">FerArte</span>
     </h1>
     <h2>Ateliê de Artesanato · Gesso &amp; Resina</h2>
 
     <p class="lead">
       Peças devocionais e decorativas feitas à mão, uma a uma, com tempo, afeto e fé.
-      Aqui, cada escultura carrega uma história — e a nossa começou quando decidimos
-      que <strong style="font-weight:500;color:var(--dourado-claro)">nunca é tarde para recomeçar</strong>.
+      Aqui, cada escultura carrega uma história — e a nossa começou em 2025,
+      quando decidimos que <strong style="font-weight:500;color:var(--dourado-claro)">nunca é tarde para recomeçar</strong>.
     </p>
 
     <div class="hero-actions">
@@ -994,12 +1399,11 @@ footer::before{
     <div class="sec-head reveal">
       <span class="sec-kicker">Capítulo por capítulo</span>
       <h2 class="glow-title"><span class="gold">A História da FerArte</span></h2>
-      <p>De uma caixa de madeira esquecida no fundo do armário a um ateliê que transforma gesso e resina em símbolos de fé.</p>
+      <p>Um projeto iniciado em 2025, com as mãos, com fé e com muito ainda a aprender.</p>
       <div class="divider"></div>
     </div>
 
     <div class="story-grid">
-      <!-- ASIDE COM O LOGO -->
       <aside class="story-aside reveal">
         <div class="story-logo-card">
           <img src="/img/logo.png" alt="Selo FerArte Ateliê de Artesanato"
@@ -1010,77 +1414,91 @@ footer::before{
         </div>
       </aside>
 
-      <!-- TEXTO -->
       <div class="story-text reveal">
         <div class="chapter">O começo de tudo</div>
         <p>
-          <span class="dropcap">F</span>ernanda — a <em>Fer</em> de FerArte — passou mais de duas décadas
-          construindo uma carreira sólida na área administrativa. Foram anos de planilhas, prazos,
-          reuniões, rotinas organizadas com esmero e a sensação confortável (e, ao mesmo tempo,
-          incômoda) de saber exatamente o que faria no dia seguinte. Era uma vida estável. Era uma
-          vida segura. Mas havia, guardado no fundo de uma gaveta, um caderno de desenhos de infância
-          e uma caixa de madeira com pincéis secos, herdada de uma tia que pintava santos e enfeites
-          de presépio nas tardes de domingo.
+          <span class="dropcap">F</span>ernando — o <em>Fer</em> de FerArte — passou anos construindo
+          uma carreira longe do artesanato. Eram rotinas organizadas, prazos cumpridos, uma vida
+          estável e segura. Mas havia, guardado no fundo de uma gaveta, um desejo antigo: criar com
+          as próprias mãos algo que pudesse tocar as pessoas de outro jeito.
         </p>
         <p>
-          Em 2019, uma reestruturação na empresa encerrou aquele ciclo. De repente, o roteiro pronto
-          desapareceu. O que poderia ter sido apenas um susto virou uma pergunta: e se, agora, fosse
-          a hora de fazer diferente? A resposta não veio de imediato — veio em forma de poeira, quando
-          ela abriu a velha caixa de madeira e reencontrou os pincéis da tia.
+          Em 2025, esse desejo finalmente saiu da gaveta. A FerArte nasceu de um recomeço
+          consciente — da certeza de que nunca é tarde para começar um projeto novo. Não havia
+          ateliê, não havia técnica dominada, não havia estoque. Havia uma bancada improvisada,
+          alguns moldes, muito material de estudo e a vontade de aprender.
         </p>
 
         <div class="chapter">A primeira peça</div>
         <p>
-          A primeira tentativa foi um pequeno anjo de gesso, torto, com uma asa maior que a outra.
-          Fer guardou a peça numa prateleira por semanas, sem coragem de mostrar a ninguém. Até que
-          uma amiga, ao vê-la, pediu: “você faz um para mim?”. Aquele pedido simples — o primeiro de
-          muitos — mudou tudo. Não porque o anjo fosse perfeito, mas porque alguém reconheceu ali algo
-          que a indústria não entrega: a marca da mão humana.
+          A primeira peça foi uma pequena imagem de Nossa Senhora em gesso. Tortinha, com um
+          acabamento que hoje Fernando olha e ri. Ficou semanas numa prateleira, sem coragem de
+          mostrar a ninguém. Até que uma amiga, ao vê-la, pediu: “você faz uma para mim?”. Aquele
+          pedido simples — o primeiro de muitos — mudou tudo. Não porque a peça fosse perfeita, mas
+          porque alguém reconheceu ali algo que a produção em série não entrega: a marca da mão
+          humana.
         </p>
-
-        <div class="story-quote">
-          “Eu descobri que o artesanato não apaga a história de quem já viveu outras vidas.
-          Ele costura tudo. As planilhas me ensinaram a organizar; a fé me ensinou o porquê.”
-        </div>
 
         <div class="chapter">O encontro com a resina cristal</div>
         <p>
-          Em 2021, veio o encontro que definiria a identidade do ateliê: a resina cristal. A
-          transparência daquele material parecia traduzir exatamente o que Fer queria dizer com as
+          Pouco depois veio o encontro que definiria a identidade do ateliê: a resina cristal. A
+          transparência do material parecia traduzir exatamente o que Fernando queria dizer com as
           peças — algo leve, luminoso, que deixa a luz atravessar. A resina exigiu paciência de
           ourives: proporções milimétricas, controle de temperatura, cura sem pressa, polimento
           paciente até o brilho aparecer. Muitas peças foram perdidas no caminho, e cada uma delas
           ensinou algo.
         </p>
         <p>
-          O gesso entrou logo depois, trazendo de volta a memória da tia. É o material do gesto
-          rápido, da pintura à mão livre, do acabamento artesanal que nunca sai igual. Hoje, os dois
-          convivem no ateliê: a resina para a delicadeza translúcida, o gesso para o calor do
-          artesanal. Duas linguagens, a mesma intenção.
+          O gesso, que veio primeiro, continuou ao lado: é o material do gesto rápido, da pintura à
+          mão livre, do acabamento artesanal que nunca sai igual. Hoje os dois convivem no ateliê —
+          a resina para a delicadeza translúcida, o gesso para o calor do artesanal. Duas linguagens,
+          a mesma intenção.
+        </p>
+
+        <div class="chapter">A pintura à mão</div>
+        <p>
+          A pintura chegou como extensão natural de tudo. Camadas finas, secagem entre demãos,
+          pincéis de diferentes espessuras e a descoberta de que o tom nunca é exatamente o mesmo de
+          uma peça para outra. É nessa etapa que cada escultura ganha personalidade — e é também
+          onde Fernando mais aprende. Cada mistura de pigmento é um teste; cada peça finalizada, um
+          pequeno marco.
+        </p>
+
+        <div class="story-quote">
+          “Eu descobri que o artesanato não apaga a história de quem já viveu outras vidas.
+          Ele costura tudo. Os anos em outra área me ensinaram a organizar; a fé me ensinou o porquê.”
+        </div>
+
+        <div class="chapter">Em constante aperfeiçoamento</div>
+        <p>
+          A FerArte é um ateliê jovem, e Fernando é o primeiro a dizer isso. As técnicas estão em
+          evolução permanente: novos moldes, novos pigmentos, novos acabamentos, novas formas de
+          fazer. O que hoje parece bom, amanhã pode ficar melhor. Por isso, a produção é pequena e
+          cuidadosa, feita em lotes enxutos, com tempo para testar, refazer e observar.
         </p>
 
         <div class="chapter">O ateliê vira casa</div>
         <p>
           O que começou na mesa da cozinha tomou a varanda, depois um quarto, até ganhar um espaço
           próprio em Ribeirão Preto. Um canto com bancada, estantes, potes de pigmento organizados
-          por tom, um rádio antigo e a janela que Fer abre todas as manhãs para que a luz entre nas
-          peças ainda úmidas. Foi nesse período que surgiu o nome: <strong>FerArte</strong> — a Fer e
-          a arte, sem separação possível.
+          por tom, um rádio antigo e a janela que Fernando abre todas as manhãs para que a luz entre
+          nas peças ainda úmidas. Foi nesse período que o nome se firmou: <strong>FerArte</strong> —
+          o Fer e a arte, sem separação possível.
         </p>
 
         <div class="chapter">O que a FerArte é hoje</div>
         <p>
           Hoje a FerArte produz esculturas devocionais, cruzes de mesa, porta-velas, vasos e peças
           decorativas. Cada item nasce de um molde feito à mão, recebe acabamento individual e passa
-          por um rigoroso controle de qualidade antes de ser embalado. Nada é produzido em série
-          industrial: as peças são feitas em pequenos lotes, e é por isso que pequenas variações de
-          tom, textura e expressão não são defeitos — são a assinatura de cada exemplar.
+          por uma checagem cuidadosa antes de ser embalado. Nada é produzido em série industrial: as
+          peças são feitas em pequenos lotes, e é por isso que pequenas variações de tom, textura e
+          expressão não são defeitos — são a assinatura de cada exemplar.
         </p>
         <p>
-          A história da FerArte é, no fundo, uma história sobre recomeços. Sobre acreditar que a
-          experiência de uma vida inteira não é peso, é matéria-prima. Sobre entender que o
-          artesanato pode ser, sim, um caminho — não um passatempo, não um “enquanto isso”, mas um
-          projeto de vida inteiro, construído com as mãos e com fé.
+          A história da FerArte é recente — começou em 2025 e está apenas no começo. É uma história
+          sobre recomeços, sobre acreditar que a experiência de uma vida inteira não é peso, é
+          matéria-prima, e sobre entender que o artesanato pode ser, sim, um caminho de vida,
+          construído com as mãos e com fé.
         </p>
         <p>
           Se você chegou até aqui, seja bem-vindo ao ateliê. Respire fundo. As peças foram feitas
@@ -1089,42 +1507,31 @@ footer::before{
       </div>
     </div>
 
-    <!-- TIMELINE -->
     <div class="timeline" id="timeline">
       <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2019</span>
-        <h4>O ponto de virada</h4>
-        <p>O fim de um ciclo profissional de mais de 20 anos abre espaço para uma pergunta antiga: e se fosse possível viver da própria arte?</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2020</span>
-        <h4>A primeira encomenda</h4>
-        <p>Um anjinho de gesso torto, guardado por semanas, se transforma no primeiro pedido — feito por uma amiga, pago com um abraço e muitos elogios.</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2021</span>
-        <h4>O encontro com a resina cristal</h4>
-        <p>Meses de testes, proporções e erros até dominar a transparência do material. Nasce a identidade visual da FerArte.</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2022</span>
-        <h4>O ateliê ganha endereço</h4>
-        <p>A mesa da cozinha já não bastava. A FerArte passa a ocupar um espaço próprio em Ribeirão Preto, com bancada, estantes e luz natural.</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2023</span>
-        <h4>Primeira feira de artesanato</h4>
-        <p>Uma banca pequena, um banner feito em casa e a descoberta de que as peças encontram pessoas — e as pessoas voltam.</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2024</span>
-        <h4>A coleção devocional</h4>
-        <p>Cruzes, Nossas Senhoras, Sagrada Família e vasos devocionais passam a formar uma linha completa, pensada para altares e oratórios.</p>
+        <span class="tl-year">2025</span>
+        <h4>O primeiro passo</h4>
+        <p>Fernando transforma um desejo antigo em projeto: nasce a FerArte, com uma bancada improvisada, alguns moldes e a vontade de aprender.</p>
       </div>
       <div class="tl-item"><span class="tl-dot"></span>
         <span class="tl-year">2025</span>
-        <h4>Hoje</h4>
-        <p>A FerArte segue produzindo em pequenos lotes, com atendimento direto pelo WhatsApp e envio cuidadoso para todo o Brasil.</p>
+        <h4>A primeira peça em gesso</h4>
+        <p>Uma pequena Nossa Senhora, torta e guardada por semanas, vira o primeiro pedido — feito por uma amiga, pago com um abraço e muitos elogios.</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2025</span>
+        <h4>O encontro com a resina cristal</h4>
+        <p>Meses de testes, proporções e erros até dominar a transparência do material. Nasce a identidade visual do ateliê.</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">2025</span>
+        <h4>A pintura à mão</h4>
+        <p>Camadas finas, pigmentos testados um a um e a descoberta de que nenhuma peça sai exatamente igual à outra.</p>
+      </div>
+      <div class="tl-item"><span class="tl-dot"></span>
+        <span class="tl-year">Hoje</span>
+        <h4>Em constante aperfeiçoamento</h4>
+        <p>Novos moldes, novas técnicas, novos acabamentos. A produção segue em pequenos lotes, feita com tempo, cuidado e fé.</p>
       </div>
     </div>
   </div>
@@ -1211,11 +1618,10 @@ footer::before{
       <span class="sec-kicker">Coleção FerArte</span>
       <h2 class="glow-title"><span class="gold">Nossas Peças</span></h2>
       <p>Esculturas devocionais e peças decorativas em resina cristal e gesso pintado à mão.
-         Pesquise por nome, código ou tema.</p>
+         Organizadas por tema, material e ordem alfabética.</p>
       <div class="divider"></div>
     </div>
 
-    <!-- BUSCA -->
     <div class="searchbar reveal">
       <div class="search-input-wrap">
         <input id="busca" type="search" placeholder="Pesquisar por nome, código ou tema…" autocomplete="off" aria-label="Pesquisar produtos">
@@ -1238,7 +1644,7 @@ footer::before{
 
     <p class="result-info" id="resultInfo"></p>
 
-    <div class="grid" id="grid" aria-live="polite"></div>
+    <div id="catalogo" aria-live="polite"></div>
   </div>
 </section>
 
@@ -1556,6 +1962,18 @@ footer::before{
   </svg>
 </a>
 
+<!-- ================= BOTÃO DE MÚSICA ================= -->
+<button class="music-toggle" id="musicToggle" type="button"
+        aria-label="Ativar música de fundo" aria-pressed="false"
+        title="Ativar música">
+  <span class="music-label" id="musicLabel">Ativar música</span>
+  <span class="mt-note" aria-hidden="true">♪</span>
+  <span class="mt-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+</button>
+
+<!-- Áudio de fundo: song/tema.mp3 (loop infinito) -->
+<audio id="bgMusic" src="song/tema.mp3" loop preload="auto"></audio>
+
 <!-- BACK TO TOP -->
 <button class="to-top" id="toTop" aria-label="Voltar ao topo">▲</button>
 
@@ -1578,8 +1996,6 @@ const WHATSAPP = '5516999999999'; // ← troque pelo número real (DDI + DDD + n
 
 /* ============================================================
    BASE DE PRODUTOS
-   imgs = quantidade de fotos disponíveis (a, b, c…)
-   Nomes dos arquivos: /img/{codigo}{a|b|c}.png (fallback automático .jpg)
    ============================================================ */
 const PRODUTOS = [
   {
@@ -1693,7 +2109,6 @@ function placeholderSVG(nome){
   return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 }
 
-/* Fallback de imagem: .png → .jpg → placeholder */
 function imgFallback(e){
   const el = e.target;
   const base = el.dataset.base;
@@ -1721,7 +2136,7 @@ function imgTag(produto, idx, cls){
 /* ============================================================
    RENDER DOS CARDS
    ============================================================ */
-const grid = document.getElementById('grid');
+const catalogo = document.getElementById('catalogo');
 const resultInfo = document.getElementById('resultInfo');
 
 function cardHTML(p, pi){
@@ -1758,13 +2173,20 @@ function cardHTML(p, pi){
 }
 
 /* ============================================================
-   FILTROS
+   FILTROS E AGRUPAMENTO
+   Ordem: Tema → Material (alfabética) → Nome (alfabética)
    ============================================================ */
 const estado = { q:'', material:'todos', tema:'todos' };
 
+const MATERIAL_DESCRICAO = {
+  'Gesso':  'Peças em gesso artesanal, pintadas à mão — acabamento fosco e textura quente.',
+  'Resina': 'Peças em resina cristal, com transparência luminosa e brilho vítreo.'
+};
+
 function render(){
   const q = norm(estado.q);
-  const lista = PRODUTOS.filter(p => {
+
+  const filtrados = PRODUTOS.filter(p => {
     const okMaterial = estado.material === 'todos' || norm(p.material) === estado.material;
     const okTema     = estado.tema === 'todos'     || norm(p.tema) === estado.tema;
     if (!okMaterial || !okTema) return false;
@@ -1773,30 +2195,71 @@ function render(){
     return alvo.includes(q);
   });
 
-  if (lista.length === 0){
-    grid.innerHTML = `
-      <div class="empty">
-        <div class="big">✦</div>
-        <h3>Nenhuma peça encontrada</h3>
-        <p>Tente outro nome, código ou tema. Se preferir, fale com a gente no WhatsApp — podemos produzir sob encomenda.</p>
+  const grupos = {};
+  filtrados.forEach(p => {
+    if (!grupos[p.tema]) grupos[p.tema] = {};
+    if (!grupos[p.tema][p.material]) grupos[p.tema][p.material] = [];
+    grupos[p.tema][p.material].push(p);
+  });
+
+  const temas = Object.keys(grupos).sort((a,b) => a.localeCompare(b,'pt-BR'));
+
+  let total = 0;
+  let html = '';
+
+  temas.forEach(tema => {
+    const materiais = Object.keys(grupos[tema]).sort((a,b) => a.localeCompare(b,'pt-BR'));
+
+    materiais.forEach(material => {
+      const lista = grupos[tema][material].slice().sort((a,b) =>
+        a.nome.localeCompare(b.nome, 'pt-BR', { sensitivity:'base' })
+      );
+      total += lista.length;
+
+      const sub = MATERIAL_DESCRICAO[material]
+        ? `<p class="prod-group-sub">${MATERIAL_DESCRICAO[material]}</p>` : '';
+
+      html += `
+        <section class="prod-group" data-tema="${escAttr(tema)}" data-material="${escAttr(material)}">
+          <div class="prod-group-head">
+            <h3><span class="dot" aria-hidden="true"></span>${escAttr(tema)} <span class="mat">· ${escAttr(material)}</span></h3>
+            <span class="line" aria-hidden="true"></span>
+            <span class="count">${lista.length} ${lista.length === 1 ? 'peça' : 'peças'}</span>
+          </div>
+          ${sub}
+          <div class="grid">
+            ${lista.map(p => cardHTML(p, PRODUTOS.indexOf(p))).join('')}
+          </div>
+        </section>`;
+    });
+  });
+
+  if (total === 0){
+    catalogo.innerHTML = `
+      <div class="grid">
+        <div class="empty">
+          <div class="big">✦</div>
+          <h3>Nenhuma peça encontrada</h3>
+          <p>Tente outro nome, código ou tema. Se preferir, fale com a gente no WhatsApp — podemos produzir sob encomenda.</p>
+        </div>
       </div>`;
   } else {
-    grid.innerHTML = lista.map(p => cardHTML(p, PRODUTOS.indexOf(p))).join('');
+    catalogo.innerHTML = html;
     requestAnimationFrame(() => {
-      grid.querySelectorAll('.card').forEach((c,i) => {
-        setTimeout(() => c.classList.add('in'), i * 55);
+      catalogo.querySelectorAll('.card').forEach((c,i) => {
+        setTimeout(() => c.classList.add('in'), Math.min(i * 55, 900));
       });
     });
   }
 
-  resultInfo.innerHTML = `<b>${lista.length}</b> ${lista.length === 1 ? 'peça encontrada' : 'peças encontradas'} de ${PRODUTOS.length}`;
+  resultInfo.innerHTML = `<b>${total}</b> ${total === 1 ? 'peça encontrada' : 'peças encontradas'} de ${PRODUTOS.length}`;
   observarCards();
 }
 
 /* ============================================================
    INTERAÇÕES DOS CARDS
    ============================================================ */
-grid.addEventListener('click', (e) => {
+catalogo.addEventListener('click', (e) => {
   const thumb = e.target.closest('.thumb');
   const card  = e.target.closest('.card');
   if (!card) return;
@@ -1933,10 +2396,117 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold:0.12, rootMargin:'0px 0px -60px 0px' });
 
 function observarCards(){
-  grid.querySelectorAll('.card:not(.in)').forEach(c => io.observe(c));
+  catalogo.querySelectorAll('.card:not(.in)').forEach(c => io.observe(c));
 }
 
 document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
+
+/* ============================================================
+   CAMPO DE ESTRELAS DO HERO
+   ============================================================ */
+(function criarEstrelas(){
+  const field = document.getElementById('starfield');
+  if (!field) return;
+
+  const cores = ['#ffffff','#fff6d5','#f7e9b0','#d4af37','#dbe9ff','#fbe3ea'];
+  const total = window.innerWidth < 640 ? 48 : 92;
+  let html = '';
+
+  for (let i = 0; i < total; i++){
+    const sparkle = Math.random() < 0.3;
+    const tamanho = sparkle
+      ? (Math.random() * 6 + 5).toFixed(1)
+      : (Math.random() * 2.2 + 1.4).toFixed(1);
+    const cor   = cores[Math.floor(Math.random() * cores.length)];
+    const x     = (Math.random() * 100).toFixed(2);
+    const y     = (Math.random() * 100).toFixed(2);
+    const dur   = (Math.random() * 4 + 2.2).toFixed(2);
+    const delay = (Math.random() * 7).toFixed(2);
+    const op    = (Math.random() * 0.65 + 0.35).toFixed(2);
+
+    html += `<i class="star${sparkle ? ' sparkle' : ''}"
+      style="--x:${x}%;--y:${y}%;--s:${tamanho}px;--c:${cor};--dur:${dur}s;--delay:-${delay}s;--o:${op}"></i>`;
+  }
+
+  field.innerHTML = html;
+})();
+
+/* ============================================================
+   MÚSICA DE FUNDO — song/tema.mp3 (loop infinito)
+   ============================================================ */
+(function musicaDeFundo(){
+  const audio = document.getElementById('bgMusic');
+  const btn   = document.getElementById('musicToggle');
+  const label = document.getElementById('musicLabel');
+  if (!audio || !btn) return;
+
+  const VOLUME = 0.45;      // ← volume inicial (0 a 1)
+  audio.loop   = true;
+  audio.volume = VOLUME;
+
+  let decisaoDoUsuario = false;   // o usuário já clicou no botão?
+
+  /* ---- sincroniza visual do botão ---- */
+  function atualizarBotao(){
+    const tocando = !audio.paused && !audio.ended;
+    btn.classList.toggle('playing', tocando);
+    btn.setAttribute('aria-pressed', String(tocando));
+    btn.setAttribute('aria-label', tocando ? 'Desativar música de fundo' : 'Ativar música de fundo');
+    btn.title = tocando ? 'Desativar música' : 'Ativar música';
+    if (label) label.textContent = tocando ? 'Desligar música' : 'Ativar música';
+  }
+
+  /* ---- tenta tocar (autoplay pode ser bloqueado) ---- */
+  function tentarTocar(){
+    if (!audio.paused) return;
+    const p = audio.play();
+    if (p && typeof p.then === 'function'){
+      p.then(atualizarBotao).catch(() => { atualizarBotao(); });
+    } else {
+      atualizarBotao();
+    }
+  }
+
+  audio.addEventListener('play',  atualizarBotao);
+  audio.addEventListener('pause', atualizarBotao);
+  audio.addEventListener('ended', () => { audio.currentTime = 0; tentarTocar(); });
+  audio.addEventListener('error', () => {
+    btn.classList.add('is-error');
+    btn.title = 'Áudio indisponível';
+    if (label) label.textContent = 'Áudio indisponível';
+  });
+
+  /* ---- lista de gestos que destravam o áudio ---- */
+  const GESTOS = ['pointerdown','touchstart','keydown','scroll','wheel'];
+  function removerGestos(){
+    GESTOS.forEach(ev => window.removeEventListener(ev, destravar, true));
+  }
+  function destravar(e){
+    if (e && e.target && e.target.closest && e.target.closest('#musicToggle')) return;
+    removerGestos();
+    if (!decisaoDoUsuario && audio.paused) tentarTocar();
+  }
+  GESTOS.forEach(ev => window.addEventListener(ev, destravar, { passive:true, capture:true }));
+
+  /* ---- clique no botão: liga / desliga ---- */
+  btn.addEventListener('click', () => {
+    decisaoDoUsuario = true;
+    removerGestos();
+    if (audio.paused) tentarTocar();
+    else              audio.pause();
+  });
+
+  /* ---- tentativa de autoplay ao carregar ---- */
+  if (document.readyState === 'complete'){
+    if (!decisaoDoUsuario) tentarTocar();
+  } else {
+    window.addEventListener('load', () => {
+      if (!decisaoDoUsuario) tentarTocar();
+    });
+  }
+
+  atualizarBotao();
+})();
 
 /* ============================================================
    ANO NO FOOTER
