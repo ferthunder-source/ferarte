@@ -130,6 +130,9 @@
       color: transparent;
       animation: shimmerText 7s linear infinite;
       filter: drop-shadow(0 0 22px rgba(212, 175, 55, .28));
+      display: inline-block;
+      padding: 0.05em 0.08em;
+      overflow: visible;
     }
 
     @keyframes shimmerText {
@@ -141,7 +144,7 @@
     .glow-title {
       font-family: var(--font-title);
       letter-spacing: .05em;
-      line-height: 1.2;
+      line-height: 1.25;
       font-weight: 400;
       text-shadow: 0 0 34px rgba(212, 175, 55, .2);
     }
@@ -150,11 +153,19 @@
       font-family: var(--font-brand);
       font-weight: 400;
       letter-spacing: 0;
-      line-height: 1.05;
-      font-size: clamp(4rem, 14vw, 9rem);
+      line-height: 1.28;
+      font-size: clamp(3.8rem, 13vw, 8.5rem);
       margin-bottom: 6px;
       text-transform: none;
       text-shadow: 0 0 60px rgba(212, 175, 55, .35);
+      overflow: visible;
+      padding: 6px 12px;
+    }
+
+    .hero-title .gold {
+      display: inline-block;
+      padding: 0.12em 0.18em 0.14em 0.1em;
+      overflow: visible;
     }
 
     /* ============================================================
@@ -235,16 +246,20 @@
     .brand-txt {
       display: flex;
       flex-direction: column;
-      line-height: 1
+      line-height: 1.25;
+      justify-content: center;
     }
 
     .brand-txt strong {
       font-family: var(--font-brand);
       font-weight: 400;
-      font-size: 2.05rem;
+      font-size: 2.15rem;
       letter-spacing: .01em;
-      line-height: 1;
+      line-height: 1.25;
       text-transform: none;
+      display: inline-block;
+      padding: 4px 6px 4px 2px;
+      overflow: visible;
     }
 
     .brand-txt span {
@@ -252,7 +267,7 @@
       letter-spacing: .32em;
       text-transform: uppercase;
       color: rgba(246, 243, 236, .55);
-      margin-top: 2px
+      margin-top: -2px;
     }
 
     .nav {
@@ -552,8 +567,8 @@
 
     .moon {
       position: absolute;
-      top: 5%;
-      right: 5%;
+      top: clamp(100px, 14vh, 150px);
+      right: clamp(30px, 6vw, 80px);
       width: clamp(144px, 17.6vw, 240px);
       aspect-ratio: 1;
       border-radius: 50%;
@@ -1065,6 +1080,25 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    .feriel-speech.speech-below {
+      bottom: auto;
+      top: 115%;
+      transform: translateX(-50%) translateY(-10px);
+    }
+
+    .feriel-speech.speech-below.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .feriel-speech.speech-below::after {
+      bottom: auto;
+      top: -12px;
+      border-right: none;
+      border-bottom: none;
+      border-left: 2px solid var(--dourado);
+      border-top: 2px solid var(--dourado);
+    }
+
     .feriel-container.is-deactivated {
       opacity: 0 !important;
       visibility: hidden !important;
@@ -1330,9 +1364,12 @@
       font-weight: 400;
       font-size: 2.6rem;
       letter-spacing: 0;
-      line-height: 1;
+      line-height: 1.25;
       text-transform: none;
       margin-top: 24px;
+      display: inline-block;
+      padding: 4px 6px;
+      overflow: visible;
     }
 
     .story-logo-card small {
@@ -1365,8 +1402,8 @@
       float: left;
       font-family: var(--font-title);
       font-size: 4rem;
-      line-height: .78;
-      padding: 6px 14px 0 0;
+      line-height: .95;
+      padding: 4px 12px 4px 0;
       color: var(--dourado);
       text-shadow: 0 0 30px rgba(212, 175, 55, .8);
     }
@@ -1794,8 +1831,8 @@
       color: var(--dourado-claro);
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       gap: 12px;
-      white-space: nowrap;
       text-shadow: 0 0 22px rgba(212, 175, 55, .35);
     }
 
@@ -2615,9 +2652,12 @@
       font-weight: 400;
       font-size: 2.2rem;
       letter-spacing: 0;
-      line-height: 1;
+      line-height: 1.25;
       text-transform: none;
       margin-bottom: 10px;
+      display: inline-block;
+      padding: 4px 6px;
+      overflow: visible;
     }
 
     .foot-brand p {
@@ -3147,6 +3187,8 @@
       padding: 40px 40px 32px;
       box-shadow: 0 30px 90px rgba(0, 0, 0, .7), 0 0 60px -20px rgba(212, 175, 55, .4);
       border: 1px solid rgba(212, 175, 55, .25);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .report-header {
@@ -3179,9 +3221,12 @@
       font-family: var(--font-brand);
       font-weight: 400;
       font-size: 2.4rem;
-      line-height: 1;
+      line-height: 1.25;
       margin: 0 0 4px;
       text-transform: none;
+      display: inline-block;
+      padding: 4px 6px;
+      overflow: visible;
     }
 
     .report-brand-text h1.gold {
@@ -3725,13 +3770,15 @@
       }
 
       .brand-txt strong {
-        font-size: 1.85rem
+        font-size: 1.85rem;
+        line-height: 1.25;
+        padding: 2px 4px;
       }
 
       .moon {
         width: clamp(112px, 20.8vw, 176px);
-        top: 4%;
-        right: 4%
+        top: clamp(94px, 13vh, 135px);
+        right: clamp(24px, 4.5vw, 60px);
       }
     }
 
@@ -3750,8 +3797,8 @@
 
       .moon {
         width: clamp(96px, 22.4vw, 152px);
-        top: 3.5%;
-        right: 3.5%
+        top: clamp(90px, 12vh, 125px);
+        right: clamp(20px, 4vw, 40px);
       }
     }
 
@@ -3819,22 +3866,26 @@
       }
 
       .brand-txt strong {
-        font-size: 1.7rem
+        font-size: 1.7rem;
+        line-height: 1.25;
+        padding: 2px 4px;
       }
 
       .hero-actions .btn {
         width: 100%;
-        justify-content: center
+        justify-content: center;
       }
 
       .hero-title {
-        font-size: clamp(3.4rem, 20vw, 6rem)
+        font-size: clamp(3.2rem, 18vw, 5.5rem);
+        line-height: 1.25;
+        padding: 4px 8px;
       }
 
       .moon {
         width: clamp(80px, 24vw, 120px);
-        top: 3%;
-        right: 3%
+        top: clamp(84px, 11vh, 110px);
+        right: clamp(16px, 3.5vw, 28px);
       }
 
       .sec-head h2 {
@@ -3854,6 +3905,28 @@
 
       .angel--hide-xs {
         display: none
+      }
+    }
+
+    @supports (padding-bottom: env(safe-area-inset-bottom)) {
+      .whats {
+        bottom: max(16px, calc(16px + env(safe-area-inset-bottom)));
+      }
+
+      .to-top {
+        bottom: max(16px, calc(16px + env(safe-area-inset-bottom)));
+      }
+
+      .music-toggle {
+        bottom: max(72px, calc(72px + env(safe-area-inset-bottom)));
+      }
+
+      .feriel-activator {
+        bottom: max(130px, calc(130px + env(safe-area-inset-bottom)));
+      }
+
+      .selection-bar {
+        bottom: max(24px, calc(24px + env(safe-area-inset-bottom)));
       }
     }
 
@@ -6405,9 +6478,13 @@
           const w = window.innerWidth;
           const h = window.innerHeight;
           const size = container.offsetWidth || 128;
-          const pad = 30;
-          const x = Math.random() * (w - size - pad * 2) + pad;
-          const y = Math.random() * (h - size - pad * 2) + pad;
+          const padX = 30;
+          const padTop = 100;
+          const padBottom = 80;
+          const availW = Math.max(20, w - size - padX * 2);
+          const availH = Math.max(20, h - size - padTop - padBottom);
+          const x = Math.max(padX, Math.min(w - size - padX, Math.random() * availW + padX));
+          const y = Math.max(padTop, Math.min(h - size - padBottom, Math.random() * availH + padTop));
           container.style.transform = `translate(${x}px, ${y}px)`;
           if (Math.random() > 0.5) {
             setTimeout(() => {
@@ -6443,6 +6520,12 @@
           messageIndex++;
         }
         if (messageIndex < messages.length) {
+          const rect = container.getBoundingClientRect();
+          if (rect.top < 190) {
+            speechBubble.classList.add('speech-below');
+          } else {
+            speechBubble.classList.remove('speech-below');
+          }
           speechBubble.textContent = messages[messageIndex];
           speechBubble.classList.add('show');
         } else {
