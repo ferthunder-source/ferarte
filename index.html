@@ -996,7 +996,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .card:hover .card-media img.card-main{transform:scale(1.07)}
 
 /* ============================================================
-   BOTÃO DE SELEÇÃO NO CARD (NOVO)
+   BOTÃO DE SELEÇÃO NO CARD
    ============================================================ */
 .card-select{
   position:absolute;top:12px;left:12px;z-index:6;
@@ -1096,7 +1096,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .empty p{font-weight:300;color:rgba(246,243,236,.6);font-size:.92rem}
 
 /* ============================================================
-   BARRA DE SELEÇÃO FLUTUANTE (NOVO)
+   BARRA DE SELEÇÃO FLUTUANTE
    ============================================================ */
 .selection-bar{
   position:fixed;
@@ -1463,6 +1463,21 @@ footer::before{
 }
 .music-toggle.playing::before{opacity:1;animation:musicRing 2.4s ease-out infinite}
 @keyframes musicRing{0%{transform:scale(.88);opacity:.85}100%{transform:scale(1.5);opacity:0}}
+
+/* Estado "tocando mudo" — pulsa para chamar atenção */
+.music-toggle.is-muted {
+  animation: musicMutedPulse 1.6s ease-in-out infinite;
+}
+@keyframes musicMutedPulse {
+  0%, 100% {
+    box-shadow: 0 0 28px -10px rgba(212,175,55,.9);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 44px 0 rgba(212,175,55,1);
+    transform: scale(1.06);
+  }
+}
 
 .music-toggle .mt-note{position:relative;font-size:1.2rem;line-height:1;display:block;}
 .music-toggle .mt-note::after{
@@ -2091,7 +2106,6 @@ footer::before{
 
     <p class="result-info" id="resultInfo"></p>
 
-    <!-- Botão do Relatório -->
     <div class="report-cta-wrap reveal">
       <p class="report-hint">
         Marque itens no catálogo (✓ no canto de cada peça) para gerar um relatório só com os selecionados.
@@ -2664,7 +2678,7 @@ const PRODUTOS = [
 ];
 
 /* ============================================================
-   SELEÇÃO DE PRODUTOS (NOVO)
+   SELEÇÃO DE PRODUTOS
    ============================================================ */
 const selectedCodes = new Set();
 
@@ -3072,7 +3086,7 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
 })();
 
 /* ============================================================
-   MÚSICA DE FUNDO
+   MÚSICA DE FUNDO — autoplay robusto
    ============================================================ */
 (function musicaDeFundo(){
   const audio = document.getElementById('bgMusic');
@@ -3084,64 +3098,119 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
   audio.volume = 0.45;
 
   let userDeactivated = false;
+  let userUnlocked    = false;
 
   function atualizarBotao(){
-    const tocando = !audio.paused && !audio.ended;
-    btn.classList.toggle('playing', tocando);
-    btn.setAttribute('aria-pressed', String(tocando));
-    btn.setAttribute('aria-label', tocando ? 'Desativar música de fundo' : 'Ativar música de fundo');
-    btn.title = tocando ? 'Desativar música' : 'Ativar música';
-    if (label) label.textContent = tocando ? 'Desligar música' : 'Ativar música';
+    const playing = !audio.paused && !audio.ended;
+    const muted   = audio.muted;
+    const audivel = playing && !muted;
+
+    btn.classList.toggle('playing',  playing);
+    btn.classList.toggle('is-muted', playing && muted);
+    btn.setAttribute('aria-pressed', String(audivel));
+
+    let texto;
+    if (audivel)               texto = 'Desligar música';
+    else if (playing && muted) texto = 'Toque para ouvir';
+    else                       texto = 'Ativar música';
+
+    btn.setAttribute('aria-label', texto);
+    btn.title = texto;
+    if (label) label.textContent = texto;
   }
 
-  function tentarTocar(){
-    if (userDeactivated) return;
-    const p = audio.play();
+  function tentarAutoplay(){
+    if (userDeactivated || userUnlocked) return;
+
+    audio.muted = false;
+    let p;
+    try { p = audio.play(); } catch(e) { p = null; }
+
+    const tentarMudo = () => {
+      audio.muted = true;
+      let p2;
+      try { p2 = audio.play(); } catch(e) { p2 = null; }
+      if (p2 && typeof p2.then === 'function'){
+        p2.then(atualizarBotao).catch(atualizarBotao);
+      } else {
+        atualizarBotao();
+      }
+    };
+
     if (p && typeof p.then === 'function'){
-      p.then(atualizarBotao).catch(() => { atualizarBotao(); });
+      p.then(() => {
+        userUnlocked = true;
+        removerGestos();
+        atualizarBotao();
+      }).catch(tentarMudo);
     } else {
       atualizarBotao();
     }
   }
 
-  tentarTocar();
-  window.addEventListener('load', tentarTocar);
-  document.addEventListener('DOMContentLoaded', tentarTocar);
-
-  const GESTOS = ['pointerdown','touchstart','keydown','scroll','wheel','mousemove'];
-  function destravar(e){
+  function destravarSom(e){
     if (userDeactivated) return;
+    if (userUnlocked) { removerGestos(); return; }
     if (e && e.target && e.target.closest && e.target.closest('#musicToggle')) return;
-    removerGestos();
-    if (audio.paused) tentarTocar();
-  }
-  function removerGestos(){
-    GESTOS.forEach(ev => window.removeEventListener(ev, destravar, true));
-  }
-  GESTOS.forEach(ev => window.addEventListener(ev, destravar, { passive:true, capture:true }));
 
-  btn.addEventListener('click', () => {
+    audio.muted = false;
+
     if (audio.paused){
+      audio.play().then(() => {
+        userUnlocked = true;
+        removerGestos();
+        atualizarBotao();
+      }).catch(() => atualizarBotao());
+    } else {
+      userUnlocked = true;
+      removerGestos();
+      atualizarBotao();
+    }
+  }
+
+  const GESTOS = ['pointerdown','touchstart','keydown','scroll','wheel','mousemove','click'];
+  function removerGestos(){
+    GESTOS.forEach(ev => window.removeEventListener(ev, destravarSom, true));
+  }
+  GESTOS.forEach(ev => {
+    window.addEventListener(ev, destravarSom, { passive:true, capture:true });
+  });
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (userDeactivated || audio.paused){
       userDeactivated = false;
-      tentarTocar();
+      audio.muted = false;
+      audio.play().then(() => {
+        userUnlocked = true;
+        removerGestos();
+        atualizarBotao();
+      }).catch(() => atualizarBotao());
+    } else if (audio.muted){
+      audio.muted = false;
+      userUnlocked = true;
+      removerGestos();
+      atualizarBotao();
     } else {
       userDeactivated = true;
       audio.pause();
-      removerGestos();
+      atualizarBotao();
     }
-    atualizarBotao();
   });
 
-  audio.addEventListener('play',  atualizarBotao);
-  audio.addEventListener('pause', atualizarBotao);
-  audio.addEventListener('ended', () => {
-    if (!userDeactivated){ audio.currentTime = 0; tentarTocar(); }
-  });
+  audio.addEventListener('play',         atualizarBotao);
+  audio.addEventListener('pause',        atualizarBotao);
+  audio.addEventListener('volumechange', atualizarBotao);
   audio.addEventListener('error', () => {
     btn.classList.add('is-error');
     btn.title = 'Áudio indisponível';
     if (label) label.textContent = 'Áudio indisponível';
+    removerGestos();
   });
+
+  tentarAutoplay();
+  window.addEventListener('load', tentarAutoplay);
+  document.addEventListener('DOMContentLoaded', tentarAutoplay);
 
   atualizarBotao();
 })();
@@ -3261,7 +3330,6 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
   const state = {};
   PRODUTOS.forEach(p => state[p.codigo] = { qty: 0, price: 0 });
 
-  // Códigos atualmente visíveis no relatório
   let reportItems = [];
 
   function fmtBRL(n){
@@ -3290,7 +3358,6 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     return Number(n).toFixed(2).replace('.', ',');
   }
 
-  /* ---------- Render ---------- */
   function renderRows(){
     const sorted = reportItems
       .map(c => PRODUTOS.find(p => p.codigo === c))
@@ -3338,7 +3405,6 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
 
   function updateTotals(){
     let total = 0, items = 0;
-    // Soma apenas os itens que estão visíveis no relatório atual
     reportItems.forEach(code => {
       const st = state[code];
       if (!st) return;
@@ -3349,7 +3415,6 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     if (grandTotalEl) grandTotalEl.textContent = fmtBRL(total);
   }
 
-  /* ---------- Edição de valores ---------- */
   tbody.addEventListener('input', (e) => {
     const row = e.target.closest('tr');
     if (!row) return;
@@ -3380,19 +3445,16 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     e.target.value = fmtPriceInput(st.price);
   }, true);
 
-  /* ---------- Excluir linha do relatório ---------- */
   tbody.addEventListener('click', (e) => {
     const btn = e.target.closest('.report-del');
     if (!btn) return;
     e.preventDefault();
     e.stopPropagation();
     const code = btn.dataset.codigo;
-    // Remove apenas da lista visível — valores ficam preservados em `state`
     reportItems = reportItems.filter(c => c !== code);
     renderRows();
   });
 
-  /* ---------- Datas ---------- */
   function setDate(){
     const now = new Date();
     const d   = now.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' });
@@ -3404,7 +3466,6 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     if (d2) d2.textContent = s;
   }
 
-  /* ---------- Abrir / Fechar ---------- */
   function openModal(mode = 'all'){
     if (mode === 'selection'){
       reportItems = [...selectedCodes];
@@ -3431,7 +3492,6 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     renderRows();
   }
 
-  /* ---------- Eventos ---------- */
   if (btnOpen) {
     btnOpen.addEventListener('click', () => {
       const mode = selectedCodes.size > 0 ? 'selection' : 'all';
@@ -3455,10 +3515,8 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     if (e.target === modal) closeModal();
   });
 
-  // Expõe para a barra de seleção
   window.abrirRelatorio = openModal;
 
-  /* ---------- Init ---------- */
   renderRows();
   setDate();
 })();
