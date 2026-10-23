@@ -712,6 +712,7 @@
       display: block;
       width: 100%;
       height: auto;
+      overflow: visible;
       animation: flutter var(--fl, 4.2s) ease-in-out infinite;
       transform-origin: 50% 60%;
     }
@@ -762,8 +763,8 @@
       top: 0;
       left: 0;
       z-index: 1050;
-      width: 108px;
-      height: 108px;
+      width: 128px;
+      height: 128px;
       cursor: pointer;
       transition: transform 8s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: transform;
@@ -814,6 +815,7 @@
     .feriel-svg {
       width: 100%;
       height: 100%;
+      overflow: visible;
       animation: flutterWings 1.6s ease-in-out infinite alternate;
       will-change: transform;
       filter: drop-shadow(0 4px 18px rgba(212, 175, 55, .35));
@@ -1038,27 +1040,34 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    .feriel-container.is-deactivated {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+      transform: translate(-9999px, -9999px) !important;
+    }
+
     .feriel-activator {
       position: fixed;
       left: 22px;
       bottom: 150px;
       z-index: 1050;
-      width: 50px;
-      height: 50px;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
-      background: rgba(3, 12, 34, .9);
-      border: 2px solid rgba(212, 175, 55, .6);
+      background: radial-gradient(circle at 50% 35%, rgba(14, 36, 80, 0.96) 0%, rgba(1, 7, 22, 0.98) 100%);
+      border: 2px solid var(--dourado);
       display: none;
       place-items: center;
       cursor: pointer;
-      box-shadow: 0 0 25px -5px rgba(212, 175, 55, .8);
+      box-shadow: 0 0 25px -3px rgba(212, 175, 55, .85), inset 0 0 12px rgba(212, 175, 55, .35);
       transition: transform 0.3s, box-shadow 0.3s;
       overflow: hidden;
     }
 
     .feriel-activator:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 35px 0 rgba(212, 175, 55, 1);
+      transform: scale(1.12);
+      box-shadow: 0 0 35px 2px rgba(212, 175, 55, 1), inset 0 0 16px rgba(212, 175, 55, .55);
     }
 
     .feriel-activator.show {
@@ -1068,20 +1077,23 @@
     .feriel-activator svg {
       width: 100%;
       height: 100%;
-      transform: scale(1.1) translateY(5px);
+      overflow: visible;
+      transform: scale(0.96);
+      filter: drop-shadow(0 2px 8px rgba(212, 175, 55, .5));
     }
 
     @keyframes pulseAct {
 
       0%,
       100% {
-        opacity: 0.8;
-        transform: scale(1.1) translateY(5px);
+        opacity: 0.92;
+        transform: scale(0.96);
       }
 
       50% {
         opacity: 1;
-        transform: scale(1.15) translateY(5px);
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.95));
       }
     }
 
@@ -1091,15 +1103,15 @@
 
     @media (max-width: 560px) {
       .feriel-container {
-        width: 84px;
-        height: 84px;
+        width: 98px;
+        height: 98px;
       }
 
       .feriel-activator {
         left: 16px;
         bottom: 130px;
-        width: 44px;
-        height: 44px;
+        width: 48px;
+        height: 48px;
       }
 
       .feriel-speech {
@@ -3847,7 +3859,7 @@
       <div class="feriel-speech" id="ferielSpeech">
         <div class="bump"></div>
       </div>
-      <svg class="feriel-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <svg class="feriel-svg" viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="ferielGold" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stop-color="#fdf4cf" />
@@ -3887,24 +3899,293 @@
           </g>
         </defs>
 
+        <g transform="translate(30, 30)">
+          <!-- AURA E HALO DOURADO -->
+          <g class="halo-group">
+            <ellipse class="halo-glow" cx="100" cy="27" rx="42" ry="12" fill="url(#ferielHaloGlow)" />
+            <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="url(#ferielGold)" stroke-width="3.5" />
+            <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="#fffceb" stroke-width="1" opacity="0.9" />
+            <use href="#ferielStar" x="65" y="26" transform="scale(0.55)" transform-origin="65 26" />
+            <use href="#ferielStar" x="135" y="26" transform="scale(0.55)" transform-origin="135 26" />
+          </g>
+
+          <!-- ASAS COM BORDA DOURADA E FILIGRANAS -->
+          <g class="wings">
+            <!-- Asa Esquerda -->
+            <path
+              d="M84 86 C58 45 28 12 4 8 C14 32 16 52 24 70 C10 65 -4 68 -14 78 C-2 88 12 98 26 114 C12 114 2 120 0 128 C12 134 26 132 38 124 C50 114 68 100 84 86 Z"
+              fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
+            <path
+              d="M72 82 C48 46 25 22 10 18 C16 35 18 50 24 64 C14 62 4 64 -4 72 C5 80 18 88 28 100 C38 90 54 84 72 82 Z"
+              fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
+            <path d="M30 42 C32 55 34 65 38 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
+              opacity="0.8" />
+            <path d="M20 54 C24 65 26 74 28 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
+              opacity="0.75" />
+            <path d="M10 68 C14 76 18 82 22 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
+              opacity="0.7" />
+
+            <!-- Asa Direita -->
+            <path
+              d="M116 86 C142 45 172 12 196 8 C186 32 184 52 176 70 C190 65 204 68 214 78 C202 88 188 98 174 114 C188 114 198 120 200 128 C188 134 174 132 162 124 C150 114 132 100 116 86 Z"
+              fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
+            <path
+              d="M128 82 C152 46 175 22 190 18 C184 35 182 50 176 64 C186 62 196 64 204 72 C195 80 182 88 172 100 C162 90 146 84 128 82 Z"
+              fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
+            <path d="M170 42 C168 55 166 65 162 78" fill="none" stroke="#d4af37" stroke-width="1.2"
+              stroke-linecap="round" opacity="0.8" />
+            <path d="M180 54 C176 65 174 74 172 85" fill="none" stroke="#d4af37" stroke-width="1.1"
+              stroke-linecap="round" opacity="0.75" />
+            <path d="M190 68 C186 76 182 82 178 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
+              opacity="0.7" />
+          </g>
+
+          <!-- CABELOS DOURADOS, VOLUMOSOS, CACHEADOS E LONGOS (PARTE POSTERIOR) -->
+          <g class="hair-back">
+            <!-- Sombra profunda dos cachos -->
+            <path
+              d="M72 45 C48 42 32 60 30 84 C26 96 24 112 30 124 C24 134 26 148 34 158 C42 168 54 170 64 163 C68 156 65 146 58 142 C50 138 42 132 44 120 C46 110 54 105 58 95 C62 84 66 74 72 45 Z"
+              fill="#a87515" opacity="0.75" />
+            <path
+              d="M128 45 C152 42 168 60 170 84 C174 96 176 112 170 124 C176 134 174 148 166 158 C158 168 146 170 136 163 C132 156 135 146 142 142 C150 138 158 132 156 120 C154 110 146 105 142 95 C138 84 134 74 128 45 Z"
+              fill="#a87515" opacity="0.75" />
+
+            <!-- Cachos Volumosos Esquerdos (Volume Principal) -->
+            <path d="M74 46 C52 45 36 62 34 85 C32 98 42 106 50 102 C58 98 56 86 52 78 C48 70 54 58 74 46 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path d="M40 88 C28 98 26 115 34 128 C40 138 52 136 56 126 C60 116 50 108 44 104 C40 100 38 94 40 88 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path
+              d="M36 122 C26 134 28 152 40 164 C50 172 64 168 68 156 C70 148 64 142 56 144 C48 146 42 154 36 146 C32 138 34 130 36 122 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+
+            <!-- Cachos Volumosos Direitos (Volume Principal) -->
+            <path
+              d="M126 46 C148 45 164 62 166 85 C168 98 158 106 150 102 C142 98 144 86 148 78 C152 70 146 58 126 46 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path
+              d="M160 88 C172 98 174 115 166 128 C160 138 148 136 144 126 C140 116 150 108 156 104 C160 100 162 94 160 88 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path
+              d="M164 122 C174 134 172 152 160 164 C150 172 136 168 132 156 C130 148 136 142 144 144 C152 146 158 154 164 146 C168 138 166 130 164 122 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+
+            <!-- Cachos Longos que caem pelas costas -->
+            <path d="M68 90 C60 112 55 138 64 162 C68 169 76 167 78 158 C80 144 76 128 78 105 Z" fill="url(#ferielHair)"
+              stroke="#c59118" stroke-width="0.8" />
+            <path d="M132 90 C140 112 145 138 136 162 C132 169 124 167 122 158 C120 144 124 128 122 105 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+          </g>
+
+          <!-- VESTIDO COM BORDA DOURADA E ESTRELAS DOURADAS -->
+          <g class="dress">
+            <!-- Tecido Principal do Vestido -->
+            <path d="M80 88 C62 112 40 152 28 182 C65 196 135 196 172 182 C160 152 138 112 120 88 C110 82 90 82 80 88 Z"
+              fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="2" />
+
+            <!-- Pregas suaves do tecido -->
+            <path d="M72 110 C62 135 48 162 44 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M128 110 C138 135 152 162 156 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M90 98 C86 128 80 160 76 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M110 98 C114 128 120 160 124 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M100 102 L100 188" fill="none" stroke="#f0e9dd" stroke-width="1.2" />
+
+            <!-- BORDA DOURADA NA BARRA DO VESTIDO -->
+            <path
+              d="M28 182 C65 196 135 196 172 182 C170 187 166 191 160 193 C128 203 72 203 40 193 C34 191 30 187 28 182 Z"
+              fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+            <path d="M32 178 C68 191 132 191 168 178" fill="none" stroke="#fff1b8" stroke-width="1.5"
+              stroke-linecap="round" />
+            <path
+              d="M36 184 Q44 187 52 186 Q60 189 68 188 Q76 191 84 190 Q92 192 100 192 Q108 192 116 190 Q124 191 132 188 Q140 189 148 186 Q156 187 164 184"
+              fill="none" stroke="#fff8d4" stroke-width="1.3" stroke-linecap="round" />
+
+            <!-- BORDA DOURADA NO DECOTE / CINTURA -->
+            <path d="M82 92 C94 97 106 97 118 92" fill="none" stroke="url(#ferielGold)" stroke-width="3"
+              stroke-linecap="round" />
+            <path d="M83 92 C94 97 106 97 117 92" fill="none" stroke="#fff8d4" stroke-width="1"
+              stroke-linecap="round" />
+
+            <!-- ESTRELAS DOURADAS NO VESTIDO -->
+            <use href="#ferielStar" class="dress-star" x="100" y="106" transform="scale(1.2)"
+              transform-origin="100 106" />
+            <use href="#ferielStar" class="dress-star" x="74" y="132" transform="scale(0.9)"
+              transform-origin="74 132" />
+            <use href="#ferielStar" class="dress-star" x="126" y="130" transform="scale(0.85)"
+              transform-origin="126 130" />
+            <use href="#ferielStar" class="dress-star" x="100" y="145" transform="scale(1.1)"
+              transform-origin="100 145" />
+            <use href="#ferielStar" class="dress-star" x="58" y="156" transform="scale(0.95)"
+              transform-origin="58 156" />
+            <use href="#ferielStar" class="dress-star" x="142" y="154" transform="scale(0.95)"
+              transform-origin="142 154" />
+            <use href="#ferielStar" class="dress-star" x="80" y="166" transform="scale(0.8)"
+              transform-origin="80 166" />
+            <use href="#ferielStar" class="dress-star" x="120" y="165" transform="scale(0.85)"
+              transform-origin="120 165" />
+            <use href="#ferielStar" class="dress-star" x="100" y="174" transform="scale(0.9)"
+              transform-origin="100 174" />
+
+            <!-- Brilhos de Poeira Dourada no Vestido -->
+            <circle cx="88" cy="120" r="1.5" fill="#fde047" />
+            <circle cx="112" cy="122" r="1.3" fill="#fde047" />
+            <circle cx="68" cy="142" r="1.4" fill="#fde047" />
+            <circle cx="132" cy="140" r="1.4" fill="#fde047" />
+            <circle cx="92" cy="156" r="1.3" fill="#fff9db" />
+            <circle cx="108" cy="158" r="1.2" fill="#fff9db" />
+            <circle cx="48" cy="170" r="1.3" fill="#fde047" />
+            <circle cx="152" cy="168" r="1.3" fill="#fde047" />
+            <circle cx="68" cy="178" r="1.2" fill="#fde047" />
+            <circle cx="132" cy="178" r="1.2" fill="#fde047" />
+          </g>
+
+          <!-- MANGAS E MÃOS DELICADAS COM BORDAS DOURADAS -->
+          <path d="M80 90 C70 100 64 116 58 132 C56 137 63 140 67 132 C72 116 78 105 85 95 Z" fill="url(#ferielDress)"
+            stroke="url(#ferielGold)" stroke-width="1.8" />
+          <ellipse cx="62" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
+
+          <path d="M120 90 C130 100 136 116 142 132 C144 137 137 140 133 132 C128 116 122 105 115 95 Z"
+            fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="1.8" />
+          <ellipse cx="138" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
+
+          <circle cx="62" cy="135" r="4.5" fill="#fcdbb6" />
+          <circle cx="138" cy="135" r="4.5" fill="#fcdbb6" />
+
+          <!-- PESCOÇO E CABEÇA -->
+          <rect x="93" y="74" width="14" height="14" rx="5" fill="url(#ferielSkin)" />
+          <circle cx="100" cy="64" r="24" fill="url(#ferielSkin)" />
+
+          <!-- MECHAS FRONTAIS CACHEADAS (CAEM SOBRE OS OMBROS) -->
+          <path d="M78 68 C70 78 65 92 68 106 C70 114 78 116 80 108 C82 98 76 86 82 74 Z" fill="url(#ferielHair)"
+            stroke="#c59118" stroke-width="0.8" />
+          <path d="M68 104 C64 112 66 122 72 126 C76 128 80 124 78 118 C76 112 70 112 68 104 Z" fill="url(#ferielHair)"
+            stroke="#c59118" stroke-width="0.8" />
+          <path d="M76 74 C72 84 69 96 72 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
+
+          <path d="M122 68 C130 78 135 92 132 106 C130 114 122 116 120 108 C118 98 124 86 118 74 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+          <path d="M132 104 C136 112 134 122 128 126 C124 128 120 124 122 118 C124 112 130 112 132 104 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+          <path d="M124 74 C128 84 131 96 128 108" fill="none" stroke="#fff4c2" stroke-width="1"
+            stroke-linecap="round" />
+
+          <!-- VOLUME SUPERIOR E FRANJA CACHEADA DOURADA -->
+          <path d="M76 60 C72 38 85 34 100 34 C115 34 128 38 124 60 C120 48 114 44 100 44 C86 44 80 48 76 60 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+          <path d="M80 50 C86 42 98 42 104 52 C98 48 88 47 80 50 Z" fill="#fff6c7" opacity="0.95" />
+          <path d="M78 56 C74 60 73 68 77 74 C80 72 80 66 78 56 Z" fill="url(#ferielHair)" stroke="#c59118"
+            stroke-width="0.8" />
+          <path d="M122 56 C126 60 127 68 123 74 C120 72 120 66 122 56 Z" fill="url(#ferielHair)" stroke="#c59118"
+            stroke-width="0.8" />
+          <path d="M102 46 C110 40 120 42 122 52 C116 46 108 45 102 46 Z" fill="#fff6c7" opacity="0.9" />
+
+          <!-- ROSTO DELICADO -->
+          <ellipse cx="81" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
+          <ellipse cx="119" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
+
+          <!-- Olhos doces e expressivos com cílios e brilho -->
+          <g class="eyes">
+            <path d="M82 56 C85 54 90 54 93 56" fill="none" stroke="#a36e18" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M107 56 C110 54 115 54 118 56" fill="none" stroke="#a36e18" stroke-width="1.2"
+              stroke-linecap="round" />
+
+            <path d="M83 63 C85 58 92 58 95 63" fill="none" stroke="#23140a" stroke-width="2.2"
+              stroke-linecap="round" />
+            <path d="M94 62 L96.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
+
+            <path d="M105 63 C108 58 115 58 117 63" fill="none" stroke="#23140a" stroke-width="2.2"
+              stroke-linecap="round" />
+            <path d="M116 62 L118.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
+
+            <ellipse cx="89" cy="65" rx="4.2" ry="5.8" fill="#301809" />
+            <ellipse cx="111" cy="65" rx="4.2" ry="5.8" fill="#301809" />
+
+            <path d="M86 67 C87.5 69.5 91 69.5 92.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
+              stroke-linecap="round" />
+            <path d="M108 67 C109.5 69.5 113 69.5 114.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
+              stroke-linecap="round" />
+
+            <circle cx="87.5" cy="63" r="1.8" fill="#ffffff" />
+            <circle cx="109.5" cy="63" r="1.8" fill="#ffffff" />
+            <circle cx="91" cy="67" r="0.9" fill="#ffffff" />
+            <circle cx="113" cy="67" r="0.9" fill="#ffffff" />
+
+            <rect class="eyelid" x="84" y="58" width="10" height="14" />
+            <rect class="eyelid" x="106" y="58" width="10" height="14" />
+          </g>
+
+          <circle cx="100" cy="71" r="0.9" fill="#e89e82" />
+          <path d="M96.5 75 Q100 78 103.5 75" fill="none" stroke="#c85665" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M98 76 Q100 78 102 76" fill="#f88998" opacity="0.6" />
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="feriel-activator" id="ferielActivator" title="Ativar Feriel">
+    <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="actGold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#fdf4cf" />
+          <stop offset="30%" stop-color="#f3c445" />
+          <stop offset="70%" stop-color="#d4af37" />
+          <stop offset="100%" stop-color="#9a7318" />
+        </linearGradient>
+        <linearGradient id="actHair" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#fff4c2" />
+          <stop offset="35%" stop-color="#f9d35c" />
+          <stop offset="70%" stop-color="#e5a928" />
+          <stop offset="100%" stop-color="#b67a14" />
+        </linearGradient>
+        <linearGradient id="actSkin" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#fff8f2" />
+          <stop offset="100%" stop-color="#fedac2" />
+        </linearGradient>
+        <linearGradient id="actDress" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="60%" stop-color="#faf7f0" />
+          <stop offset="100%" stop-color="#f2ebe0" />
+        </linearGradient>
+        <linearGradient id="actWing" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="75%" stop-color="#fcf9f2" />
+          <stop offset="100%" stop-color="#f6edda" />
+        </linearGradient>
+        <radialGradient id="actHaloGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fff7d6" stop-opacity="0.95" />
+          <stop offset="50%" stop-color="#d4af37" stop-opacity="0.6" />
+          <stop offset="100%" stop-color="#d4af37" stop-opacity="0" />
+        </radialGradient>
+        <g id="actStar">
+          <path d="M0 -6 Q0 0 6 0 Q0 0 0 6 Q0 0 -6 0 Q0 0 0 -6 Z" fill="url(#actGold)" stroke="#c59118"
+            stroke-width="0.5" />
+          <circle cx="0" cy="0" r="1.2" fill="#fffdfa" />
+        </g>
+      </defs>
+
+      <g transform="translate(30, 30)">
         <!-- AURA E HALO DOURADO -->
         <g class="halo-group">
-          <ellipse class="halo-glow" cx="100" cy="27" rx="42" ry="12" fill="url(#ferielHaloGlow)" />
-          <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="url(#ferielGold)" stroke-width="3.5" />
+          <ellipse cx="100" cy="27" rx="42" ry="12" fill="url(#actHaloGlow)" />
+          <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="url(#actGold)" stroke-width="3.5" />
           <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="#fffceb" stroke-width="1" opacity="0.9" />
-          <use href="#ferielStar" x="65" y="26" transform="scale(0.55)" transform-origin="65 26" />
-          <use href="#ferielStar" x="135" y="26" transform="scale(0.55)" transform-origin="135 26" />
+          <use href="#actStar" x="65" y="26" transform="scale(0.55)" transform-origin="65 26" />
+          <use href="#actStar" x="135" y="26" transform="scale(0.55)" transform-origin="135 26" />
         </g>
 
-        <!-- ASAS COM BORDA DOURADA E FILIGRANAS -->
+        <!-- ASAS COM BORDA DOURADA -->
         <g class="wings">
-          <!-- Asa Esquerda -->
           <path
             d="M84 86 C58 45 28 12 4 8 C14 32 16 52 24 70 C10 65 -4 68 -14 78 C-2 88 12 98 26 114 C12 114 2 120 0 128 C12 134 26 132 38 124 C50 114 68 100 84 86 Z"
-            fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
+            fill="url(#actWing)" stroke="url(#actGold)" stroke-width="2.6" stroke-linejoin="round" />
           <path
             d="M72 82 C48 46 25 22 10 18 C16 35 18 50 24 64 C14 62 4 64 -4 72 C5 80 18 88 28 100 C38 90 54 84 72 82 Z"
-            fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
+            fill="#ffffff" stroke="url(#actGold)" stroke-width="1.3" opacity="0.95" />
           <path d="M30 42 C32 55 34 65 38 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
             opacity="0.8" />
           <path d="M20 54 C24 65 26 74 28 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
@@ -3912,13 +4193,12 @@
           <path d="M10 68 C14 76 18 82 22 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
             opacity="0.7" />
 
-          <!-- Asa Direita -->
           <path
             d="M116 86 C142 45 172 12 196 8 C186 32 184 52 176 70 C190 65 204 68 214 78 C202 88 188 98 174 114 C188 114 198 120 200 128 C188 134 174 132 162 124 C150 114 132 100 116 86 Z"
-            fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
+            fill="url(#actWing)" stroke="url(#actGold)" stroke-width="2.6" stroke-linejoin="round" />
           <path
             d="M128 82 C152 46 175 22 190 18 C184 35 182 50 176 64 C186 62 196 64 204 72 C195 80 182 88 172 100 C162 90 146 84 128 82 Z"
-            fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
+            fill="#ffffff" stroke="url(#actGold)" stroke-width="1.3" opacity="0.95" />
           <path d="M170 42 C168 55 166 65 162 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
             opacity="0.8" />
           <path d="M180 54 C176 65 174 74 172 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
@@ -3929,7 +4209,6 @@
 
         <!-- CABELOS DOURADOS, VOLUMOSOS, CACHEADOS E LONGOS (PARTE POSTERIOR) -->
         <g class="hair-back">
-          <!-- Sombra profunda dos cachos -->
           <path
             d="M72 45 C48 42 32 60 30 84 C26 96 24 112 30 124 C24 134 26 148 34 158 C42 168 54 170 64 163 C68 156 65 146 58 142 C50 138 42 132 44 120 C46 110 54 105 58 95 C62 84 66 74 72 45 Z"
             fill="#a87515" opacity="0.75" />
@@ -3937,39 +4216,34 @@
             d="M128 45 C152 42 168 60 170 84 C174 96 176 112 170 124 C176 134 174 148 166 158 C158 168 146 170 136 163 C132 156 135 146 142 142 C150 138 158 132 156 120 C154 110 146 105 142 95 C138 84 134 74 128 45 Z"
             fill="#a87515" opacity="0.75" />
 
-          <!-- Cachos Volumosos Esquerdos (Volume Principal) -->
           <path d="M74 46 C52 45 36 62 34 85 C32 98 42 106 50 102 C58 98 56 86 52 78 C48 70 54 58 74 46 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            fill="url(#actHair)" stroke="#c59118" stroke-width="1" />
           <path d="M40 88 C28 98 26 115 34 128 C40 138 52 136 56 126 C60 116 50 108 44 104 C40 100 38 94 40 88 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            fill="url(#actHair)" stroke="#c59118" stroke-width="1" />
           <path
             d="M36 122 C26 134 28 152 40 164 C50 172 64 168 68 156 C70 148 64 142 56 144 C48 146 42 154 36 146 C32 138 34 130 36 122 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            fill="url(#actHair)" stroke="#c59118" stroke-width="1" />
 
-          <!-- Cachos Volumosos Direitos (Volume Principal) -->
           <path d="M126 46 C148 45 164 62 166 85 C168 98 158 106 150 102 C142 98 144 86 148 78 C152 70 146 58 126 46 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            fill="url(#actHair)" stroke="#c59118" stroke-width="1" />
           <path
             d="M160 88 C172 98 174 115 166 128 C160 138 148 136 144 126 C140 116 150 108 156 104 C160 100 162 94 160 88 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            fill="url(#actHair)" stroke="#c59118" stroke-width="1" />
           <path
             d="M164 122 C174 134 172 152 160 164 C150 172 136 168 132 156 C130 148 136 142 144 144 C152 146 158 154 164 146 C168 138 166 130 164 122 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            fill="url(#actHair)" stroke="#c59118" stroke-width="1" />
 
-          <!-- Cachos Longos que caem pelas costas -->
-          <path d="M68 90 C60 112 55 138 64 162 C68 169 76 167 78 158 C80 144 76 128 78 105 Z" fill="url(#ferielHair)"
+          <path d="M68 90 C60 112 55 138 64 162 C68 169 76 167 78 158 C80 144 76 128 78 105 Z" fill="url(#actHair)"
             stroke="#c59118" stroke-width="0.8" />
           <path d="M132 90 C140 112 145 138 136 162 C132 169 124 167 122 158 C120 144 124 128 122 105 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+            fill="url(#actHair)" stroke="#c59118" stroke-width="0.8" />
         </g>
 
         <!-- VESTIDO COM BORDA DOURADA E ESTRELAS DOURADAS -->
         <g class="dress">
-          <!-- Tecido Principal do Vestido -->
           <path d="M80 88 C62 112 40 152 28 182 C65 196 135 196 172 182 C160 152 138 112 120 88 C110 82 90 82 80 88 Z"
-            fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="2" />
+            fill="url(#actDress)" stroke="url(#actGold)" stroke-width="2" />
 
-          <!-- Pregas suaves do tecido -->
           <path d="M72 110 C62 135 48 162 44 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
             stroke-linecap="round" />
           <path d="M128 110 C138 135 152 162 156 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
@@ -3983,84 +4257,65 @@
           <!-- BORDA DOURADA NA BARRA DO VESTIDO -->
           <path
             d="M28 182 C65 196 135 196 172 182 C170 187 166 191 160 193 C128 203 72 203 40 193 C34 191 30 187 28 182 Z"
-            fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+            fill="url(#actGold)" stroke="#9a7318" stroke-width="0.8" />
           <path d="M32 178 C68 191 132 191 168 178" fill="none" stroke="#fff1b8" stroke-width="1.5"
             stroke-linecap="round" />
-          <path
-            d="M36 184 Q44 187 52 186 Q60 189 68 188 Q76 191 84 190 Q92 192 100 192 Q108 192 116 190 Q124 191 132 188 Q140 189 148 186 Q156 187 164 184"
-            fill="none" stroke="#fff8d4" stroke-width="1.3" stroke-linecap="round" />
 
-          <!-- BORDA DOURADA NO DECOTE / CINTURA -->
-          <path d="M82 92 C94 97 106 97 118 92" fill="none" stroke="url(#ferielGold)" stroke-width="3"
+          <!-- BORDA DOURADA NO DECOTE -->
+          <path d="M82 92 C94 97 106 97 118 92" fill="none" stroke="url(#actGold)" stroke-width="3"
             stroke-linecap="round" />
           <path d="M83 92 C94 97 106 97 117 92" fill="none" stroke="#fff8d4" stroke-width="1" stroke-linecap="round" />
 
           <!-- ESTRELAS DOURADAS NO VESTIDO -->
-          <use href="#ferielStar" class="dress-star" x="100" y="106" transform="scale(1.2)"
-            transform-origin="100 106" />
-          <use href="#ferielStar" class="dress-star" x="74" y="132" transform="scale(0.9)" transform-origin="74 132" />
-          <use href="#ferielStar" class="dress-star" x="126" y="130" transform="scale(0.85)"
-            transform-origin="126 130" />
-          <use href="#ferielStar" class="dress-star" x="100" y="145" transform="scale(1.1)"
-            transform-origin="100 145" />
-          <use href="#ferielStar" class="dress-star" x="58" y="156" transform="scale(0.95)" transform-origin="58 156" />
-          <use href="#ferielStar" class="dress-star" x="142" y="154" transform="scale(0.95)"
-            transform-origin="142 154" />
-          <use href="#ferielStar" class="dress-star" x="80" y="166" transform="scale(0.8)" transform-origin="80 166" />
-          <use href="#ferielStar" class="dress-star" x="120" y="165" transform="scale(0.85)"
-            transform-origin="120 165" />
-          <use href="#ferielStar" class="dress-star" x="100" y="174" transform="scale(0.9)"
-            transform-origin="100 174" />
+          <use href="#actStar" x="100" y="106" transform="scale(1.2)" transform-origin="100 106" />
+          <use href="#actStar" x="74" y="132" transform="scale(0.9)" transform-origin="74 132" />
+          <use href="#actStar" x="126" y="130" transform="scale(0.85)" transform-origin="126 130" />
+          <use href="#actStar" x="100" y="145" transform="scale(1.1)" transform-origin="100 145" />
+          <use href="#actStar" x="58" y="156" transform="scale(0.95)" transform-origin="58 156" />
+          <use href="#actStar" x="142" y="154" transform="scale(0.95)" transform-origin="142 154" />
 
-          <!-- Brilhos de Poeira Dourada no Vestido -->
           <circle cx="88" cy="120" r="1.5" fill="#fde047" />
           <circle cx="112" cy="122" r="1.3" fill="#fde047" />
           <circle cx="68" cy="142" r="1.4" fill="#fde047" />
           <circle cx="132" cy="140" r="1.4" fill="#fde047" />
-          <circle cx="92" cy="156" r="1.3" fill="#fff9db" />
-          <circle cx="108" cy="158" r="1.2" fill="#fff9db" />
-          <circle cx="48" cy="170" r="1.3" fill="#fde047" />
-          <circle cx="152" cy="168" r="1.3" fill="#fde047" />
-          <circle cx="68" cy="178" r="1.2" fill="#fde047" />
-          <circle cx="132" cy="178" r="1.2" fill="#fde047" />
         </g>
 
-        <!-- MANGAS E MÃOS DELICADAS COM BORDAS DOURADAS -->
-        <path d="M80 90 C70 100 64 116 58 132 C56 137 63 140 67 132 C72 116 78 105 85 95 Z" fill="url(#ferielDress)"
-          stroke="url(#ferielGold)" stroke-width="1.8" />
-        <ellipse cx="62" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
+        <!-- MANGAS E MÃOS DELICADAS -->
+        <path d="M80 90 C70 100 64 116 58 132 C56 137 63 140 67 132 C72 116 78 105 85 95 Z" fill="url(#actDress)"
+          stroke="url(#actGold)" stroke-width="1.8" />
+        <ellipse cx="62" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#actGold)" stroke-width="1.8" />
 
         <path d="M120 90 C130 100 136 116 142 132 C144 137 137 140 133 132 C128 116 122 105 115 95 Z"
-          fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="1.8" />
-        <ellipse cx="138" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
+          fill="url(#actDress)" stroke="url(#actGold)" stroke-width="1.8" />
+        <ellipse cx="138" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#actGold)" stroke-width="1.8" />
 
         <circle cx="62" cy="135" r="4.5" fill="#fcdbb6" />
         <circle cx="138" cy="135" r="4.5" fill="#fcdbb6" />
 
         <!-- PESCOÇO E CABEÇA -->
-        <rect x="93" y="74" width="14" height="14" rx="5" fill="url(#ferielSkin)" />
-        <circle cx="100" cy="64" r="24" fill="url(#ferielSkin)" />
+        <rect x="93" y="74" width="14" height="14" rx="5" fill="url(#actSkin)" />
+        <circle cx="100" cy="64" r="24" fill="url(#actSkin)" />
 
-        <!-- MECHAS FRONTAIS CACHEADAS (CAEM SOBRE OS OMBROS) -->
-        <path d="M78 68 C70 78 65 92 68 106 C70 114 78 116 80 108 C82 98 76 86 82 74 Z" fill="url(#ferielHair)"
+        <!-- MECHAS FRONTAIS CACHEADAS -->
+        <path d="M78 68 C70 78 65 92 68 106 C70 114 78 116 80 108 C82 98 76 86 82 74 Z" fill="url(#actHair)"
           stroke="#c59118" stroke-width="0.8" />
-        <path d="M68 104 C64 112 66 122 72 126 C76 128 80 124 78 118 C76 112 70 112 68 104 Z" fill="url(#ferielHair)"
+        <path d="M68 104 C64 112 66 122 72 126 C76 128 80 124 78 118 C76 112 70 112 68 104 Z" fill="url(#actHair)"
           stroke="#c59118" stroke-width="0.8" />
         <path d="M76 74 C72 84 69 96 72 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
 
-        <path d="M122 68 C130 78 135 92 132 106 C130 114 122 116 120 108 C118 98 124 86 118 74 Z"
-          fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+        <path d="M122 68 C130 78 135 92 132 106 C130 114 122 116 120 108 C118 98 124 86 118 74 Z" fill="url(#actHair)"
+          stroke="#c59118" stroke-width="0.8" />
         <path d="M132 104 C136 112 134 122 128 126 C124 128 120 124 122 118 C124 112 130 112 132 104 Z"
-          fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+          fill="url(#actHair)" stroke="#c59118" stroke-width="0.8" />
         <path d="M124 74 C128 84 131 96 128 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
 
         <!-- VOLUME SUPERIOR E FRANJA CACHEADA DOURADA -->
         <path d="M76 60 C72 38 85 34 100 34 C115 34 128 38 124 60 C120 48 114 44 100 44 C86 44 80 48 76 60 Z"
-          fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+          fill="url(#actHair)" stroke="#c59118" stroke-width="1" />
         <path d="M80 50 C86 42 98 42 104 52 C98 48 88 47 80 50 Z" fill="#fff6c7" opacity="0.95" />
-        <path d="M78 56 C74 60 73 68 77 74 C80 72 80 66 78 56 Z" fill="url(#ferielHair)" stroke="#c59118"
+        <path d="M78 56 C74 60 73 68 77 74 C80 72 80 66 78 56 Z" fill="url(#actHair)" stroke="#c59118"
           stroke-width="0.8" />
-        <path d="M122 56 C126 60 127 68 123 74 C120 72 120 66 122 56 Z" fill="url(#ferielHair)" stroke="#c59118"
+        <path d="M122 56 C126 60 127 68 123 74 C120 72 120 66 122 56 Z" fill="url(#actHair)" stroke="#c59118"
           stroke-width="0.8" />
         <path d="M102 46 C110 40 120 42 122 52 C116 46 108 45 102 46 Z" fill="#fff6c7" opacity="0.9" />
 
@@ -4093,215 +4348,253 @@
           <circle cx="109.5" cy="63" r="1.8" fill="#ffffff" />
           <circle cx="91" cy="67" r="0.9" fill="#ffffff" />
           <circle cx="113" cy="67" r="0.9" fill="#ffffff" />
-
-          <rect class="eyelid" x="84" y="58" width="10" height="14" />
-          <rect class="eyelid" x="106" y="58" width="10" height="14" />
         </g>
 
         <circle cx="100" cy="71" r="0.9" fill="#e89e82" />
         <path d="M96.5 75 Q100 78 103.5 75" fill="none" stroke="#c85665" stroke-width="1.8" stroke-linecap="round" />
         <path d="M98 76 Q100 78 102 76" fill="#f88998" opacity="0.6" />
-      </svg>
-    </div>
-  </div>
-
-  <div class="feriel-activator" id="ferielActivator" title="Ativar Feriel">
-    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <use href="#icAngel" />
+      </g>
     </svg>
   </div>
 
-  <!-- SPRITE ANJOS -->
-  <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
+  <!-- SPRITE ANJOS E DEFINIÇÕES GLOBAIS DE COR DA FERIEL -->
+  <svg width="0" height="0" style="position:absolute;overflow:hidden;pointer-events:none" aria-hidden="true"
+    focusable="false">
     <defs>
-      <symbol id="icAngel" viewBox="0 0 200 200">
-        <ellipse cx="100" cy="27" rx="42" ry="12" fill="url(#ferielHaloGlow)" />
-        <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="url(#ferielGold)" stroke-width="3.5" />
-        <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="#fffceb" stroke-width="1" opacity="0.9" />
-        <use href="#ferielStar" x="65" y="26" transform="scale(0.55)" transform-origin="65 26" />
-        <use href="#ferielStar" x="135" y="26" transform="scale(0.55)" transform-origin="135 26" />
+      <linearGradient id="ferielGold" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fdf4cf" />
+        <stop offset="30%" stop-color="#f3c445" />
+        <stop offset="70%" stop-color="#d4af37" />
+        <stop offset="100%" stop-color="#9a7318" />
+      </linearGradient>
+      <linearGradient id="ferielHair" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#fff4c2" />
+        <stop offset="35%" stop-color="#f9d35c" />
+        <stop offset="70%" stop-color="#e5a928" />
+        <stop offset="100%" stop-color="#b67a14" />
+      </linearGradient>
+      <linearGradient id="ferielSkin" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#fff8f2" />
+        <stop offset="100%" stop-color="#fedac2" />
+      </linearGradient>
+      <linearGradient id="ferielDress" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#ffffff" />
+        <stop offset="60%" stop-color="#faf7f0" />
+        <stop offset="100%" stop-color="#f2ebe0" />
+      </linearGradient>
+      <linearGradient id="ferielWing" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#ffffff" />
+        <stop offset="75%" stop-color="#fcf9f2" />
+        <stop offset="100%" stop-color="#f6edda" />
+      </linearGradient>
+      <radialGradient id="ferielHaloGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fff7d6" stop-opacity="0.95" />
+        <stop offset="50%" stop-color="#d4af37" stop-opacity="0.6" />
+        <stop offset="100%" stop-color="#d4af37" stop-opacity="0" />
+      </radialGradient>
+      <g id="ferielStar">
+        <path d="M0 -6 Q0 0 6 0 Q0 0 0 6 Q0 0 -6 0 Q0 0 0 -6 Z" fill="url(#ferielGold)" stroke="#c59118"
+          stroke-width="0.5" />
+        <circle cx="0" cy="0" r="1.2" fill="#fffdfa" />
+      </g>
+      <symbol id="icAngel" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <ellipse cx="100" cy="27" rx="42" ry="12" fill="url(#ferielHaloGlow)" />
+          <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="url(#ferielGold)" stroke-width="3.5" />
+          <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="#fffceb" stroke-width="1" opacity="0.9" />
+          <use href="#ferielStar" x="65" y="26" transform="scale(0.55)" transform-origin="65 26" />
+          <use href="#ferielStar" x="135" y="26" transform="scale(0.55)" transform-origin="135 26" />
 
-        <g class="wings">
-          <path
-            d="M84 86 C58 45 28 12 4 8 C14 32 16 52 24 70 C10 65 -4 68 -14 78 C-2 88 12 98 26 114 C12 114 2 120 0 128 C12 134 26 132 38 124 C50 114 68 100 84 86 Z"
-            fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
-          <path
-            d="M72 82 C48 46 25 22 10 18 C16 35 18 50 24 64 C14 62 4 64 -4 72 C5 80 18 88 28 100 C38 90 54 84 72 82 Z"
-            fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
-          <path d="M30 42 C32 55 34 65 38 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
-            opacity="0.8" />
-          <path d="M20 54 C24 65 26 74 28 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
-            opacity="0.75" />
-          <path d="M10 68 C14 76 18 82 22 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
-            opacity="0.7" />
+          <g class="wings">
+            <path
+              d="M84 86 C58 45 28 12 4 8 C14 32 16 52 24 70 C10 65 -4 68 -14 78 C-2 88 12 98 26 114 C12 114 2 120 0 128 C12 134 26 132 38 124 C50 114 68 100 84 86 Z"
+              fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
+            <path
+              d="M72 82 C48 46 25 22 10 18 C16 35 18 50 24 64 C14 62 4 64 -4 72 C5 80 18 88 28 100 C38 90 54 84 72 82 Z"
+              fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
+            <path d="M30 42 C32 55 34 65 38 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
+              opacity="0.8" />
+            <path d="M20 54 C24 65 26 74 28 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
+              opacity="0.75" />
+            <path d="M10 68 C14 76 18 82 22 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
+              opacity="0.7" />
 
-          <path
-            d="M116 86 C142 45 172 12 196 8 C186 32 184 52 176 70 C190 65 204 68 214 78 C202 88 188 98 174 114 C188 114 198 120 200 128 C188 134 174 132 162 124 C150 114 132 100 116 86 Z"
-            fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
-          <path
-            d="M128 82 C152 46 175 22 190 18 C184 35 182 50 176 64 C186 62 196 64 204 72 C195 80 182 88 172 100 C162 90 146 84 128 82 Z"
-            fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
-          <path d="M170 42 C168 55 166 65 162 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
-            opacity="0.8" />
-          <path d="M180 54 C176 65 174 74 172 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
-            opacity="0.75" />
-          <path d="M190 68 C186 76 182 82 178 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
-            opacity="0.7" />
-        </g>
+            <path
+              d="M116 86 C142 45 172 12 196 8 C186 32 184 52 176 70 C190 65 204 68 214 78 C202 88 188 98 174 114 C188 114 198 120 200 128 C188 134 174 132 162 124 C150 114 132 100 116 86 Z"
+              fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
+            <path
+              d="M128 82 C152 46 175 22 190 18 C184 35 182 50 176 64 C186 62 196 64 204 72 C195 80 182 88 172 100 C162 90 146 84 128 82 Z"
+              fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
+            <path d="M170 42 C168 55 166 65 162 78" fill="none" stroke="#d4af37" stroke-width="1.2"
+              stroke-linecap="round" opacity="0.8" />
+            <path d="M180 54 C176 65 174 74 172 85" fill="none" stroke="#d4af37" stroke-width="1.1"
+              stroke-linecap="round" opacity="0.75" />
+            <path d="M190 68 C186 76 182 82 178 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
+              opacity="0.7" />
+          </g>
 
-        <g class="hair-back">
-          <path
-            d="M72 45 C48 42 32 60 30 84 C26 96 24 112 30 124 C24 134 26 148 34 158 C42 168 54 170 64 163 C68 156 65 146 58 142 C50 138 42 132 44 120 C46 110 54 105 58 95 C62 84 66 74 72 45 Z"
-            fill="#a87515" opacity="0.75" />
-          <path
-            d="M128 45 C152 42 168 60 170 84 C174 96 176 112 170 124 C176 134 174 148 166 158 C158 168 146 170 136 163 C132 156 135 146 142 142 C150 138 158 132 156 120 C154 110 146 105 142 95 C138 84 134 74 128 45 Z"
-            fill="#a87515" opacity="0.75" />
+          <g class="hair-back">
+            <path
+              d="M72 45 C48 42 32 60 30 84 C26 96 24 112 30 124 C24 134 26 148 34 158 C42 168 54 170 64 163 C68 156 65 146 58 142 C50 138 42 132 44 120 C46 110 54 105 58 95 C62 84 66 74 72 45 Z"
+              fill="#a87515" opacity="0.75" />
+            <path
+              d="M128 45 C152 42 168 60 170 84 C174 96 176 112 170 124 C176 134 174 148 166 158 C158 168 146 170 136 163 C132 156 135 146 142 142 C150 138 158 132 156 120 C154 110 146 105 142 95 C138 84 134 74 128 45 Z"
+              fill="#a87515" opacity="0.75" />
 
-          <path d="M74 46 C52 45 36 62 34 85 C32 98 42 106 50 102 C58 98 56 86 52 78 C48 70 54 58 74 46 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-          <path d="M40 88 C28 98 26 115 34 128 C40 138 52 136 56 126 C60 116 50 108 44 104 C40 100 38 94 40 88 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-          <path
-            d="M36 122 C26 134 28 152 40 164 C50 172 64 168 68 156 C70 148 64 142 56 144 C48 146 42 154 36 146 C32 138 34 130 36 122 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path d="M74 46 C52 45 36 62 34 85 C32 98 42 106 50 102 C58 98 56 86 52 78 C48 70 54 58 74 46 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path d="M40 88 C28 98 26 115 34 128 C40 138 52 136 56 126 C60 116 50 108 44 104 C40 100 38 94 40 88 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path
+              d="M36 122 C26 134 28 152 40 164 C50 172 64 168 68 156 C70 148 64 142 56 144 C48 146 42 154 36 146 C32 138 34 130 36 122 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
 
-          <path d="M126 46 C148 45 164 62 166 85 C168 98 158 106 150 102 C142 98 144 86 148 78 C152 70 146 58 126 46 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-          <path
-            d="M160 88 C172 98 174 115 166 128 C160 138 148 136 144 126 C140 116 150 108 156 104 C160 100 162 94 160 88 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-          <path
-            d="M164 122 C174 134 172 152 160 164 C150 172 136 168 132 156 C130 148 136 142 144 144 C152 146 158 154 164 146 C168 138 166 130 164 122 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path
+              d="M126 46 C148 45 164 62 166 85 C168 98 158 106 150 102 C142 98 144 86 148 78 C152 70 146 58 126 46 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path
+              d="M160 88 C172 98 174 115 166 128 C160 138 148 136 144 126 C140 116 150 108 156 104 C160 100 162 94 160 88 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+            <path
+              d="M164 122 C174 134 172 152 160 164 C150 172 136 168 132 156 C130 148 136 142 144 144 C152 146 158 154 164 146 C168 138 166 130 164 122 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
 
-          <path d="M68 90 C60 112 55 138 64 162 C68 169 76 167 78 158 C80 144 76 128 78 105 Z" fill="url(#ferielHair)"
+            <path d="M68 90 C60 112 55 138 64 162 C68 169 76 167 78 158 C80 144 76 128 78 105 Z" fill="url(#ferielHair)"
+              stroke="#c59118" stroke-width="0.8" />
+            <path d="M132 90 C140 112 145 138 136 162 C132 169 124 167 122 158 C120 144 124 128 122 105 Z"
+              fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+          </g>
+
+          <g class="dress">
+            <path d="M80 88 C62 112 40 152 28 182 C65 196 135 196 172 182 C160 152 138 112 120 88 C110 82 90 82 80 88 Z"
+              fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="2" />
+
+            <path d="M72 110 C62 135 48 162 44 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M128 110 C138 135 152 162 156 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M90 98 C86 128 80 160 76 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M110 98 C114 128 120 160 124 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M100 102 L100 188" fill="none" stroke="#f0e9dd" stroke-width="1.2" />
+
+            <path
+              d="M28 182 C65 196 135 196 172 182 C170 187 166 191 160 193 C128 203 72 203 40 193 C34 191 30 187 28 182 Z"
+              fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+            <path d="M32 178 C68 191 132 191 168 178" fill="none" stroke="#fff1b8" stroke-width="1.5"
+              stroke-linecap="round" />
+            <path
+              d="M36 184 Q44 187 52 186 Q60 189 68 188 Q76 191 84 190 Q92 192 100 192 Q108 192 116 190 Q124 191 132 188 Q140 189 148 186 Q156 187 164 184"
+              fill="none" stroke="#fff8d4" stroke-width="1.3" stroke-linecap="round" />
+
+            <path d="M82 92 C94 97 106 97 118 92" fill="none" stroke="url(#ferielGold)" stroke-width="3"
+              stroke-linecap="round" />
+            <path d="M83 92 C94 97 106 97 117 92" fill="none" stroke="#fff8d4" stroke-width="1"
+              stroke-linecap="round" />
+
+            <use href="#ferielStar" class="dress-star" x="100" y="106" transform="scale(1.2)"
+              transform-origin="100 106" />
+            <use href="#ferielStar" class="dress-star" x="74" y="132" transform="scale(0.9)"
+              transform-origin="74 132" />
+            <use href="#ferielStar" class="dress-star" x="126" y="130" transform="scale(0.85)"
+              transform-origin="126 130" />
+            <use href="#ferielStar" class="dress-star" x="100" y="145" transform="scale(1.1)"
+              transform-origin="100 145" />
+            <use href="#ferielStar" class="dress-star" x="58" y="156" transform="scale(0.95)"
+              transform-origin="58 156" />
+            <use href="#ferielStar" class="dress-star" x="142" y="154" transform="scale(0.95)"
+              transform-origin="142 154" />
+            <use href="#ferielStar" class="dress-star" x="80" y="166" transform="scale(0.8)"
+              transform-origin="80 166" />
+            <use href="#ferielStar" class="dress-star" x="120" y="165" transform="scale(0.85)"
+              transform-origin="120 165" />
+            <use href="#ferielStar" class="dress-star" x="100" y="174" transform="scale(0.9)"
+              transform-origin="100 174" />
+
+            <circle cx="88" cy="120" r="1.5" fill="#fde047" />
+            <circle cx="112" cy="122" r="1.3" fill="#fde047" />
+            <circle cx="68" cy="142" r="1.4" fill="#fde047" />
+            <circle cx="132" cy="140" r="1.4" fill="#fde047" />
+            <circle cx="92" cy="156" r="1.3" fill="#fff9db" />
+            <circle cx="108" cy="158" r="1.2" fill="#fff9db" />
+            <circle cx="48" cy="170" r="1.3" fill="#fde047" />
+            <circle cx="152" cy="168" r="1.3" fill="#fde047" />
+            <circle cx="68" cy="178" r="1.2" fill="#fde047" />
+            <circle cx="132" cy="178" r="1.2" fill="#fde047" />
+          </g>
+
+          <path d="M80 90 C70 100 64 116 58 132 C56 137 63 140 67 132 C72 116 78 105 85 95 Z" fill="url(#ferielDress)"
+            stroke="url(#ferielGold)" stroke-width="1.8" />
+          <ellipse cx="62" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
+
+          <path d="M120 90 C130 100 136 116 142 132 C144 137 137 140 133 132 C128 116 122 105 115 95 Z"
+            fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="1.8" />
+          <ellipse cx="138" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
+
+          <circle cx="62" cy="135" r="4.5" fill="#fcdbb6" />
+          <circle cx="138" cy="135" r="4.5" fill="#fcdbb6" />
+
+          <rect x="93" y="74" width="14" height="14" rx="5" fill="url(#ferielSkin)" />
+          <circle cx="100" cy="64" r="24" fill="url(#ferielSkin)" />
+
+          <path d="M78 68 C70 78 65 92 68 106 C70 114 78 116 80 108 C82 98 76 86 82 74 Z" fill="url(#ferielHair)"
             stroke="#c59118" stroke-width="0.8" />
-          <path d="M132 90 C140 112 145 138 136 162 C132 169 124 167 122 158 C120 144 124 128 122 105 Z"
+          <path d="M68 104 C64 112 66 122 72 126 C76 128 80 124 78 118 C76 112 70 112 68 104 Z" fill="url(#ferielHair)"
+            stroke="#c59118" stroke-width="0.8" />
+          <path d="M76 74 C72 84 69 96 72 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
+
+          <path d="M122 68 C130 78 135 92 132 106 C130 114 122 116 120 108 C118 98 124 86 118 74 Z"
             fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+          <path d="M132 104 C136 112 134 122 128 126 C124 128 120 124 122 118 C124 112 130 112 132 104 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+          <path d="M124 74 C128 84 131 96 128 108" fill="none" stroke="#fff4c2" stroke-width="1"
+            stroke-linecap="round" />
+
+          <path d="M76 60 C72 38 85 34 100 34 C115 34 128 38 124 60 C120 48 114 44 100 44 C86 44 80 48 76 60 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+          <path d="M80 50 C86 42 98 42 104 52 C98 48 88 47 80 50 Z" fill="#fff6c7" opacity="0.95" />
+          <path d="M78 56 C74 60 73 68 77 74 C80 72 80 66 78 56 Z" fill="url(#ferielHair)" stroke="#c59118"
+            stroke-width="0.8" />
+          <path d="M122 56 C126 60 127 68 123 74 C120 72 120 66 122 56 Z" fill="url(#ferielHair)" stroke="#c59118"
+            stroke-width="0.8" />
+          <path d="M102 46 C110 40 120 42 122 52 C116 46 108 45 102 46 Z" fill="#fff6c7" opacity="0.9" />
+
+          <ellipse cx="81" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
+          <ellipse cx="119" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
+
+          <g class="eyes">
+            <path d="M82 56 C85 54 90 54 93 56" fill="none" stroke="#a36e18" stroke-width="1.2"
+              stroke-linecap="round" />
+            <path d="M107 56 C110 54 115 54 118 56" fill="none" stroke="#a36e18" stroke-width="1.2"
+              stroke-linecap="round" />
+
+            <path d="M83 63 C85 58 92 58 95 63" fill="none" stroke="#23140a" stroke-width="2.2"
+              stroke-linecap="round" />
+            <path d="M94 62 L96.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
+
+            <path d="M105 63 C108 58 115 58 117 63" fill="none" stroke="#23140a" stroke-width="2.2"
+              stroke-linecap="round" />
+            <path d="M116 62 L118.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
+
+            <ellipse cx="89" cy="65" rx="4.2" ry="5.8" fill="#301809" />
+            <ellipse cx="111" cy="65" rx="4.2" ry="5.8" fill="#301809" />
+
+            <path d="M86 67 C87.5 69.5 91 69.5 92.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
+              stroke-linecap="round" />
+            <path d="M108 67 C109.5 69.5 113 69.5 114.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
+              stroke-linecap="round" />
+
+            <circle cx="87.5" cy="63" r="1.8" fill="#ffffff" />
+            <circle cx="109.5" cy="63" r="1.8" fill="#ffffff" />
+            <circle cx="91" cy="67" r="0.9" fill="#ffffff" />
+            <circle cx="113" cy="67" r="0.9" fill="#ffffff" />
+          </g>
+
+          <circle cx="100" cy="71" r="0.9" fill="#e89e82" />
+          <path d="M96.5 75 Q100 78 103.5 75" fill="none" stroke="#c85665" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M98 76 Q100 78 102 76" fill="#f88998" opacity="0.6" />
         </g>
-
-        <g class="dress">
-          <path d="M80 88 C62 112 40 152 28 182 C65 196 135 196 172 182 C160 152 138 112 120 88 C110 82 90 82 80 88 Z"
-            fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="2" />
-
-          <path d="M72 110 C62 135 48 162 44 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
-            stroke-linecap="round" />
-          <path d="M128 110 C138 135 152 162 156 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
-            stroke-linecap="round" />
-          <path d="M90 98 C86 128 80 160 76 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
-            stroke-linecap="round" />
-          <path d="M110 98 C114 128 120 160 124 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
-            stroke-linecap="round" />
-          <path d="M100 102 L100 188" fill="none" stroke="#f0e9dd" stroke-width="1.2" />
-
-          <path
-            d="M28 182 C65 196 135 196 172 182 C170 187 166 191 160 193 C128 203 72 203 40 193 C34 191 30 187 28 182 Z"
-            fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
-          <path d="M32 178 C68 191 132 191 168 178" fill="none" stroke="#fff1b8" stroke-width="1.5"
-            stroke-linecap="round" />
-          <path
-            d="M36 184 Q44 187 52 186 Q60 189 68 188 Q76 191 84 190 Q92 192 100 192 Q108 192 116 190 Q124 191 132 188 Q140 189 148 186 Q156 187 164 184"
-            fill="none" stroke="#fff8d4" stroke-width="1.3" stroke-linecap="round" />
-
-          <path d="M82 92 C94 97 106 97 118 92" fill="none" stroke="url(#ferielGold)" stroke-width="3"
-            stroke-linecap="round" />
-          <path d="M83 92 C94 97 106 97 117 92" fill="none" stroke="#fff8d4" stroke-width="1" stroke-linecap="round" />
-
-          <use href="#ferielStar" class="dress-star" x="100" y="106" transform="scale(1.2)"
-            transform-origin="100 106" />
-          <use href="#ferielStar" class="dress-star" x="74" y="132" transform="scale(0.9)" transform-origin="74 132" />
-          <use href="#ferielStar" class="dress-star" x="126" y="130" transform="scale(0.85)"
-            transform-origin="126 130" />
-          <use href="#ferielStar" class="dress-star" x="100" y="145" transform="scale(1.1)"
-            transform-origin="100 145" />
-          <use href="#ferielStar" class="dress-star" x="58" y="156" transform="scale(0.95)" transform-origin="58 156" />
-          <use href="#ferielStar" class="dress-star" x="142" y="154" transform="scale(0.95)"
-            transform-origin="142 154" />
-          <use href="#ferielStar" class="dress-star" x="80" y="166" transform="scale(0.8)" transform-origin="80 166" />
-          <use href="#ferielStar" class="dress-star" x="120" y="165" transform="scale(0.85)"
-            transform-origin="120 165" />
-          <use href="#ferielStar" class="dress-star" x="100" y="174" transform="scale(0.9)"
-            transform-origin="100 174" />
-
-          <circle cx="88" cy="120" r="1.5" fill="#fde047" />
-          <circle cx="112" cy="122" r="1.3" fill="#fde047" />
-          <circle cx="68" cy="142" r="1.4" fill="#fde047" />
-          <circle cx="132" cy="140" r="1.4" fill="#fde047" />
-          <circle cx="92" cy="156" r="1.3" fill="#fff9db" />
-          <circle cx="108" cy="158" r="1.2" fill="#fff9db" />
-          <circle cx="48" cy="170" r="1.3" fill="#fde047" />
-          <circle cx="152" cy="168" r="1.3" fill="#fde047" />
-          <circle cx="68" cy="178" r="1.2" fill="#fde047" />
-          <circle cx="132" cy="178" r="1.2" fill="#fde047" />
-        </g>
-
-        <path d="M80 90 C70 100 64 116 58 132 C56 137 63 140 67 132 C72 116 78 105 85 95 Z" fill="url(#ferielDress)"
-          stroke="url(#ferielGold)" stroke-width="1.8" />
-        <ellipse cx="62" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
-
-        <path d="M120 90 C130 100 136 116 142 132 C144 137 137 140 133 132 C128 116 122 105 115 95 Z"
-          fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="1.8" />
-        <ellipse cx="138" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
-
-        <circle cx="62" cy="135" r="4.5" fill="#fcdbb6" />
-        <circle cx="138" cy="135" r="4.5" fill="#fcdbb6" />
-
-        <rect x="93" y="74" width="14" height="14" rx="5" fill="url(#ferielSkin)" />
-        <circle cx="100" cy="64" r="24" fill="url(#ferielSkin)" />
-
-        <path d="M78 68 C70 78 65 92 68 106 C70 114 78 116 80 108 C82 98 76 86 82 74 Z" fill="url(#ferielHair)"
-          stroke="#c59118" stroke-width="0.8" />
-        <path d="M68 104 C64 112 66 122 72 126 C76 128 80 124 78 118 C76 112 70 112 68 104 Z" fill="url(#ferielHair)"
-          stroke="#c59118" stroke-width="0.8" />
-        <path d="M76 74 C72 84 69 96 72 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
-
-        <path d="M122 68 C130 78 135 92 132 106 C130 114 122 116 120 108 C118 98 124 86 118 74 Z"
-          fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
-        <path d="M132 104 C136 112 134 122 128 126 C124 128 120 124 122 118 C124 112 130 112 132 104 Z"
-          fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
-        <path d="M124 74 C128 84 131 96 128 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
-
-        <path d="M76 60 C72 38 85 34 100 34 C115 34 128 38 124 60 C120 48 114 44 100 44 C86 44 80 48 76 60 Z"
-          fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-        <path d="M80 50 C86 42 98 42 104 52 C98 48 88 47 80 50 Z" fill="#fff6c7" opacity="0.95" />
-        <path d="M78 56 C74 60 73 68 77 74 C80 72 80 66 78 56 Z" fill="url(#ferielHair)" stroke="#c59118"
-          stroke-width="0.8" />
-        <path d="M122 56 C126 60 127 68 123 74 C120 72 120 66 122 56 Z" fill="url(#ferielHair)" stroke="#c59118"
-          stroke-width="0.8" />
-        <path d="M102 46 C110 40 120 42 122 52 C116 46 108 45 102 46 Z" fill="#fff6c7" opacity="0.9" />
-
-        <ellipse cx="81" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
-        <ellipse cx="119" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
-
-        <g class="eyes">
-          <path d="M82 56 C85 54 90 54 93 56" fill="none" stroke="#a36e18" stroke-width="1.2" stroke-linecap="round" />
-          <path d="M107 56 C110 54 115 54 118 56" fill="none" stroke="#a36e18" stroke-width="1.2"
-            stroke-linecap="round" />
-
-          <path d="M83 63 C85 58 92 58 95 63" fill="none" stroke="#23140a" stroke-width="2.2" stroke-linecap="round" />
-          <path d="M94 62 L96.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
-
-          <path d="M105 63 C108 58 115 58 117 63" fill="none" stroke="#23140a" stroke-width="2.2"
-            stroke-linecap="round" />
-          <path d="M116 62 L118.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
-
-          <ellipse cx="89" cy="65" rx="4.2" ry="5.8" fill="#301809" />
-          <ellipse cx="111" cy="65" rx="4.2" ry="5.8" fill="#301809" />
-
-          <path d="M86 67 C87.5 69.5 91 69.5 92.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
-            stroke-linecap="round" />
-          <path d="M108 67 C109.5 69.5 113 69.5 114.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
-            stroke-linecap="round" />
-
-          <circle cx="87.5" cy="63" r="1.8" fill="#ffffff" />
-          <circle cx="109.5" cy="63" r="1.8" fill="#ffffff" />
-          <circle cx="91" cy="67" r="0.9" fill="#ffffff" />
-          <circle cx="113" cy="67" r="0.9" fill="#ffffff" />
-        </g>
-
-        <circle cx="100" cy="71" r="0.9" fill="#e89e82" />
-        <path d="M96.5 75 Q100 78 103.5 75" fill="none" stroke="#c85665" stroke-width="1.8" stroke-linecap="round" />
-        <path d="M98 76 Q100 78 102 76" fill="#f88998" opacity="0.6" />
       </symbol>
     </defs>
   </svg>
@@ -4352,38 +4645,38 @@
         <i class="shooting" style="--top:58%;--delay:9.5s"></i>
         <span class="angel angel--soft angel--hide-xs"
           style="--s:128px;--top:16%;--left:3%;--dur:29s;--delay:-2s;--r:-3deg;--dx1:20px;--dy1:-24px;--dx2:-14px;--dy2:-48px;--dx3:24px;--dy3:-18px;--o:1"><svg
-            viewBox="0 0 200 200">
-            <use href="#icAngel" />
+            viewBox="0 0 260 260">
+            <use href="#icAngel" width="260" height="260" />
           </svg></span>
         <span class="angel"
           style="--s:170px;--top:38%;--right:3%;--dur:34s;--delay:-9s;--r:4deg;--dx1:-22px;--dy1:-22px;--dx2:16px;--dy2:-52px;--dx3:-26px;--dy3:-16px;--o:1"><svg
-            viewBox="0 0 200 200">
-            <use href="#icAngel" />
+            viewBox="0 0 260 260">
+            <use href="#icAngel" width="260" height="260" />
           </svg></span>
         <span class="angel angel--hide-sm"
           style="--s:78px;--top:52%;--left:7%;--dur:23s;--delay:-5s;--r:6deg;--dx1:18px;--dy1:-20px;--dx2:-12px;--dy2:-38px;--dx3:22px;--dy3:-14px;--o:1"><svg
-            viewBox="0 0 200 200">
-            <use href="#icAngel" />
+            viewBox="0 0 260 260">
+            <use href="#icAngel" width="260" height="260" />
           </svg></span>
         <span class="angel angel--soft"
           style="--s:116px;--bottom:16%;--right:9%;--dur:31s;--delay:-14s;--r:-5deg;--dx1:-20px;--dy1:-24px;--dx2:14px;--dy2:-44px;--dx3:-24px;--dy3:-18px;--o:1"><svg
-            viewBox="0 0 200 200">
-            <use href="#icAngel" />
+            viewBox="0 0 260 260">
+            <use href="#icAngel" width="260" height="260" />
           </svg></span>
         <span class="angel angel--hide-sm"
           style="--s:68px;--top:70%;--right:26%;--dur:21s;--delay:-7.5s;--r:4deg;--dx1:16px;--dy1:-18px;--dx2:-10px;--dy2:-34px;--dx3:20px;--dy3:-12px;--o:1"><svg
-            viewBox="0 0 200 200">
-            <use href="#icAngel" />
+            viewBox="0 0 260 260">
+            <use href="#icAngel" width="260" height="260" />
           </svg></span>
         <span class="angel angel--hide-xs"
           style="--s:96px;--bottom:11%;--left:15%;--dur:27s;--delay:-18s;--r:3deg;--dx1:20px;--dy1:-22px;--dx2:-14px;--dy2:-42px;--dx3:26px;--dy3:-16px;--o:1"><svg
-            viewBox="0 0 200 200">
-            <use href="#icAngel" />
+            viewBox="0 0 260 260">
+            <use href="#icAngel" width="260" height="260" />
           </svg></span>
         <span class="angel angel--soft angel--hide-sm"
           style="--s:62px;--top:8%;--left:31%;--dur:25s;--delay:-11s;--r:-5deg;--dx1:14px;--dy1:-16px;--dx2:-10px;--dy2:-30px;--dx3:18px;--dy3:-12px;--o:1"><svg
-            viewBox="0 0 200 200">
-            <use href="#icAngel" />
+            viewBox="0 0 260 260">
+            <use href="#icAngel" width="260" height="260" />
           </svg></span>
       </div>
 
@@ -5718,7 +6011,7 @@
           if (!isActive || isHovered || isTalking) { scheduleNextMove(1000); return; }
           const w = window.innerWidth;
           const h = window.innerHeight;
-          const size = 108;
+          const size = container.offsetWidth || 128;
           const pad = 30;
           const x = Math.random() * (w - size - pad * 2) + pad;
           const y = Math.random() * (h - size - pad * 2) + pad;
@@ -5770,7 +6063,7 @@
       btnToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         isActive = false;
-        container.style.display = 'none';
+        container.classList.add('is-deactivated');
         activator.classList.add('show');
         clearTimeout(moveTimeout);
         speechBubble.classList.remove('show');
@@ -5781,7 +6074,7 @@
 
       activator.addEventListener('click', () => {
         isActive = true;
-        container.style.display = 'block';
+        container.classList.remove('is-deactivated');
         activator.classList.remove('show');
         scheduleNextMove(1000);
       });
