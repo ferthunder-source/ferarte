@@ -717,6 +717,31 @@
       transform-origin: 50% 60%;
     }
 
+    @keyframes noteTwinkle {
+
+      0%,
+      100% {
+        opacity: 0.75;
+        transform: translateY(0) scale(0.96);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateY(-3.5px) scale(1.06);
+        filter: drop-shadow(0 0 4px rgba(253, 224, 71, 0.8));
+      }
+    }
+
+    .angel-notes,
+    .trumpet-burst,
+    .violin-notes,
+    .flute-notes,
+    .lyre-notes,
+    .lute-notes,
+    .bell-sparkles {
+      animation: noteTwinkle 2.8s ease-in-out infinite alternate;
+    }
+
     .angel--soft {
       opacity: var(--o, .9);
     }
@@ -4397,203 +4422,571 @@
           stroke-width="0.5" />
         <circle cx="0" cy="0" r="1.2" fill="#fffdfa" />
       </g>
-      <symbol id="icAngel" viewBox="0 0 260 260">
-        <g transform="translate(30, 30)">
-          <ellipse cx="100" cy="27" rx="42" ry="12" fill="url(#ferielHaloGlow)" />
-          <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="url(#ferielGold)" stroke-width="3.5" />
-          <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="#fffceb" stroke-width="1" opacity="0.9" />
-          <use href="#ferielStar" x="65" y="26" transform="scale(0.55)" transform-origin="65 26" />
-          <use href="#ferielStar" x="135" y="26" transform="scale(0.55)" transform-origin="135 26" />
 
-          <g class="wings">
-            <path
-              d="M84 86 C58 45 28 12 4 8 C14 32 16 52 24 70 C10 65 -4 68 -14 78 C-2 88 12 98 26 114 C12 114 2 120 0 128 C12 134 26 132 38 124 C50 114 68 100 84 86 Z"
-              fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
-            <path
-              d="M72 82 C48 46 25 22 10 18 C16 35 18 50 24 64 C14 62 4 64 -4 72 C5 80 18 88 28 100 C38 90 54 84 72 82 Z"
-              fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
-            <path d="M30 42 C32 55 34 65 38 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
-              opacity="0.8" />
-            <path d="M20 54 C24 65 26 74 28 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
-              opacity="0.75" />
-            <path d="M10 68 C14 76 18 82 22 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
-              opacity="0.7" />
+      <!-- NOTAS MUSICAIS CELESTIAIS -->
+      <g id="noteQuarter">
+        <ellipse cx="3" cy="7" rx="3" ry="2.2" transform="rotate(-20 3 7)" fill="url(#ferielGold)" />
+        <line x1="5.5" y1="6" x2="5.5" y2="0" stroke="url(#ferielGold)" stroke-width="1.2" stroke-linecap="round" />
+      </g>
+      <g id="noteEighth">
+        <ellipse cx="3" cy="7" rx="3" ry="2.2" transform="rotate(-20 3 7)" fill="url(#ferielGold)" />
+        <line x1="5.5" y1="6" x2="5.5" y2="0" stroke="url(#ferielGold)" stroke-width="1.2" stroke-linecap="round" />
+        <path d="M5.5 0 C7 1 8 3 8 5" fill="none" stroke="url(#ferielGold)" stroke-width="1.2" stroke-linecap="round" />
+      </g>
+      <g id="noteDouble">
+        <ellipse cx="3" cy="8" rx="2.8" ry="2" transform="rotate(-20 3 8)" fill="url(#ferielGold)" />
+        <ellipse cx="11" cy="6" rx="2.8" ry="2" transform="rotate(-20 11 6)" fill="url(#ferielGold)" />
+        <line x1="5.2" y1="7" x2="5.2" y2="1" stroke="url(#ferielGold)" stroke-width="1.1" />
+        <line x1="13.2" y1="5" x2="13.2" y2="-1" stroke="url(#ferielGold)" stroke-width="1.1" />
+        <polygon points="5.2,1 13.2,-1 13.2,1.2 5.2,3.2" fill="url(#ferielGold)" />
+      </g>
 
-            <path
-              d="M116 86 C142 45 172 12 196 8 C186 32 184 52 176 70 C190 65 204 68 214 78 C202 88 188 98 174 114 C188 114 198 120 200 128 C188 134 174 132 162 124 C150 114 132 100 116 86 Z"
-              fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
-            <path
-              d="M128 82 C152 46 175 22 190 18 C184 35 182 50 176 64 C186 62 196 64 204 72 C195 80 182 88 172 100 C162 90 146 84 128 82 Z"
-              fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
-            <path d="M170 42 C168 55 166 65 162 78" fill="none" stroke="#d4af37" stroke-width="1.2"
-              stroke-linecap="round" opacity="0.8" />
-            <path d="M180 54 C176 65 174 74 172 85" fill="none" stroke="#d4af37" stroke-width="1.1"
-              stroke-linecap="round" opacity="0.75" />
-            <path d="M190 68 C186 76 182 82 178 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
-              opacity="0.7" />
-          </g>
+      <!-- BASE DA ANJINHA (CORPO, CABELO, ASAS, VESTIDO E ROSTO) -->
+      <g id="icAngelBase">
 
-          <g class="hair-back">
-            <path
-              d="M72 45 C48 42 32 60 30 84 C26 96 24 112 30 124 C24 134 26 148 34 158 C42 168 54 170 64 163 C68 156 65 146 58 142 C50 138 42 132 44 120 C46 110 54 105 58 95 C62 84 66 74 72 45 Z"
-              fill="#a87515" opacity="0.75" />
-            <path
-              d="M128 45 C152 42 168 60 170 84 C174 96 176 112 170 124 C176 134 174 148 166 158 C158 168 146 170 136 163 C132 156 135 146 142 142 C150 138 158 132 156 120 C154 110 146 105 142 95 C138 84 134 74 128 45 Z"
-              fill="#a87515" opacity="0.75" />
+        <ellipse cx="100" cy="27" rx="42" ry="12" fill="url(#ferielHaloGlow)" />
+        <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="url(#ferielGold)" stroke-width="3.5" />
+        <ellipse cx="100" cy="27" rx="36" ry="9" fill="none" stroke="#fffceb" stroke-width="1" opacity="0.9" />
+        <use href="#ferielStar" x="65" y="26" transform="scale(0.55)" transform-origin="65 26" />
+        <use href="#ferielStar" x="135" y="26" transform="scale(0.55)" transform-origin="135 26" />
 
-            <path d="M74 46 C52 45 36 62 34 85 C32 98 42 106 50 102 C58 98 56 86 52 78 C48 70 54 58 74 46 Z"
-              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-            <path d="M40 88 C28 98 26 115 34 128 C40 138 52 136 56 126 C60 116 50 108 44 104 C40 100 38 94 40 88 Z"
-              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-            <path
-              d="M36 122 C26 134 28 152 40 164 C50 172 64 168 68 156 C70 148 64 142 56 144 C48 146 42 154 36 146 C32 138 34 130 36 122 Z"
-              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+        <g class="wings">
+          <path
+            d="M84 86 C58 45 28 12 4 8 C14 32 16 52 24 70 C10 65 -4 68 -14 78 C-2 88 12 98 26 114 C12 114 2 120 0 128 C12 134 26 132 38 124 C50 114 68 100 84 86 Z"
+            fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
+          <path
+            d="M72 82 C48 46 25 22 10 18 C16 35 18 50 24 64 C14 62 4 64 -4 72 C5 80 18 88 28 100 C38 90 54 84 72 82 Z"
+            fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
+          <path d="M30 42 C32 55 34 65 38 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
+            opacity="0.8" />
+          <path d="M20 54 C24 65 26 74 28 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
+            opacity="0.75" />
+          <path d="M10 68 C14 76 18 82 22 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
+            opacity="0.7" />
 
-            <path
-              d="M126 46 C148 45 164 62 166 85 C168 98 158 106 150 102 C142 98 144 86 148 78 C152 70 146 58 126 46 Z"
-              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-            <path
-              d="M160 88 C172 98 174 115 166 128 C160 138 148 136 144 126 C140 116 150 108 156 104 C160 100 162 94 160 88 Z"
-              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-            <path
-              d="M164 122 C174 134 172 152 160 164 C150 172 136 168 132 156 C130 148 136 142 144 144 C152 146 158 154 164 146 C168 138 166 130 164 122 Z"
-              fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+          <path
+            d="M116 86 C142 45 172 12 196 8 C186 32 184 52 176 70 C190 65 204 68 214 78 C202 88 188 98 174 114 C188 114 198 120 200 128 C188 134 174 132 162 124 C150 114 132 100 116 86 Z"
+            fill="url(#ferielWing)" stroke="url(#ferielGold)" stroke-width="2.6" stroke-linejoin="round" />
+          <path
+            d="M128 82 C152 46 175 22 190 18 C184 35 182 50 176 64 C186 62 196 64 204 72 C195 80 182 88 172 100 C162 90 146 84 128 82 Z"
+            fill="#ffffff" stroke="url(#ferielGold)" stroke-width="1.3" opacity="0.95" />
+          <path d="M170 42 C168 55 166 65 162 78" fill="none" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round"
+            opacity="0.8" />
+          <path d="M180 54 C176 65 174 74 172 85" fill="none" stroke="#d4af37" stroke-width="1.1" stroke-linecap="round"
+            opacity="0.75" />
+          <path d="M190 68 C186 76 182 82 178 92" fill="none" stroke="#d4af37" stroke-width="1" stroke-linecap="round"
+            opacity="0.7" />
+        </g>
 
-            <path d="M68 90 C60 112 55 138 64 162 C68 169 76 167 78 158 C80 144 76 128 78 105 Z" fill="url(#ferielHair)"
-              stroke="#c59118" stroke-width="0.8" />
-            <path d="M132 90 C140 112 145 138 136 162 C132 169 124 167 122 158 C120 144 124 128 122 105 Z"
-              fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
-          </g>
+        <g class="hair-back">
+          <path
+            d="M72 45 C48 42 32 60 30 84 C26 96 24 112 30 124 C24 134 26 148 34 158 C42 168 54 170 64 163 C68 156 65 146 58 142 C50 138 42 132 44 120 C46 110 54 105 58 95 C62 84 66 74 72 45 Z"
+            fill="#a87515" opacity="0.75" />
+          <path
+            d="M128 45 C152 42 168 60 170 84 C174 96 176 112 170 124 C176 134 174 148 166 158 C158 168 146 170 136 163 C132 156 135 146 142 142 C150 138 158 132 156 120 C154 110 146 105 142 95 C138 84 134 74 128 45 Z"
+            fill="#a87515" opacity="0.75" />
 
-          <g class="dress">
-            <path d="M80 88 C62 112 40 152 28 182 C65 196 135 196 172 182 C160 152 138 112 120 88 C110 82 90 82 80 88 Z"
-              fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="2" />
+          <path d="M74 46 C52 45 36 62 34 85 C32 98 42 106 50 102 C58 98 56 86 52 78 C48 70 54 58 74 46 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+          <path d="M40 88 C28 98 26 115 34 128 C40 138 52 136 56 126 C60 116 50 108 44 104 C40 100 38 94 40 88 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+          <path
+            d="M36 122 C26 134 28 152 40 164 C50 172 64 168 68 156 C70 148 64 142 56 144 C48 146 42 154 36 146 C32 138 34 130 36 122 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
 
-            <path d="M72 110 C62 135 48 162 44 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
-              stroke-linecap="round" />
-            <path d="M128 110 C138 135 152 162 156 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
-              stroke-linecap="round" />
-            <path d="M90 98 C86 128 80 160 76 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
-              stroke-linecap="round" />
-            <path d="M110 98 C114 128 120 160 124 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
-              stroke-linecap="round" />
-            <path d="M100 102 L100 188" fill="none" stroke="#f0e9dd" stroke-width="1.2" />
+          <path d="M126 46 C148 45 164 62 166 85 C168 98 158 106 150 102 C142 98 144 86 148 78 C152 70 146 58 126 46 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+          <path
+            d="M160 88 C172 98 174 115 166 128 C160 138 148 136 144 126 C140 116 150 108 156 104 C160 100 162 94 160 88 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+          <path
+            d="M164 122 C174 134 172 152 160 164 C150 172 136 168 132 156 C130 148 136 142 144 144 C152 146 158 154 164 146 C168 138 166 130 164 122 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
 
-            <path
-              d="M28 182 C65 196 135 196 172 182 C170 187 166 191 160 193 C128 203 72 203 40 193 C34 191 30 187 28 182 Z"
-              fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
-            <path d="M32 178 C68 191 132 191 168 178" fill="none" stroke="#fff1b8" stroke-width="1.5"
-              stroke-linecap="round" />
-            <path
-              d="M36 184 Q44 187 52 186 Q60 189 68 188 Q76 191 84 190 Q92 192 100 192 Q108 192 116 190 Q124 191 132 188 Q140 189 148 186 Q156 187 164 184"
-              fill="none" stroke="#fff8d4" stroke-width="1.3" stroke-linecap="round" />
-
-            <path d="M82 92 C94 97 106 97 118 92" fill="none" stroke="url(#ferielGold)" stroke-width="3"
-              stroke-linecap="round" />
-            <path d="M83 92 C94 97 106 97 117 92" fill="none" stroke="#fff8d4" stroke-width="1"
-              stroke-linecap="round" />
-
-            <use href="#ferielStar" class="dress-star" x="100" y="106" transform="scale(1.2)"
-              transform-origin="100 106" />
-            <use href="#ferielStar" class="dress-star" x="74" y="132" transform="scale(0.9)"
-              transform-origin="74 132" />
-            <use href="#ferielStar" class="dress-star" x="126" y="130" transform="scale(0.85)"
-              transform-origin="126 130" />
-            <use href="#ferielStar" class="dress-star" x="100" y="145" transform="scale(1.1)"
-              transform-origin="100 145" />
-            <use href="#ferielStar" class="dress-star" x="58" y="156" transform="scale(0.95)"
-              transform-origin="58 156" />
-            <use href="#ferielStar" class="dress-star" x="142" y="154" transform="scale(0.95)"
-              transform-origin="142 154" />
-            <use href="#ferielStar" class="dress-star" x="80" y="166" transform="scale(0.8)"
-              transform-origin="80 166" />
-            <use href="#ferielStar" class="dress-star" x="120" y="165" transform="scale(0.85)"
-              transform-origin="120 165" />
-            <use href="#ferielStar" class="dress-star" x="100" y="174" transform="scale(0.9)"
-              transform-origin="100 174" />
-
-            <circle cx="88" cy="120" r="1.5" fill="#fde047" />
-            <circle cx="112" cy="122" r="1.3" fill="#fde047" />
-            <circle cx="68" cy="142" r="1.4" fill="#fde047" />
-            <circle cx="132" cy="140" r="1.4" fill="#fde047" />
-            <circle cx="92" cy="156" r="1.3" fill="#fff9db" />
-            <circle cx="108" cy="158" r="1.2" fill="#fff9db" />
-            <circle cx="48" cy="170" r="1.3" fill="#fde047" />
-            <circle cx="152" cy="168" r="1.3" fill="#fde047" />
-            <circle cx="68" cy="178" r="1.2" fill="#fde047" />
-            <circle cx="132" cy="178" r="1.2" fill="#fde047" />
-          </g>
-
-          <path d="M80 90 C70 100 64 116 58 132 C56 137 63 140 67 132 C72 116 78 105 85 95 Z" fill="url(#ferielDress)"
-            stroke="url(#ferielGold)" stroke-width="1.8" />
-          <ellipse cx="62" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
-
-          <path d="M120 90 C130 100 136 116 142 132 C144 137 137 140 133 132 C128 116 122 105 115 95 Z"
-            fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="1.8" />
-          <ellipse cx="138" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
-
-          <circle cx="62" cy="135" r="4.5" fill="#fcdbb6" />
-          <circle cx="138" cy="135" r="4.5" fill="#fcdbb6" />
-
-          <rect x="93" y="74" width="14" height="14" rx="5" fill="url(#ferielSkin)" />
-          <circle cx="100" cy="64" r="24" fill="url(#ferielSkin)" />
-
-          <path d="M78 68 C70 78 65 92 68 106 C70 114 78 116 80 108 C82 98 76 86 82 74 Z" fill="url(#ferielHair)"
+          <path d="M68 90 C60 112 55 138 64 162 C68 169 76 167 78 158 C80 144 76 128 78 105 Z" fill="url(#ferielHair)"
             stroke="#c59118" stroke-width="0.8" />
-          <path d="M68 104 C64 112 66 122 72 126 C76 128 80 124 78 118 C76 112 70 112 68 104 Z" fill="url(#ferielHair)"
-            stroke="#c59118" stroke-width="0.8" />
-          <path d="M76 74 C72 84 69 96 72 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
+          <path d="M132 90 C140 112 145 138 136 162 C132 169 124 167 122 158 C120 144 124 128 122 105 Z"
+            fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+        </g>
 
-          <path d="M122 68 C130 78 135 92 132 106 C130 114 122 116 120 108 C118 98 124 86 118 74 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
-          <path d="M132 104 C136 112 134 122 128 126 C124 128 120 124 122 118 C124 112 130 112 132 104 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
-          <path d="M124 74 C128 84 131 96 128 108" fill="none" stroke="#fff4c2" stroke-width="1"
+        <g class="dress">
+          <path d="M80 88 C62 112 40 152 28 182 C65 196 135 196 172 182 C160 152 138 112 120 88 C110 82 90 82 80 88 Z"
+            fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="2" />
+
+          <path d="M72 110 C62 135 48 162 44 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
+            stroke-linecap="round" />
+          <path d="M128 110 C138 135 152 162 156 180" fill="none" stroke="#e8ded0" stroke-width="1.2"
+            stroke-linecap="round" />
+          <path d="M90 98 C86 128 80 160 76 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
+            stroke-linecap="round" />
+          <path d="M110 98 C114 128 120 160 124 186" fill="none" stroke="#e8ded0" stroke-width="1.2"
+            stroke-linecap="round" />
+          <path d="M100 102 L100 188" fill="none" stroke="#f0e9dd" stroke-width="1.2" />
+
+          <path
+            d="M28 182 C65 196 135 196 172 182 C170 187 166 191 160 193 C128 203 72 203 40 193 C34 191 30 187 28 182 Z"
+            fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+          <path d="M32 178 C68 191 132 191 168 178" fill="none" stroke="#fff1b8" stroke-width="1.5"
+            stroke-linecap="round" />
+          <path
+            d="M36 184 Q44 187 52 186 Q60 189 68 188 Q76 191 84 190 Q92 192 100 192 Q108 192 116 190 Q124 191 132 188 Q140 189 148 186 Q156 187 164 184"
+            fill="none" stroke="#fff8d4" stroke-width="1.3" stroke-linecap="round" />
+
+          <path d="M82 92 C94 97 106 97 118 92" fill="none" stroke="url(#ferielGold)" stroke-width="3"
+            stroke-linecap="round" />
+          <path d="M83 92 C94 97 106 97 117 92" fill="none" stroke="#fff8d4" stroke-width="1" stroke-linecap="round" />
+
+          <use href="#ferielStar" class="dress-star" x="100" y="106" transform="scale(1.2)"
+            transform-origin="100 106" />
+          <use href="#ferielStar" class="dress-star" x="74" y="132" transform="scale(0.9)" transform-origin="74 132" />
+          <use href="#ferielStar" class="dress-star" x="126" y="130" transform="scale(0.85)"
+            transform-origin="126 130" />
+          <use href="#ferielStar" class="dress-star" x="100" y="145" transform="scale(1.1)"
+            transform-origin="100 145" />
+          <use href="#ferielStar" class="dress-star" x="58" y="156" transform="scale(0.95)" transform-origin="58 156" />
+          <use href="#ferielStar" class="dress-star" x="142" y="154" transform="scale(0.95)"
+            transform-origin="142 154" />
+          <use href="#ferielStar" class="dress-star" x="80" y="166" transform="scale(0.8)" transform-origin="80 166" />
+          <use href="#ferielStar" class="dress-star" x="120" y="165" transform="scale(0.85)"
+            transform-origin="120 165" />
+          <use href="#ferielStar" class="dress-star" x="100" y="174" transform="scale(0.9)"
+            transform-origin="100 174" />
+
+          <circle cx="88" cy="120" r="1.5" fill="#fde047" />
+          <circle cx="112" cy="122" r="1.3" fill="#fde047" />
+          <circle cx="68" cy="142" r="1.4" fill="#fde047" />
+          <circle cx="132" cy="140" r="1.4" fill="#fde047" />
+          <circle cx="92" cy="156" r="1.3" fill="#fff9db" />
+          <circle cx="108" cy="158" r="1.2" fill="#fff9db" />
+          <circle cx="48" cy="170" r="1.3" fill="#fde047" />
+          <circle cx="152" cy="168" r="1.3" fill="#fde047" />
+          <circle cx="68" cy="178" r="1.2" fill="#fde047" />
+          <circle cx="132" cy="178" r="1.2" fill="#fde047" />
+        </g>
+
+
+
+        <rect x="93" y="74" width="14" height="14" rx="5" fill="url(#ferielSkin)" />
+        <circle cx="100" cy="64" r="24" fill="url(#ferielSkin)" />
+
+        <path d="M78 68 C70 78 65 92 68 106 C70 114 78 116 80 108 C82 98 76 86 82 74 Z" fill="url(#ferielHair)"
+          stroke="#c59118" stroke-width="0.8" />
+        <path d="M68 104 C64 112 66 122 72 126 C76 128 80 124 78 118 C76 112 70 112 68 104 Z" fill="url(#ferielHair)"
+          stroke="#c59118" stroke-width="0.8" />
+        <path d="M76 74 C72 84 69 96 72 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
+
+        <path d="M122 68 C130 78 135 92 132 106 C130 114 122 116 120 108 C118 98 124 86 118 74 Z"
+          fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+        <path d="M132 104 C136 112 134 122 128 126 C124 128 120 124 122 118 C124 112 130 112 132 104 Z"
+          fill="url(#ferielHair)" stroke="#c59118" stroke-width="0.8" />
+        <path d="M124 74 C128 84 131 96 128 108" fill="none" stroke="#fff4c2" stroke-width="1" stroke-linecap="round" />
+
+        <path d="M76 60 C72 38 85 34 100 34 C115 34 128 38 124 60 C120 48 114 44 100 44 C86 44 80 48 76 60 Z"
+          fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
+        <path d="M80 50 C86 42 98 42 104 52 C98 48 88 47 80 50 Z" fill="#fff6c7" opacity="0.95" />
+        <path d="M78 56 C74 60 73 68 77 74 C80 72 80 66 78 56 Z" fill="url(#ferielHair)" stroke="#c59118"
+          stroke-width="0.8" />
+        <path d="M122 56 C126 60 127 68 123 74 C120 72 120 66 122 56 Z" fill="url(#ferielHair)" stroke="#c59118"
+          stroke-width="0.8" />
+        <path d="M102 46 C110 40 120 42 122 52 C116 46 108 45 102 46 Z" fill="#fff6c7" opacity="0.9" />
+
+        <ellipse cx="81" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
+        <ellipse cx="119" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
+
+        <g class="eyes">
+          <path d="M82 56 C85 54 90 54 93 56" fill="none" stroke="#a36e18" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M107 56 C110 54 115 54 118 56" fill="none" stroke="#a36e18" stroke-width="1.2"
             stroke-linecap="round" />
 
-          <path d="M76 60 C72 38 85 34 100 34 C115 34 128 38 124 60 C120 48 114 44 100 44 C86 44 80 48 76 60 Z"
-            fill="url(#ferielHair)" stroke="#c59118" stroke-width="1" />
-          <path d="M80 50 C86 42 98 42 104 52 C98 48 88 47 80 50 Z" fill="#fff6c7" opacity="0.95" />
-          <path d="M78 56 C74 60 73 68 77 74 C80 72 80 66 78 56 Z" fill="url(#ferielHair)" stroke="#c59118"
-            stroke-width="0.8" />
-          <path d="M122 56 C126 60 127 68 123 74 C120 72 120 66 122 56 Z" fill="url(#ferielHair)" stroke="#c59118"
-            stroke-width="0.8" />
-          <path d="M102 46 C110 40 120 42 122 52 C116 46 108 45 102 46 Z" fill="#fff6c7" opacity="0.9" />
+          <path d="M83 63 C85 58 92 58 95 63" fill="none" stroke="#23140a" stroke-width="2.2" stroke-linecap="round" />
+          <path d="M94 62 L96.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
 
-          <ellipse cx="81" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
-          <ellipse cx="119" cy="71" rx="5" ry="3.5" fill="#ff9eb5" opacity="0.55" />
+          <path d="M105 63 C108 58 115 58 117 63" fill="none" stroke="#23140a" stroke-width="2.2"
+            stroke-linecap="round" />
+          <path d="M116 62 L118.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
 
-          <g class="eyes">
-            <path d="M82 56 C85 54 90 54 93 56" fill="none" stroke="#a36e18" stroke-width="1.2"
-              stroke-linecap="round" />
-            <path d="M107 56 C110 54 115 54 118 56" fill="none" stroke="#a36e18" stroke-width="1.2"
-              stroke-linecap="round" />
+          <ellipse cx="89" cy="65" rx="4.2" ry="5.8" fill="#301809" />
+          <ellipse cx="111" cy="65" rx="4.2" ry="5.8" fill="#301809" />
 
-            <path d="M83 63 C85 58 92 58 95 63" fill="none" stroke="#23140a" stroke-width="2.2"
-              stroke-linecap="round" />
-            <path d="M94 62 L96.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
+          <path d="M86 67 C87.5 69.5 91 69.5 92.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
+            stroke-linecap="round" />
+          <path d="M108 67 C109.5 69.5 113 69.5 114.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
+            stroke-linecap="round" />
 
-            <path d="M105 63 C108 58 115 58 117 63" fill="none" stroke="#23140a" stroke-width="2.2"
-              stroke-linecap="round" />
-            <path d="M116 62 L118.5 60" fill="none" stroke="#23140a" stroke-width="1.4" stroke-linecap="round" />
+          <circle cx="87.5" cy="63" r="1.8" fill="#ffffff" />
+          <circle cx="109.5" cy="63" r="1.8" fill="#ffffff" />
+          <circle cx="91" cy="67" r="0.9" fill="#ffffff" />
+          <circle cx="113" cy="67" r="0.9" fill="#ffffff" />
+        </g>
 
-            <ellipse cx="89" cy="65" rx="4.2" ry="5.8" fill="#301809" />
-            <ellipse cx="111" cy="65" rx="4.2" ry="5.8" fill="#301809" />
+        <circle cx="100" cy="71" r="0.9" fill="#e89e82" />
+        <path d="M96.5 75 Q100 78 103.5 75" fill="none" stroke="#c85665" stroke-width="1.8" stroke-linecap="round" />
+        <path d="M98 76 Q100 78 102 76" fill="#f88998" opacity="0.6" />
 
-            <path d="M86 67 C87.5 69.5 91 69.5 92.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
-              stroke-linecap="round" />
-            <path d="M108 67 C109.5 69.5 113 69.5 114.5 67" fill="none" stroke="#b47820" stroke-width="1.5"
-              stroke-linecap="round" />
+      </g>
 
-            <circle cx="87.5" cy="63" r="1.8" fill="#ffffff" />
-            <circle cx="109.5" cy="63" r="1.8" fill="#ffffff" />
-            <circle cx="91" cy="67" r="0.9" fill="#ffffff" />
-            <circle cx="113" cy="67" r="0.9" fill="#ffffff" />
+      <!-- BRAÇOS PADRÃO (MÃOS JUNTAS) -->
+      <g id="ferielDefaultArms">
+        <path d="M80 90 C70 100 64 116 58 132 C56 137 63 140 67 132 C72 116 78 105 85 95 Z" fill="url(#ferielDress)"
+          stroke="url(#ferielGold)" stroke-width="1.8" />
+        <ellipse cx="62" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
+
+        <path d="M120 90 C130 100 136 116 142 132 C144 137 137 140 133 132 C128 116 122 105 115 95 Z"
+          fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="1.8" />
+        <ellipse cx="138" cy="132" rx="4.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.8" />
+
+        <circle cx="62" cy="135" r="4.5" fill="#fcdbb6" />
+        <circle cx="138" cy="135" r="4.5" fill="#fcdbb6" />
+      </g>
+
+      <!-- SÍMBOLO ORIGINAL COMPLETO (COMPATIBILIDADE) -->
+      <symbol id="icAngel" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <use href="#icAngelBase" />
+          <use href="#ferielDefaultArms" />
+        </g>
+      </symbol>
+
+      <!-- 1. ANJO COM HARPA CELESTIAL -->
+      <symbol id="icAngelHarp" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <use href="#icAngelBase" />
+
+          <!-- HARPA CELESTIAL -->
+          <g class="instrument-harp">
+            <!-- Braço Esquerdo segurando a coluna da harpa -->
+            <path d="M80 90 C70 98 62 108 68 120 C74 128 85 125 90 115 C88 108 84 100 80 90 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.8" />
+            <ellipse cx="70" cy="122" rx="4" ry="2.2" fill="none" stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="72" cy="124" r="4.2" fill="#fcdbb6" />
+
+            <!-- Coluna curvada dourada -->
+            <path d="M62 82 C56 102 58 130 68 152 C70 156 76 156 78 150 C74 132 70 106 74 86 C75 80 70 78 64 80 Z"
+              fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+            <circle cx="63" cy="80" r="4.5" fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+            <circle cx="63" cy="80" r="2" fill="#fffdfa" />
+
+            <!-- Arco Harmônico Superior -->
+            <path d="M64 80 C80 82 105 76 122 88 C126 92 124 96 118 96 C105 88 84 92 68 86 Z" fill="url(#ferielGold)"
+              stroke="#9a7318" stroke-width="0.8" />
+
+            <!-- Caixa de Ressonância (apoio) -->
+            <path d="M120 92 C116 112 105 138 74 152 C70 154 68 150 72 146 C98 134 108 112 112 94 Z"
+              fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+
+            <!-- Cordas Douradas Reluzentes -->
+            <line x1="74" y1="86" x2="74" y2="148" stroke="#fffceb" stroke-width="0.9" opacity="0.95" />
+            <line x1="82" y1="85" x2="82" y2="142" stroke="#fffceb" stroke-width="0.9" opacity="0.95" />
+            <line x1="90" y1="84" x2="90" y2="134" stroke="#fffceb" stroke-width="0.9" opacity="0.95" />
+            <line x1="98" y1="85" x2="98" y2="124" stroke="#fffceb" stroke-width="0.9" opacity="0.95" />
+            <line x1="106" y1="88" x2="106" y2="114" stroke="#fffceb" stroke-width="0.9" opacity="0.95" />
+            <line x1="114" y1="92" x2="114" y2="104" stroke="#fffceb" stroke-width="0.9" opacity="0.95" />
+
+            <!-- Braço Direito dedilhando as cordas -->
+            <path d="M120 90 C128 98 130 110 120 122 C114 128 102 126 96 118 C102 112 112 106 118 95 Z"
+              fill="url(#ferielDress)" stroke="url(#ferielGold)" stroke-width="1.8" />
+            <ellipse cx="118" cy="123" rx="4" ry="2.2" fill="none" stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="116" cy="125" r="4.2" fill="#fcdbb6" />
+            <path d="M96 118 Q92 115 90 118 Q94 122 98 120" fill="#fcdbb6" />
+
+            <!-- Notas Musicais Flutuantes -->
+            <g class="angel-notes" opacity="0.9">
+              <use href="#noteEighth" x="50" y="72" transform="scale(0.85)" />
+              <use href="#noteQuarter" x="124" y="68" transform="scale(0.9)" />
+              <use href="#noteDouble" x="58" y="110" transform="scale(0.75)" />
+              <circle cx="86" cy="74" r="1.5" fill="#fff9db" />
+              <circle cx="115" cy="80" r="1.2" fill="#fde047" />
+            </g>
           </g>
 
-          <circle cx="100" cy="71" r="0.9" fill="#e89e82" />
-          <path d="M96.5 75 Q100 78 103.5 75" fill="none" stroke="#c85665" stroke-width="1.8" stroke-linecap="round" />
-          <path d="M98 76 Q100 78 102 76" fill="#f88998" opacity="0.6" />
+        </g>
+      </symbol>
+
+      <!-- 2. ANJO COM TROMBETA / CLARIM CELESTIAL -->
+      <symbol id="icAngelTrumpet" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <use href="#icAngelBase" />
+
+          <!-- TROMBETA CELESTIAL / CLARIM DE OURO -->
+          <g class="instrument-trumpet">
+            <!-- Braço Esquerdo erguido sustentando o clarim -->
+            <path d="M80 90 C70 85 58 75 62 64 C65 58 74 62 82 72 Z" fill="url(#ferielDress)" stroke="url(#ferielGold)"
+              stroke-width="1.8" />
+            <ellipse cx="64" cy="65" rx="3.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="65" cy="66" r="4" fill="#fcdbb6" />
+
+            <!-- Braço Direito erguido junto à boca -->
+            <path d="M120 90 C125 80 118 72 108 72 C102 72 100 78 105 85 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.8" />
+            <ellipse cx="106" cy="74" rx="3.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="104" cy="76" r="4" fill="#fcdbb6" />
+
+            <!-- Tubo reto dourado em direção ao céu (da boca 98,75 até 42,42) -->
+            <line x1="98" y1="75" x2="42" y2="42" stroke="url(#ferielGold)" stroke-width="3" stroke-linecap="round" />
+            <line x1="98" y1="74" x2="44" y2="42" stroke="#fffceb" stroke-width="1.1" stroke-linecap="round" />
+            <!-- Campana -->
+            <path d="M44 43 L32 32 C30 30 36 24 40 26 L48 39 Z" fill="url(#ferielGold)" stroke="#9a7318"
+              stroke-width="0.8" />
+            <ellipse cx="36" cy="28" rx="6" ry="3.5" transform="rotate(-30 36 28)" fill="#8c6d1f"
+              stroke="url(#ferielGold)" stroke-width="1.2" />
+            <circle cx="98" cy="75" r="2" fill="url(#ferielGold)" />
+
+            <!-- Flâmula Celestial Dourada -->
+            <path d="M72 58 L58 74 L68 78 L56 94 L82 78 L78 62 Z" fill="url(#ferielGold)" stroke="#9a7318"
+              stroke-width="0.8" opacity="0.95" />
+            <path d="M68 66 L74 72" stroke="#fffceb" stroke-width="1" />
+            <circle cx="70" cy="78" r="1.5" fill="#fffdfa" />
+
+            <!-- Ondas Sonoras Celestiais e Notas -->
+            <g class="trumpet-burst" opacity="0.95">
+              <path d="M30 24 A10 10 0 0 0 22 36" fill="none" stroke="#fff7d6" stroke-width="1.5"
+                stroke-linecap="round" />
+              <path d="M24 18 A18 18 0 0 0 14 38" fill="none" stroke="url(#ferielGold)" stroke-width="1.3"
+                stroke-linecap="round" />
+              <use href="#noteQuarter" x="12" y="16" transform="scale(0.9)" />
+              <use href="#noteDouble" x="24" y="8" transform="scale(0.85)" />
+              <use href="#noteEighth" x="38" y="10" transform="scale(0.8)" />
+              <circle cx="28" cy="18" r="1.8" fill="#fffdfa" />
+            </g>
+          </g>
+
+        </g>
+      </symbol>
+
+      <!-- 3. ANJO COM VIOLINO CELESTIAL & ARCO -->
+      <symbol id="icAngelViolin" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <use href="#icAngelBase" />
+
+          <!-- VIOLINO CELESTIAL & ARCO -->
+          <g class="instrument-violin">
+            <!-- Corpo do violino -->
+            <path
+              d="M88 88 C82 82 72 84 68 94 C65 100 70 104 68 110 C65 116 56 122 62 130 C68 136 80 134 86 125 C90 118 86 114 88 108 C90 102 96 96 88 88 Z"
+              fill="#c27d24" stroke="url(#ferielGold)" stroke-width="1.5" />
+            <path
+              d="M85 91 C80 86 73 88 70 95 C68 100 71 103 69 108 C67 113 60 118 64 125 C69 130 78 128 83 121 C86 116 83 113 85 108 C87 103 91 98 85 91 Z"
+              fill="#df9b3a" opacity="0.8" />
+            <rect x="74" y="104" width="3" height="5" rx="1" fill="#301809" />
+            <path d="M72 98 Q74 102 71 106" fill="none" stroke="#301809" stroke-width="1" stroke-linecap="round" />
+            <path d="M82 102 Q84 106 81 110" fill="none" stroke="#301809" stroke-width="1" stroke-linecap="round" />
+            <line x1="84" y1="88" x2="96" y2="76" stroke="#301809" stroke-width="3" stroke-linecap="round" />
+            <circle cx="98" cy="74" r="2.5" fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+            <line x1="68" y1="126" x2="96" y2="76" stroke="#fffceb" stroke-width="0.8" />
+
+            <!-- Braço Esquerdo sustentando o braço do violino -->
+            <path d="M80 90 C78 84 86 78 94 78 C96 84 90 92 82 94 Z" fill="url(#ferielDress)" stroke="url(#ferielGold)"
+              stroke-width="1.6" />
+            <circle cx="96" cy="78" r="3.8" fill="#fcdbb6" />
+
+            <!-- Braço Direito segurando o arco -->
+            <path d="M120 90 C128 102 124 116 112 124 C104 122 108 112 114 102 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.8" />
+            <ellipse cx="112" cy="123" rx="3.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="110" cy="124" r="4" fill="#fcdbb6" />
+
+            <!-- Arco do Violino -->
+            <line x1="58" y1="92" x2="116" y2="128" stroke="url(#ferielGold)" stroke-width="1.6"
+              stroke-linecap="round" />
+            <line x1="59" y1="94" x2="114" y2="129" stroke="#fffdfa" stroke-width="0.7" opacity="0.9" />
+
+            <!-- Notas Musicais -->
+            <g class="violin-notes" opacity="0.9">
+              <use href="#noteDouble" x="48" y="82" transform="scale(0.85)" />
+              <use href="#noteQuarter" x="122" y="74" transform="scale(0.85)" />
+              <use href="#noteEighth" x="52" y="132" transform="scale(0.8)" />
+              <circle cx="56" cy="88" r="1.5" fill="#fff9db" />
+            </g>
+          </g>
+
+        </g>
+      </symbol>
+
+      <!-- 4. ANJO COM FLAUTA TRANSVERSAL DOURADA -->
+      <symbol id="icAngelFlute" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <use href="#icAngelBase" />
+
+          <!-- FLAUTA TRANSVERSAL DOURADA -->
+          <g class="instrument-flute">
+            <!-- Braço Esquerdo erguido -->
+            <path d="M80 90 C78 82 86 76 95 78 C96 84 90 92 82 94 Z" fill="url(#ferielDress)" stroke="url(#ferielGold)"
+              stroke-width="1.6" />
+            <circle cx="96" cy="78" r="3.8" fill="#fcdbb6" />
+
+            <!-- Braço Direito erguido sustentando o corpo da flauta -->
+            <path d="M120 90 C126 84 132 78 138 80 C138 86 130 94 122 96 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="136" cy="80" r="3.8" fill="#fcdbb6" />
+
+            <!-- Flauta Transversal -->
+            <line x1="90" y1="76" x2="154" y2="74" stroke="url(#ferielGold)" stroke-width="2.6"
+              stroke-linecap="round" />
+            <line x1="90" y1="75.5" x2="154" y2="73.5" stroke="#fffceb" stroke-width="1" stroke-linecap="round" />
+            <ellipse cx="98" cy="76" rx="2.5" ry="1.6" fill="#fffdfa" stroke="url(#ferielGold)" stroke-width="0.8" />
+            <circle cx="114" cy="74" r="1.2" fill="#fffdfa" />
+            <circle cx="122" cy="74" r="1.2" fill="#fffdfa" />
+            <circle cx="130" cy="74" r="1.2" fill="#fffdfa" />
+            <circle cx="140" cy="74" r="1.2" fill="#fffdfa" />
+            <circle cx="146" cy="74" r="1.2" fill="#fffdfa" />
+
+            <!-- Notas e Brilhos Saindo da Flauta -->
+            <g class="flute-notes" opacity="0.95">
+              <use href="#noteQuarter" x="156" y="62" transform="scale(0.85)" />
+              <use href="#noteEighth" x="166" y="74" transform="scale(0.9)" />
+              <use href="#noteDouble" x="152" y="86" transform="scale(0.8)" />
+              <circle cx="158" cy="72" r="1.8" fill="#fffdfa" />
+              <circle cx="168" cy="64" r="1.4" fill="#fde047" />
+            </g>
+          </g>
+
+        </g>
+      </symbol>
+
+      <!-- 5. ANJO COM LIRA CELESTIAL -->
+      <symbol id="icAngelLyre" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <use href="#icAngelBase" />
+
+          <!-- LIRA CELESTIAL -->
+          <g class="instrument-lyre">
+            <!-- Braço Esquerdo segurando a haste da lira -->
+            <path d="M80 90 C72 98 70 108 76 118 C82 124 90 120 92 110 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.8" />
+            <circle cx="78" cy="118" r="4.2" fill="#fcdbb6" />
+
+            <!-- Braço Direito dedilhando -->
+            <path d="M120 90 C128 98 126 112 116 120 C108 124 102 116 106 108 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.8" />
+            <circle cx="114" cy="120" r="4.2" fill="#fcdbb6" />
+
+            <!-- Base inferior -->
+            <path d="M86 138 C86 148 114 148 114 138 Z" fill="url(#ferielGold)" stroke="#9a7318" stroke-width="1" />
+            <!-- Hastes curvadas -->
+            <path d="M86 140 C80 130 76 114 80 100 C82 94 88 96 86 102 C82 112 86 126 90 136 Z" fill="url(#ferielGold)"
+              stroke="#9a7318" stroke-width="0.8" />
+            <path d="M114 140 C120 130 124 114 120 100 C118 94 112 96 114 102 C118 112 114 126 110 136 Z"
+              fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+            <!-- Barra Transversal -->
+            <path d="M80 102 L120 102" stroke="url(#ferielGold)" stroke-width="3" stroke-linecap="round" />
+            <circle cx="80" cy="102" r="2.5" fill="#fffdfa" stroke="url(#ferielGold)" stroke-width="0.8" />
+            <circle cx="120" cy="102" r="2.5" fill="#fffdfa" stroke="url(#ferielGold)" stroke-width="0.8" />
+
+            <!-- Cordas da Lira -->
+            <line x1="88" y1="103" x2="90" y2="138" stroke="#fffceb" stroke-width="0.9" />
+            <line x1="94" y1="103" x2="95" y2="138" stroke="#fffceb" stroke-width="0.9" />
+            <line x1="100" y1="103" x2="100" y2="138" stroke="#fffceb" stroke-width="0.9" />
+            <line x1="106" y1="103" x2="105" y2="138" stroke="#fffceb" stroke-width="0.9" />
+            <line x1="112" y1="103" x2="110" y2="138" stroke="#fffceb" stroke-width="0.9" />
+
+            <!-- Notas Musicais -->
+            <g class="lyre-notes" opacity="0.9">
+              <use href="#noteQuarter" x="68" y="92" transform="scale(0.85)" />
+              <use href="#noteEighth" x="122" y="88" transform="scale(0.85)" />
+              <circle cx="76" cy="86" r="1.4" fill="#fff9db" />
+              <circle cx="125" cy="98" r="1.4" fill="#fde047" />
+            </g>
+          </g>
+
+        </g>
+      </symbol>
+
+      <!-- 6. ANJO COM ALAÚDE / MANDOLIM CELESTIAL -->
+      <symbol id="icAngelLute" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <use href="#icAngelBase" />
+
+          <!-- ALAÚDE / MANDOLIM CELESTIAL -->
+          <g class="instrument-lute">
+            <!-- Braço Esquerdo segurando a escala do alaúde -->
+            <path d="M120 90 C125 86 132 88 136 95 C134 100 126 104 120 98 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="134" cy="96" r="3.8" fill="#fcdbb6" />
+
+            <!-- Braço Direito tocando sobre a boca -->
+            <path d="M80 90 C72 100 68 114 76 124 C82 130 92 126 90 116 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.8" />
+            <circle cx="80" cy="122" r="4" fill="#fcdbb6" />
+
+            <!-- Caixa acústica em forma de pêra -->
+            <path d="M64 126 C58 140 74 154 88 146 C98 138 98 122 86 114 C76 108 68 116 64 126 Z"
+              fill="url(#ferielGold)" stroke="#9a7318" stroke-width="1" />
+            <ellipse cx="78" cy="132" rx="13" ry="15" transform="rotate(-30 78 132)" fill="#e5a928" opacity="0.85" />
+            <circle cx="80" cy="128" r="4" fill="#301809" stroke="url(#ferielGold)" stroke-width="0.8" />
+            <circle cx="80" cy="128" r="1.5" fill="url(#ferielGold)" />
+
+            <!-- Braço com trastes -->
+            <line x1="88" y1="120" x2="134" y2="94" stroke="#4a250a" stroke-width="3.5" stroke-linecap="round" />
+            <line x1="88" y1="119" x2="134" y2="93" stroke="url(#ferielGold)" stroke-width="0.8" />
+            <path d="M134 94 L142 98 L140 102 L132 96 Z" fill="url(#ferielGold)" stroke="#9a7318" stroke-width="0.8" />
+
+            <!-- Cordas -->
+            <line x1="72" y1="140" x2="134" y2="94" stroke="#fffceb" stroke-width="0.8" />
+            <line x1="74" y1="142" x2="134" y2="95" stroke="#fffceb" stroke-width="0.8" />
+
+            <!-- Notas Musicais -->
+            <g class="lute-notes" opacity="0.9">
+              <use href="#noteDouble" x="52" y="112" transform="scale(0.85)" />
+              <use href="#noteQuarter" x="136" y="80" transform="scale(0.85)" />
+              <circle cx="58" cy="124" r="1.4" fill="#fff9db" />
+            </g>
+          </g>
+
+        </g>
+      </symbol>
+
+      <!-- 7. ANJO COM CARRILHÃO / SINOS CELESTIAIS -->
+      <symbol id="icAngelBell" viewBox="0 0 260 260">
+        <g transform="translate(30, 30)">
+          <use href="#icAngelBase" />
+
+          <!-- CARRILHÃO / SINOS CELESTIAIS -->
+          <g class="instrument-bell">
+            <!-- Braço Esquerdo posto sobre o coração -->
+            <path d="M80 90 C75 98 80 108 88 114 C94 116 98 110 94 102 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.8" />
+            <ellipse cx="90" cy="114" rx="3.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="91" cy="115" r="4" fill="#fcdbb6" />
+
+            <!-- Braço Direito erguido segurando o carrilhão -->
+            <path d="M120 90 C128 85 132 76 136 68 C136 62 128 66 122 75 Z" fill="url(#ferielDress)"
+              stroke="url(#ferielGold)" stroke-width="1.8" />
+            <ellipse cx="134" cy="68" rx="3.5" ry="2" fill="none" stroke="url(#ferielGold)" stroke-width="1.6" />
+            <circle cx="134" cy="69" r="4" fill="#fcdbb6" />
+
+            <!-- Haste do carrilhão -->
+            <line x1="134" y1="78" x2="134" y2="48" stroke="url(#ferielGold)" stroke-width="2.5"
+              stroke-linecap="round" />
+            <circle cx="134" cy="78" r="2.5" fill="url(#ferielGold)" />
+            <path d="M118 56 Q134 46 150 56" fill="none" stroke="url(#ferielGold)" stroke-width="2"
+              stroke-linecap="round" />
+
+            <!-- Sinos Dourados -->
+            <path d="M130 50 C130 46 138 46 138 50 L140 58 C141 60 127 60 128 58 Z" fill="url(#ferielGold)"
+              stroke="#9a7318" stroke-width="0.8" />
+            <circle cx="134" cy="60" r="1.5" fill="#fffdfa" />
+
+            <path d="M115 58 C115 55 121 55 121 58 L123 64 C124 66 112 66 113 64 Z" fill="url(#ferielGold)"
+              stroke="#9a7318" stroke-width="0.7" />
+            <circle cx="118" cy="65" r="1.2" fill="#fffdfa" />
+
+            <path d="M147 58 C147 55 153 55 153 58 L155 64 C156 66 144 66 145 64 Z" fill="url(#ferielGold)"
+              stroke="#9a7318" stroke-width="0.7" />
+            <circle cx="150" cy="65" r="1.2" fill="#fffdfa" />
+
+            <!-- Ondas de Ressonância -->
+            <g class="bell-sparkles" opacity="0.95">
+              <path d="M144 44 A12 12 0 0 1 156 52" fill="none" stroke="#fffceb" stroke-width="1.2"
+                stroke-linecap="round" />
+              <path d="M148 38 A18 18 0 0 1 164 50" fill="none" stroke="url(#ferielGold)" stroke-width="1"
+                stroke-linecap="round" />
+              <use href="#noteQuarter" x="154" y="32" transform="scale(0.85)" />
+              <use href="#noteDouble" x="106" y="44" transform="scale(0.8)" />
+              <circle cx="154" cy="46" r="1.8" fill="#fffdfa" />
+              <circle cx="114" cy="48" r="1.5" fill="#fff9db" />
+            </g>
+          </g>
+
         </g>
       </symbol>
     </defs>
@@ -4644,39 +5037,39 @@
         <i class="shooting" style="--top:16%;--delay:3s"></i>
         <i class="shooting" style="--top:58%;--delay:9.5s"></i>
         <span class="angel angel--soft angel--hide-xs"
-          style="--s:128px;--top:16%;--left:3%;--dur:29s;--delay:-2s;--r:-3deg;--dx1:20px;--dy1:-24px;--dx2:-14px;--dy2:-48px;--dx3:24px;--dy3:-18px;--o:1"><svg
-            viewBox="0 0 260 260">
-            <use href="#icAngel" width="260" height="260" />
+          style="--s:128px;--top:16%;--left:3%;--dur:29s;--delay:-2s;--r:-3deg;--dx1:20px;--dy1:-24px;--dx2:-14px;--dy2:-48px;--dx3:24px;--dy3:-18px;--o:1"
+          title="Anjo com Harpa Celestial"><svg viewBox="0 0 260 260">
+            <use href="#icAngelHarp" width="260" height="260" />
           </svg></span>
         <span class="angel"
-          style="--s:170px;--top:38%;--right:3%;--dur:34s;--delay:-9s;--r:4deg;--dx1:-22px;--dy1:-22px;--dx2:16px;--dy2:-52px;--dx3:-26px;--dy3:-16px;--o:1"><svg
-            viewBox="0 0 260 260">
-            <use href="#icAngel" width="260" height="260" />
+          style="--s:170px;--top:38%;--right:3%;--dur:34s;--delay:-9s;--r:4deg;--dx1:-22px;--dy1:-22px;--dx2:16px;--dy2:-52px;--dx3:-26px;--dy3:-16px;--o:1"
+          title="Anjo com Trombeta Celestial"><svg viewBox="0 0 260 260">
+            <use href="#icAngelTrumpet" width="260" height="260" />
           </svg></span>
         <span class="angel angel--hide-sm"
-          style="--s:78px;--top:52%;--left:7%;--dur:23s;--delay:-5s;--r:6deg;--dx1:18px;--dy1:-20px;--dx2:-12px;--dy2:-38px;--dx3:22px;--dy3:-14px;--o:1"><svg
-            viewBox="0 0 260 260">
-            <use href="#icAngel" width="260" height="260" />
+          style="--s:78px;--top:52%;--left:7%;--dur:23s;--delay:-5s;--r:6deg;--dx1:18px;--dy1:-20px;--dx2:-12px;--dy2:-38px;--dx3:22px;--dy3:-14px;--o:1"
+          title="Anjo com Violino Celestial"><svg viewBox="0 0 260 260">
+            <use href="#icAngelViolin" width="260" height="260" />
           </svg></span>
         <span class="angel angel--soft"
-          style="--s:116px;--bottom:16%;--right:9%;--dur:31s;--delay:-14s;--r:-5deg;--dx1:-20px;--dy1:-24px;--dx2:14px;--dy2:-44px;--dx3:-24px;--dy3:-18px;--o:1"><svg
-            viewBox="0 0 260 260">
-            <use href="#icAngel" width="260" height="260" />
+          style="--s:116px;--bottom:16%;--right:9%;--dur:31s;--delay:-14s;--r:-5deg;--dx1:-20px;--dy1:-24px;--dx2:14px;--dy2:-44px;--dx3:-24px;--dy3:-18px;--o:1"
+          title="Anjo com Flauta Transversal Dourada"><svg viewBox="0 0 260 260">
+            <use href="#icAngelFlute" width="260" height="260" />
           </svg></span>
         <span class="angel angel--hide-sm"
-          style="--s:68px;--top:70%;--right:26%;--dur:21s;--delay:-7.5s;--r:4deg;--dx1:16px;--dy1:-18px;--dx2:-10px;--dy2:-34px;--dx3:20px;--dy3:-12px;--o:1"><svg
-            viewBox="0 0 260 260">
-            <use href="#icAngel" width="260" height="260" />
+          style="--s:68px;--top:70%;--right:26%;--dur:21s;--delay:-7.5s;--r:4deg;--dx1:16px;--dy1:-18px;--dx2:-10px;--dy2:-34px;--dx3:20px;--dy3:-12px;--o:1"
+          title="Anjo com Lira Celestial"><svg viewBox="0 0 260 260">
+            <use href="#icAngelLyre" width="260" height="260" />
           </svg></span>
         <span class="angel angel--hide-xs"
-          style="--s:96px;--bottom:11%;--left:15%;--dur:27s;--delay:-18s;--r:3deg;--dx1:20px;--dy1:-22px;--dx2:-14px;--dy2:-42px;--dx3:26px;--dy3:-16px;--o:1"><svg
-            viewBox="0 0 260 260">
-            <use href="#icAngel" width="260" height="260" />
+          style="--s:96px;--bottom:11%;--left:15%;--dur:27s;--delay:-18s;--r:3deg;--dx1:20px;--dy1:-22px;--dx2:-14px;--dy2:-42px;--dx3:26px;--dy3:-16px;--o:1"
+          title="Anjo com Alaúde Celestial"><svg viewBox="0 0 260 260">
+            <use href="#icAngelLute" width="260" height="260" />
           </svg></span>
         <span class="angel angel--soft angel--hide-sm"
-          style="--s:62px;--top:8%;--left:31%;--dur:25s;--delay:-11s;--r:-5deg;--dx1:14px;--dy1:-16px;--dx2:-10px;--dy2:-30px;--dx3:18px;--dy3:-12px;--o:1"><svg
-            viewBox="0 0 260 260">
-            <use href="#icAngel" width="260" height="260" />
+          style="--s:62px;--top:8%;--left:31%;--dur:25s;--delay:-11s;--r:-5deg;--dx1:14px;--dy1:-16px;--dx2:-10px;--dy2:-30px;--dx3:18px;--dy3:-12px;--o:1"
+          title="Anjo com Carrilhão de Sinos Celestiais"><svg viewBox="0 0 260 260">
+            <use href="#icAngelBell" width="260" height="260" />
           </svg></span>
       </div>
 
