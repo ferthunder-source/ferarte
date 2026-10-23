@@ -415,7 +415,16 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   position: relative;
 }
 
-/* Animação de dança (aplicada via JS) */
+/* Animação de flutuação enquanto fala */
+.feriel-container.talking .feriel-inner {
+  animation: floatInPlace 3s ease-in-out infinite;
+}
+@keyframes floatInPlace {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Animação de dança (aplicada via JS quando não está falando) */
 .feriel-container.dancing .feriel-inner {
   animation: gentleDance 2s ease-in-out infinite;
 }
@@ -499,43 +508,71 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   color: #fff;
 }
 
-/* Balão de Fala */
+/* Balão de Fala (Formato de Nuvem) */
 .feriel-speech {
   position: absolute;
-  bottom: 110%;
+  bottom: 120%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   background: #ffffff;
   color: #1a1a1a;
-  padding: 16px 20px;
-  border-radius: 16px;
+  padding: 20px 26px;
+  border-radius: 40px 40px 40px 40px;
   width: max-content;
-  max-width: 300px;
+  max-width: 320px;
   font-size: 0.9rem;
-  line-height: 1.5;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  line-height: 1.6;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 0 20px rgba(212,175,55,0.4);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s, transform 0.3s;
   z-index: 20;
   text-align: center;
   border: 2px solid var(--dourado);
-  font-family: var(--font-body);
-  font-weight: 400;
 }
+/* Rabinho do balão */
 .feriel-speech::after {
   content: '';
   position: absolute;
-  bottom: -9px;
+  bottom: -12px;
   left: 50%;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   background: #ffffff;
   border-right: 2px solid var(--dourado);
   border-bottom: 2px solid var(--dourado);
   transform: translateX(-50%) rotate(45deg);
   z-index: -1;
 }
+/* Saliências para o formato de nuvem */
+.feriel-speech::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 30px;
+  width: 40px;
+  height: 40px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 2px solid var(--dourado);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  z-index: -1;
+}
+.feriel-speech .bump {
+  position: absolute;
+  bottom: -10px;
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  background: #ffffff;
+  border-radius: 50%;
+  border: 2px solid var(--dourado);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  z-index: -1;
+}
+
 .feriel-speech.show {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
@@ -569,7 +606,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .feriel-activator svg {
   width: 100%;
   height: 100%;
-  transform: scale(1.1) translateY(5px); /* Ajuste para centralizar o rosto */
+  transform: scale(1.1) translateY(5px);
 }
 @keyframes pulseAct {
   0%, 100% { opacity: 0.8; transform: scale(1.1) translateY(5px); }
@@ -582,7 +619,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 @media (max-width: 560px) {
   .feriel-container { width: 84px; height: 84px; }
   .feriel-activator { left: 16px; bottom: 130px; width: 44px; height: 44px; }
-  .feriel-speech { max-width: 240px; font-size: 0.8rem; padding: 12px 16px; }
+  .feriel-speech { max-width: 260px; font-size: 0.8rem; padding: 16px 20px; }
 }
 
 /* ============================================================
@@ -1475,13 +1512,15 @@ footer::before{
 <!-- ============================================================
      MASCOTE FERIEL
      ============================================================ -->
-<div class="feriel-container" id="ferielContainer" title="Feriel, o anjinho da FerArte">
+<div class="feriel-container" id="ferielContainer" title="Feriel, a anjinha da FerArte">
   <div class="feriel-inner">
     <div class="feriel-menu" id="ferielMenu">
       <button id="toggleFeriel">Desativar</button>
     </div>
     
-    <div class="feriel-speech" id="ferielSpeech"></div>
+    <div class="feriel-speech" id="ferielSpeech">
+      <div class="bump"></div>
+    </div>
     
     <svg class="feriel-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <!-- Halo -->
@@ -1540,7 +1579,6 @@ footer::before{
 </div>
 
 <div class="feriel-activator" id="ferielActivator" title="Ativar Feriel">
-  <!-- Novo ícone: Rosto com Auréola -->
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
     <!-- Halo -->
     <ellipse cx="50" cy="25" rx="20" ry="5" fill="none" stroke="#d4af37" stroke-width="3" opacity="0.9"/>
@@ -2878,7 +2916,7 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
   let messageIndex = 0;
 
   const messages = [
-    "Olá! Eu sou o Feriel, o anjinho da FerArte. ✨💖 Seja muito bem-vindo(a)! Fico muito feliz com a sua visita. Venha conhecer nossas criações e descobrir peças feitas para levar beleza, delicadeza e afeto aos momentos mais especiais da sua vida. 🌷👼",
+    "Olá! Eu sou a Feriel, a anjinha da FerArte. ✨💖 Seja muito bem-vindo(a)! Fico muito feliz com a sua visita. Venha conhecer nossas criações e descobrir peças feitas para levar beleza, delicadeza e afeto aos momentos mais especiais da sua vida. 🌷👼",
     "Aqui na FerArte, cada peça é preparada com atenção aos detalhes e um toque especial de carinho. ✨ São criações pensadas para encantar, decorar e transformar pequenos momentos em lembranças cheias de significado. 💕",
     "Muito obrigado pela sua visita! 💖 Espero que a FerArte tenha trazido um pouquinho de inspiração e encanto ao seu dia. Volte sempre que desejar, será uma alegria recebê-lo(a) novamente. Até breve, e que muitas bênçãos acompanhem você! 👼✨🌷"
   ];
@@ -2941,7 +2979,7 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
       isTalking = true;
       messageIndex = 0;
       container.classList.remove('dancing');
-      container.classList.add('dancing'); // Força a dança enquanto fala
+      container.classList.add('talking'); // Aplica a flutuação suave
       clearTimeout(moveTimeout); // Para de voar
     } else {
       // Avança para a próxima mensagem
@@ -2955,7 +2993,7 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
       // Fim das mensagens: fecha o balão e volta a voar
       speechBubble.classList.remove('show');
       isTalking = false;
-      container.classList.remove('dancing');
+      container.classList.remove('talking');
       scheduleNextMove(1000); // Retoma o voo
     }
   });
@@ -2969,6 +3007,7 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     clearTimeout(moveTimeout);
     speechBubble.classList.remove('show');
     isTalking = false;
+    container.classList.remove('talking');
     container.classList.remove('dancing');
   });
 
