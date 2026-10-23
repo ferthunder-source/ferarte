@@ -46,13 +46,12 @@ a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
 ::selection{background:rgba(212,175,55,.35);color:#fff}
 
-/* scrollbar */
 ::-webkit-scrollbar{width:11px}
 ::-webkit-scrollbar-track{background:#010512}
 ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--dourado),var(--dourado-escuro));border-radius:99px;border:2px solid #010512}
 
 /* ============================================================
-   FUNDO — luz emanando da lua (canto superior direito)
+   FUNDO
    ============================================================ */
 .bg-orbs{
   position:fixed;inset:0;z-index:-3;pointer-events:none;
@@ -70,7 +69,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 
 /* ============================================================
-   TEXTOS DOURADOS / BRILHO
+   TEXTOS DOURADOS
    ============================================================ */
 .gold{
   background:linear-gradient(100deg,#8c6d1f 0%,#d4af37 18%,#f9efc0 38%,#d4af37 58%,#a8811f 78%,#e8cd72 100%);
@@ -255,14 +254,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 @keyframes scrollLine{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
 
 /* ============================================================
-   CÉU DO HERO — LUA, ANJOS, QUERUBINS E ESTRELAS
+   CÉU DO HERO
    ============================================================ */
-.celestial{
-  position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;
-}
+.celestial{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;}
 .starfield{position:absolute;inset:0;z-index:0}
 
-/* ---------- A LUA ---------- */
 .moon{
   position:absolute;
   top:5%;
@@ -317,7 +313,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   }
 }
 
-/* estrelas */
 .star{
   position:absolute;left:var(--x);top:var(--y);
   width:var(--s);height:var(--s);border-radius:50%;
@@ -343,7 +338,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   box-shadow:0 0 10px var(--c), 0 0 26px var(--c), 0 0 46px rgba(212,175,55,.55);
 }
 
-/* estrelas cadentes */
 .shooting{
   position:absolute;top:var(--top,20%);left:-24vw;z-index:2;
   width:clamp(90px,14vw,200px);height:2px;border-radius:99px;
@@ -361,9 +355,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   100%{opacity:0;transform:translate3d(130vw,44vh,0) rotate(14deg)}
 }
 
-/* ============================================================
-   ANJOS E QUERUBINS — cores naturais, sem brilho
-   ============================================================ */
 .angel{
   position:absolute;z-index:3;
   top:var(--top,auto);left:var(--left,auto);
@@ -379,9 +370,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   animation:flutter var(--fl,4.2s) ease-in-out infinite;
   transform-origin:50% 60%;
 }
-.angel--soft{
-  opacity:var(--o,.9);
-}
+.angel--soft{opacity:var(--o,.9);}
 @keyframes fly{
   0%{transform:translate3d(0,0,0) rotate(var(--r,0deg)) scale(1)}
   25%{transform:translate3d(var(--dx1,20px),var(--dy1,-24px),0) rotate(calc(var(--r,0deg) + 2deg)) scale(1.02)}
@@ -415,7 +404,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   position: relative;
 }
 
-/* Animação de flutuação enquanto fala */
 .feriel-container.talking .feriel-inner {
   animation: floatInPlace 3s ease-in-out infinite;
 }
@@ -424,7 +412,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   50% { transform: translateY(-12px); }
 }
 
-/* Animação de dança (aplicada via JS quando não está falando) */
 .feriel-container.dancing .feriel-inner {
   animation: gentleDance 2s ease-in-out infinite;
 }
@@ -446,7 +433,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   to { transform: scaleX(1.06); }
 }
 
-/* Olhos Piscando */
 .eyelid {
   fill: #fcdbb6;
   transform-origin: 50% 0%;
@@ -457,7 +443,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   96%, 98% { transform: scaleY(1); }
 }
 
-/* Vestido Esvoaçante */
 .dress {
   transform-origin: 100px 85px;
   animation: dressWave 3s ease-in-out infinite;
@@ -467,7 +452,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   50% { transform: rotate(2deg) skewX(4deg); }
 }
 
-/* Menu Ativar/Desativar (Aparece no Hover) */
 .feriel-menu {
   position: absolute;
   top: 100%;
@@ -508,7 +492,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   color: #fff;
 }
 
-/* Balão de Fala (Formato de Nuvem) */
 .feriel-speech {
   position: absolute;
   bottom: 120%;
@@ -517,7 +500,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   background: #ffffff;
   color: #1a1a1a;
   padding: 20px 26px;
-  border-radius: 40px 40px 40px 40px;
+  border-radius: 40px;
   width: max-content;
   max-width: 320px;
   font-size: 0.9rem;
@@ -530,7 +513,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   text-align: center;
   border: 2px solid var(--dourado);
 }
-/* Rabinho do balão */
 .feriel-speech::after {
   content: '';
   position: absolute;
@@ -544,7 +526,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   transform: translateX(-50%) rotate(45deg);
   z-index: -1;
 }
-/* Saliências para o formato de nuvem */
 .feriel-speech::before {
   content: '';
   position: absolute;
@@ -578,7 +559,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   transform: translateX(-50%) translateY(0);
 }
 
-/* Ativador (quando o mascote está oculto) */
 .feriel-activator {
   position: fixed;
   left: 22px;
@@ -600,9 +580,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   transform: scale(1.1);
   box-shadow: 0 0 35px 0 rgba(212,175,55,1);
 }
-.feriel-activator.show {
-  display: grid;
-}
+.feriel-activator.show { display: grid; }
 .feriel-activator svg {
   width: 100%;
   height: 100%;
@@ -612,9 +590,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   0%, 100% { opacity: 0.8; transform: scale(1.1) translateY(5px); }
   50% { opacity: 1; transform: scale(1.15) translateY(5px); }
 }
-.feriel-activator.show svg {
-  animation: pulseAct 2s infinite;
-}
+.feriel-activator.show svg { animation: pulseAct 2s infinite; }
 
 @media (max-width: 560px) {
   .feriel-container { width: 84px; height: 84px; }
@@ -650,7 +626,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .btn-ghost:hover{background:rgba(212,175,55,.15);transform:translateY(-3px);box-shadow:0 0 36px -10px rgba(212,175,55,.9)}
 
 /* ============================================================
-   SEÇÕES / TÍTULOS
+   SEÇÕES
    ============================================================ */
 .section{padding:clamp(70px,9vw,120px) clamp(16px,5vw,40px);position:relative}
 .wrap{max-width:1240px;margin:0 auto}
@@ -755,7 +731,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   box-shadow:-14px 0 44px -32px rgba(212,175,55,.9);
 }
 
-/* TIMELINE */
 .timeline{position:relative;margin-top:clamp(56px,8vw,90px);padding-left:0}
 .timeline::before{
   content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
@@ -785,7 +760,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .tl-item p{font-weight:300;font-size:.94rem;color:rgba(246,243,236,.68)}
 
 /* ============================================================
-   VALORES / PILARES
+   VALORES
    ============================================================ */
 .pillars{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
@@ -905,6 +880,22 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 }
 .result-info b{color:var(--dourado);font-weight:600}
 
+/* Botão do relatório */
+.report-cta-wrap{
+  text-align:center;
+  margin:-6px 0 44px;
+}
+.report-hint{
+  font-size:.85rem;
+  color:rgba(246,243,236,.6);
+  margin-bottom:16px;
+  font-weight:300;
+  letter-spacing:.02em;
+  max-width:640px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 .prod-group{margin-bottom:clamp(48px,7vw,78px)}
 .prod-group:last-child{margin-bottom:0}
 
@@ -981,6 +972,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   border-color:rgba(212,175,55,.55);
   box-shadow:0 40px 70px -40px rgba(0,0,0,1), 0 0 56px -20px rgba(212,175,55,.75);
 }
+.card.is-selected{
+  border-color:rgba(212,175,55,.75);
+  box-shadow:0 0 44px -18px rgba(212,175,55,.9), 0 30px 60px -40px rgba(0,0,0,1);
+}
 
 .card-media{
   position:relative;aspect-ratio:1/1;overflow:hidden;
@@ -999,6 +994,46 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
   filter:drop-shadow(0 18px 34px rgba(0,0,0,.75));
 }
 .card:hover .card-media img.card-main{transform:scale(1.07)}
+
+/* ============================================================
+   BOTÃO DE SELEÇÃO NO CARD (NOVO)
+   ============================================================ */
+.card-select{
+  position:absolute;top:12px;left:12px;z-index:6;
+  width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;
+  background:rgba(1,7,22,.8);
+  border:1.5px solid rgba(212,175,55,.55);
+  color:var(--dourado-claro);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 2px 10px rgba(0,0,0,.55), 0 0 18px -8px rgba(212,175,55,.7);
+  transition:transform .3s, background .3s, border-color .3s, box-shadow .3s;
+  cursor:pointer;
+}
+.card-select:hover{
+  border-color:var(--dourado);
+  box-shadow:0 0 24px -6px rgba(212,175,55,.95);
+  transform:scale(1.08);
+}
+.card-select .card-select-check{
+  font-size:.95rem;
+  font-weight:700;
+  opacity:0;
+  transform:scale(.5);
+  transition:opacity .25s, transform .25s;
+  line-height:1;
+}
+.card-select.is-selected{
+  background:linear-gradient(135deg,#b8912a,#d4af37 45%,#f9efc0 60%,#b8912a);
+  border-color:transparent;
+  color:#0a1020;
+  box-shadow:0 0 28px -6px rgba(212,175,55,1);
+}
+.card-select.is-selected .card-select-check{
+  opacity:1;
+  transform:scale(1);
+}
 
 .badge{
   position:absolute;top:12px;right:12px;z-index:4;
@@ -1059,6 +1094,80 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .empty .big{font-size:2.4rem;margin-bottom:12px;opacity:.65}
 .empty h3{font-family:var(--font-title);color:var(--dourado-claro);margin-bottom:8px;font-weight:400;font-size:1.4rem}
 .empty p{font-weight:300;color:rgba(246,243,236,.6);font-size:.92rem}
+
+/* ============================================================
+   BARRA DE SELEÇÃO FLUTUANTE (NOVO)
+   ============================================================ */
+.selection-bar{
+  position:fixed;
+  bottom:24px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  z-index:1250;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:12px 20px;
+  background:rgba(1,7,22,.97);
+  border:1px solid rgba(212,175,55,.55);
+  border-radius:99px;
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  box-shadow:0 20px 50px -20px rgba(0,0,0,1), 0 0 40px -14px rgba(212,175,55,.7);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .35s, transform .35s cubic-bezier(.2,.7,.3,1);
+}
+.selection-bar.show{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.selection-count{
+  font-size:.8rem;
+  letter-spacing:.08em;
+  color:rgba(246,243,236,.85);
+  white-space:nowrap;
+}
+.selection-count b{
+  color:var(--dourado);
+  font-weight:700;
+  font-size:1.05rem;
+  margin-right:3px;
+}
+.selection-bar .btn{
+  padding:9px 18px;
+  font-size:.68rem;
+}
+
+@media (max-width:560px){
+  .selection-bar{
+    bottom:180px;
+    left:16px;
+    right:16px;
+    transform:translateY(20px);
+    padding:10px 12px;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+    border-radius:16px;
+  }
+  .selection-bar.show{
+    transform:translateY(0);
+  }
+  .selection-count{
+    width:100%;
+    text-align:center;
+    font-size:.72rem;
+    margin-bottom:2px;
+  }
+  .selection-bar .btn{
+    flex:1 1 auto;
+    padding:8px 12px;
+    font-size:.6rem;
+    justify-content:center;
+  }
+}
 
 /* ============================================================
    MATERIAIS
@@ -1269,7 +1378,7 @@ footer::before{
 }
 
 /* ============================================================
-   WHATSAPP FLUTUANTE
+   WHATSAPP
    ============================================================ */
 .whats{
   position:fixed;right:22px;bottom:22px;z-index:1200;
@@ -1308,7 +1417,6 @@ footer::before{
 }
 .whats:hover .whats-label{opacity:1;transform:translateY(-50%) translateX(0)}
 
-/* BACK TO TOP */
 .to-top{
   position:fixed;left:22px;bottom:22px;z-index:1190;
   width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
@@ -1321,7 +1429,7 @@ footer::before{
 .to-top:hover{background:rgba(212,175,55,.2);transform:translateY(-4px)}
 
 /* ============================================================
-   BOTÃO DE MÚSICA FLUTUANTE
+   MÚSICA
    ============================================================ */
 .music-toggle{
   position:fixed;left:22px;bottom:82px;z-index:1195;
@@ -1341,10 +1449,7 @@ footer::before{
   border-color:rgba(212,175,55,.8);
   box-shadow:0 0 44px -10px rgba(212,175,55,1);
 }
-.music-toggle:focus-visible{
-  outline:2px solid var(--dourado-claro);
-  outline-offset:3px;
-}
+.music-toggle:focus-visible{outline:2px solid var(--dourado-claro);outline-offset:3px;}
 .music-toggle::before{
   content:'';position:absolute;inset:-7px;border-radius:50%;
   border:1px solid rgba(212,175,55,.55);
@@ -1359,9 +1464,7 @@ footer::before{
 .music-toggle.playing::before{opacity:1;animation:musicRing 2.4s ease-out infinite}
 @keyframes musicRing{0%{transform:scale(.88);opacity:.85}100%{transform:scale(1.5);opacity:0}}
 
-.music-toggle .mt-note{
-  position:relative;font-size:1.2rem;line-height:1;display:block;
-}
+.music-toggle .mt-note{position:relative;font-size:1.2rem;line-height:1;display:block;}
 .music-toggle .mt-note::after{
   content:'';position:absolute;left:-4px;right:-4px;top:50%;height:1.5px;
   background:currentColor;transform:rotate(-45deg);border-radius:2px;opacity:.85;
@@ -1371,10 +1474,7 @@ footer::before{
 
 .mt-bars{display:none;align-items:flex-end;gap:2.5px;height:17px}
 .music-toggle.playing .mt-bars{display:flex}
-.mt-bars i{
-  width:3px;height:6px;border-radius:2px;
-  background:currentColor;opacity:.95;
-}
+.mt-bars i{width:3px;height:6px;border-radius:2px;background:currentColor;opacity:.95;}
 .music-toggle.playing .mt-bars i{animation:eq 1s ease-in-out infinite}
 .mt-bars i:nth-child(1){animation-delay:0s}
 .mt-bars i:nth-child(2){animation-delay:.18s}
@@ -1433,6 +1533,283 @@ footer::before{
 .lb-nav:hover{background:rgba(212,175,55,.3);box-shadow:0 0 30px -10px rgba(212,175,55,1)}
 .lb-prev{left:-64px}
 .lb-next{right:-64px}
+
+/* ============================================================
+   RELATÓRIO DE PRODUTOS
+   ============================================================ */
+.report-modal{
+  position:fixed;inset:0;z-index:1500;
+  display:none;
+  background:rgba(0,4,12,.96);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  overflow-y:auto;
+  padding:30px 20px 60px;
+}
+.report-modal.open{
+  display:block;
+  animation:fadeIn .35s ease;
+}
+.report-container{max-width:940px;margin:0 auto;}
+.report-toolbar{
+  display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end;
+  margin-bottom:18px;
+  position:sticky;top:0;z-index:10;
+  padding:12px 0;
+  background:linear-gradient(180deg, rgba(0,4,12,.95) 70%, transparent);
+}
+.report-toolbar .btn{padding:11px 22px;font-size:.7rem;}
+.report-sheet{
+  background:#fdfdfb;
+  color:#1a1a1a;
+  border-radius:10px;
+  padding:40px 40px 32px;
+  box-shadow:0 30px 90px rgba(0,0,0,.7), 0 0 60px -20px rgba(212,175,55,.4);
+  border:1px solid rgba(212,175,55,.25);
+}
+
+.report-header{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  gap:24px;padding-bottom:24px;margin-bottom:24px;
+  border-bottom:2px solid #d4af37;
+  flex-wrap:wrap;
+}
+.report-brand{display:flex;align-items:center;gap:16px;}
+.report-brand img{
+  width:70px;height:70px;border-radius:50%;object-fit:cover;
+  border:2px solid #d4af37;
+  box-shadow:0 4px 14px rgba(212,175,55,.3);
+}
+.report-brand-text h1{
+  font-family:var(--font-brand);
+  font-weight:400;font-size:2.4rem;line-height:1;
+  margin:0 0 4px;text-transform:none;
+}
+.report-brand-text h1.gold{
+  background:linear-gradient(100deg,#8c6d1f 0%,#d4af37 30%,#f9efc0 50%,#d4af37 70%,#a8811f 100%);
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  animation:none;filter:none;
+}
+.report-brand-text p{
+  font-size:.78rem;color:#555;margin:2px 0;letter-spacing:.05em;
+}
+.report-brand-text .report-loc{
+  font-size:.7rem;color:#888;letter-spacing:.12em;text-transform:uppercase;
+}
+.report-meta{text-align:right;}
+.report-meta h2{
+  font-family:var(--font-title);
+  font-size:1.3rem;font-weight:500;color:#1a1a1a;
+  margin:0 0 6px;letter-spacing:.05em;
+}
+.report-meta p{font-size:.78rem;color:#666;margin:2px 0;}
+
+.report-table{
+  width:100%;border-collapse:collapse;font-size:.84rem;
+}
+.report-table thead th{
+  text-align:left;padding:10px 8px;
+  border-bottom:2px solid #d4af37;
+  font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;
+  color:#8c6d1f;font-weight:600;
+  background:#faf6ea;
+}
+.report-table tbody td{
+  padding:8px;border-bottom:1px solid #eee;vertical-align:middle;
+  color:#1a1a1a;
+}
+.report-table tbody tr:nth-child(even){background:#fdfbf5;}
+.report-table tbody tr:hover{background:#faf3df;}
+.report-img{
+  width:46px;height:46px;object-fit:contain;border-radius:4px;
+  border:1px solid #e8dcc0;background:#faf8f2;
+  display:block;padding:2px;
+}
+.report-code{
+  font-family:'Courier New',monospace;font-size:.78rem;color:#666;
+  text-transform:uppercase;letter-spacing:.04em;
+}
+.report-name{
+  font-size:.82rem;font-weight:500;color:#1a1a1a;
+  display:block;line-height:1.3;
+}
+.report-input{
+  width:100%;max-width:90px;
+  padding:6px 8px;
+  border:1px solid #ddd;border-radius:4px;
+  font-size:.84rem;font-family:inherit;
+  text-align:right;background:#fff;color:#1a1a1a;
+  transition:.2s;
+}
+.report-input:focus{
+  border-color:#d4af37;outline:none;
+  box-shadow:0 0 0 2px rgba(212,175,55,.25);
+}
+.report-input::placeholder{color:#bbb;}
+.report-line-total{
+  font-weight:600;text-align:right;white-space:nowrap;
+  color:#0a1020;font-variant-numeric:tabular-nums;
+}
+
+.col-num{width:34px;text-align:center;color:#999;}
+.col-img{width:58px;}
+.col-code{width:80px;}
+.col-qty{width:80px;text-align:center;}
+.col-price{width:100px;}
+.col-total{width:110px;text-align:right;}
+.col-qty .report-input{text-align:center;}
+.col-del{width:34px;text-align:center;}
+
+/* Botão de excluir linha */
+.report-del{
+  width:28px;height:28px;border-radius:50%;
+  background:#faf8f2;
+  border:1px solid #e8dcc0;
+  color:#c55;
+  font-size:.72rem;
+  display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  transition:.2s;
+  line-height:1;
+}
+.report-del:hover{
+  background:#ffe0e0;
+  border-color:#c55;
+  color:#a33;
+  transform:scale(1.1);
+  box-shadow:0 0 12px rgba(204,85,85,.3);
+}
+
+.report-empty-row td{
+  text-align:center;
+  padding:50px 20px !important;
+  color:#999;
+  font-style:italic;
+  font-size:.9rem;
+}
+
+.report-table tfoot td{
+  padding:14px 8px;
+  border-top:2px solid #d4af37;
+  background:#faf6ea;
+  font-size:.88rem;color:#1a1a1a;
+}
+.report-total-label{
+  text-align:right;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:#0a1020 !important;
+}
+.report-total-qty{
+  text-align:center;font-weight:700;color:#0a1020 !important;
+}
+.report-total-value{
+  text-align:right;font-weight:700;font-size:1.05rem;
+  color:#8c6d1f !important;
+  white-space:nowrap;font-variant-numeric:tabular-nums;
+}
+
+.report-footer{
+  margin-top:24px;padding-top:16px;
+  border-top:1px solid #e8dcc0;
+  font-size:.72rem;color:#888;
+  text-align:center;line-height:1.6;
+}
+
+@media (max-width:720px){
+  .report-sheet{padding:24px 18px;}
+  .report-brand img{width:54px;height:54px;}
+  .report-brand-text h1{font-size:1.9rem;}
+  .report-meta{text-align:left;}
+  .report-table{font-size:.74rem;}
+  .report-input{max-width:64px;padding:5px 6px;font-size:.74rem;}
+  .report-img{width:36px;height:36px;}
+  .col-num{width:24px;}
+  .col-img{width:42px;}
+  .col-code{width:60px;}
+  .col-qty{width:60px;}
+  .col-price{width:80px;}
+  .col-total{width:90px;}
+  .col-del{width:28px;}
+  .report-del{width:24px;height:24px;font-size:.65rem;}
+}
+
+/* ============================================================
+   PRINT — RELATÓRIO A4
+   ============================================================ */
+@media print{
+  @page{ size:A4; margin:10mm; }
+  html, body{ background:#fff !important; }
+
+  body > *:not(#relatorio){ display:none !important; }
+
+  #relatorio{
+    position:static !important;
+    display:block !important;
+    inset:auto !important;
+    background:#fff !important;
+    padding:0 !important;
+    overflow:visible !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
+  }
+  .report-container{ max-width:100% !important; margin:0 !important; }
+  .report-toolbar, .no-print, .col-del, .report-del{ display:none !important; }
+  .selection-bar{ display:none !important; }
+  .report-sheet{
+    box-shadow:none !important;
+    border:none !important;
+    border-radius:0 !important;
+    padding:0 !important;
+    background:#fff !important;
+  }
+  .report-brand-text h1.gold{
+    -webkit-text-fill-color:#8c6d1f !important;
+    color:#8c6d1f !important;
+    background:none !important;
+  }
+  .report-table{ font-size:9.5pt; }
+  .report-table thead th{
+    font-size:7pt;
+    background:#faf6ea !important;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .report-table tbody td{ padding:5px 6px; }
+  .report-img{ width:34px; height:34px; }
+  .report-input{
+    border:none !important;
+    background:transparent !important;
+    padding:0 !important;
+    box-shadow:none !important;
+    -webkit-appearance:none;
+    appearance:none;
+    font-size:9.5pt;
+    max-width:60px;
+    text-align:right;
+    color:#1a1a1a !important;
+  }
+  .col-qty .report-input{ text-align:center; }
+  .report-table tbody tr:hover{ background:transparent !important; }
+  .report-table tbody tr:nth-child(even){
+    background:#fdfbf5 !important;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .report-table tr{
+    page-break-inside:avoid;
+    break-inside:avoid;
+  }
+  .report-header{
+    page-break-after:avoid;
+    break-after:avoid;
+  }
+  .report-footer{
+    page-break-before:avoid;
+    break-before:avoid;
+  }
+  .report-input:focus{ box-shadow:none !important; border:none !important; }
+}
 
 /* ============================================================
    REVEAL
@@ -1509,68 +1886,41 @@ footer::before{
 <div class="bg-orbs"></div>
 <div class="bg-grain"></div>
 
-<!-- ============================================================
-     MASCOTE FERIEL
-     ============================================================ -->
+<!-- MASCOTE FERIEL -->
 <div class="feriel-container" id="ferielContainer" title="Feriel, a anjinha da FerArte">
   <div class="feriel-inner">
     <div class="feriel-menu" id="ferielMenu">
       <button id="toggleFeriel">Desativar</button>
     </div>
-    
-    <div class="feriel-speech" id="ferielSpeech">
-      <div class="bump"></div>
-    </div>
-    
+    <div class="feriel-speech" id="ferielSpeech"><div class="bump"></div></div>
     <svg class="feriel-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-      <!-- Halo -->
       <ellipse cx="100" cy="35" rx="35" ry="8" fill="none" stroke="#d4af37" stroke-width="4" opacity="0.9"/>
       <ellipse cx="100" cy="35" rx="42" ry="12" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.5"/>
-      
-      <!-- Asas (Anjo) -->
       <g class="wings" fill="#ffffff" stroke="#e0d6c8" stroke-width="1.5" stroke-linejoin="round">
-        <!-- Esquerda -->
         <path d="M85 90 C50 40 20 10 0 5 C10 30 15 50 25 70 C10 65 -5 65 -15 75 C0 90 15 105 30 125 C45 115 65 100 85 90 Z"/>
         <path d="M70 80 C40 35 15 15 0 10 C5 30 10 50 18 65 C8 60 -2 60 -10 70 C0 80 12 90 25 105 C35 95 50 85 70 80 Z" fill="#fbf8f1"/>
-        <!-- Direita -->
         <path d="M115 90 C150 40 180 10 200 5 C190 30 185 50 175 70 C190 65 205 65 215 75 C200 90 185 105 170 125 C155 115 135 100 115 90 Z"/>
         <path d="M130 80 C160 35 185 15 200 10 C195 30 190 50 182 65 C192 60 202 60 210 70 C200 80 188 90 175 105 C165 95 150 85 130 80 Z" fill="#fbf8f1"/>
       </g>
-      
-      <!-- Cabelo Traseiro -->
       <path d="M70 65 C60 85 60 115 70 130 C75 135 85 130 80 115 C75 100 75 85 80 70 Z" fill="#f4c452"/>
       <path d="M130 65 C140 85 140 115 130 130 C125 135 115 130 120 115 C125 100 125 85 120 70 Z" fill="#f4c452"/>
-
-      <!-- Vestido Esvoaçante -->
       <path class="dress" d="M80 85 C60 110 40 150 30 180 C70 195 130 195 170 180 C160 150 140 110 120 85 C110 80 90 80 80 85 Z" fill="#ffffff" stroke="#e0d6c8" stroke-width="2"/>
-      
-      <!-- Mangas / Braços -->
       <path d="M80 90 C70 100 65 115 60 130 C58 135 65 138 68 130 C72 115 78 105 85 95 Z" fill="#ffffff" stroke="#e0d6c8" stroke-width="1.5"/>
       <path d="M120 90 C130 100 135 115 140 130 C142 135 135 138 132 130 C128 115 122 105 115 95 Z" fill="#ffffff" stroke="#e0d6c8" stroke-width="1.5"/>
-      
-      <!-- Mãos -->
       <circle cx="62" cy="132" r="5" fill="#fcdbb6"/>
       <circle cx="138" cy="132" r="5" fill="#fcdbb6"/>
-
-      <!-- Pescoço e Cabeça -->
       <rect x="92" y="75" width="16" height="15" rx="5" fill="#fcdbb6"/>
       <circle cx="100" cy="65" r="25" fill="#fcdbb6"/>
-      
-      <!-- Cabelo Frontal -->
       <path d="M75 65 C70 40 85 35 100 35 C115 35 130 40 125 65 C120 50 110 45 100 45 C90 45 80 50 75 65 Z" fill="#f4c452"/>
       <path d="M82 55 C90 40 110 40 118 55 C110 48 90 48 82 55 Z" fill="#fce28b"/>
-      
-      <!-- Rosto -->
       <g class="eyes">
         <ellipse cx="90" cy="65" rx="4" ry="6" fill="#1a1a1a"/>
         <ellipse cx="110" cy="65" rx="4" ry="6" fill="#1a1a1a"/>
         <circle cx="91.5" cy="63" r="1.5" fill="#ffffff"/>
         <circle cx="111.5" cy="63" r="1.5" fill="#ffffff"/>
-        <!-- Pálpebras -->
         <rect class="eyelid" x="85" y="58" width="10" height="14" />
         <rect class="eyelid" x="105" y="58" width="10" height="14" />
       </g>
-      
       <path d="M97 75 Q100 77 103 75" fill="none" stroke="#d48a80" stroke-width="2" stroke-linecap="round"/>
       <circle cx="82" cy="72" r="4" fill="#ffb6c1" opacity="0.5"/>
       <circle cx="118" cy="72" r="4" fill="#ffb6c1" opacity="0.5"/>
@@ -1580,52 +1930,23 @@ footer::before{
 
 <div class="feriel-activator" id="ferielActivator" title="Ativar Feriel">
   <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <!-- Halo -->
     <ellipse cx="50" cy="25" rx="20" ry="5" fill="none" stroke="#d4af37" stroke-width="3" opacity="0.9"/>
-    <!-- Cabeça -->
     <circle cx="50" cy="55" r="20" fill="#fcdbb6"/>
-    <!-- Cabelo -->
     <path d="M30 55 C25 30 40 25 50 25 C60 25 75 30 70 55 C65 40 55 35 50 35 C45 35 35 40 30 55 Z" fill="#f4c452"/>
     <path d="M35 45 C40 32 60 32 65 45 C60 38 40 38 35 45 Z" fill="#fce28b"/>
-    <!-- Olhos -->
     <ellipse cx="43" cy="55" rx="2" ry="3" fill="#1a1a1a"/>
     <ellipse cx="57" cy="55" rx="2" ry="3" fill="#1a1a1a"/>
     <circle cx="43.5" cy="54" r="0.8" fill="#fff"/>
     <circle cx="57.5" cy="54" r="0.8" fill="#fff"/>
-    <!-- Sorriso -->
     <path d="M47 62 Q50 64 53 62" fill="none" stroke="#d48a80" stroke-width="1.5" stroke-linecap="round"/>
-    <!-- Bochechas -->
     <circle cx="38" cy="60" r="3" fill="#ffb6c1" opacity="0.5"/>
     <circle cx="62" cy="60" r="3" fill="#ffb6c1" opacity="0.5"/>
   </svg>
 </div>
 
-<!-- ============================================================
-     SPRITE SVG — ANJOS DO CÉU
-     ============================================================ -->
+<!-- SPRITE ANJOS -->
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="angPearl" x1="0" y1="0" x2="0.7" y2="1">
-      <stop offset="0%"   stop-color="#ffffff"/>
-      <stop offset="42%"  stop-color="#fbf8f1"/>
-      <stop offset="100%" stop-color="#e3d3a4"/>
-    </linearGradient>
-    <linearGradient id="angGold" x1="0" y1="0" x2="0.7" y2="1">
-      <stop offset="0%"   stop-color="#fffaf0"/>
-      <stop offset="45%"  stop-color="#f7e9b0"/>
-      <stop offset="100%" stop-color="#d9b95c"/>
-    </linearGradient>
-    <linearGradient id="angBlue" x1="0" y1="0" x2="0.7" y2="1">
-      <stop offset="0%"   stop-color="#ffffff"/>
-      <stop offset="48%"  stop-color="#e6f0ff"/>
-      <stop offset="100%" stop-color="#b8ccec"/>
-    </linearGradient>
-    <linearGradient id="angRose" x1="0" y1="0" x2="0.7" y2="1">
-      <stop offset="0%"   stop-color="#ffffff"/>
-      <stop offset="48%"  stop-color="#fdeef3"/>
-      <stop offset="100%" stop-color="#ecc9d5"/>
-    </linearGradient>
-
     <symbol id="icAngel" viewBox="0 0 140 140">
       <ellipse cx="70" cy="16.5" rx="14" ry="3.8" fill="none" stroke="#d4af37" stroke-width="3"/>
       <ellipse cx="70" cy="16.5" rx="14" ry="3.8" fill="none" stroke="#fff3c4" stroke-width="1" opacity=".8"/>
@@ -1666,7 +1987,7 @@ footer::before{
   </defs>
 </svg>
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 <header class="topbar" id="topbar">
   <a class="brand" href="#inicio" aria-label="FerArte Ateliê de Artesanato">
     <img class="brand-logo" src="/img/logo.png" alt="Logo FerArte Ateliê de Artesanato"
@@ -1694,69 +2015,25 @@ footer::before{
 
 <main>
 
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 <section class="hero" id="inicio">
-
-  <!-- CÉU: LUA, ESTRELAS, ANJOS E QUERUBINS -->
   <div class="celestial" aria-hidden="true">
-
-    <!-- Lua -->
     <div class="moon"></div>
-
-    <!-- Estrelas fixas de destaque -->
     <i class="star star--big sparkle" style="--x:48%;--y:6%;--s:12px;--c:#fff6d5;--dur:4.6s;--delay:-1.2s;--o:1"></i>
     <i class="star star--big sparkle" style="--x:14%;--y:32%;--s:10px;--c:#f7e9b0;--dur:5.4s;--delay:-2.6s;--o:1"></i>
     <i class="star star--big sparkle" style="--x:56%;--y:40%;--s:9px;--c:#dbe9ff;--dur:6.1s;--delay:-3.8s;--o:1"></i>
     <i class="star star--big sparkle" style="--x:72%;--y:82%;--s:9px;--c:#fbe3ea;--dur:5.1s;--delay:-.6s;--o:1"></i>
     <i class="star star--big sparkle" style="--x:26%;--y:86%;--s:8px;--c:#ffffff;--dur:4.2s;--delay:-4.4s;--o:1"></i>
-
     <div class="starfield" id="starfield"></div>
-
     <i class="shooting" style="--top:16%;--delay:3s"></i>
     <i class="shooting" style="--top:58%;--delay:9.5s"></i>
-
-    <!-- ANJO — esquerda superior -->
-    <span class="angel angel--soft angel--hide-xs"
-          style="--s:128px;--top:16%;--left:3%;--dur:29s;--delay:-2s;--r:-3deg;--dx1:20px;--dy1:-24px;--dx2:-14px;--dy2:-48px;--dx3:24px;--dy3:-18px;--o:1">
-      <svg viewBox="0 0 140 140"><use href="#icAngel"/></svg>
-    </span>
-
-    <!-- ANJO — direita, abaixo da lua -->
-    <span class="angel"
-          style="--s:170px;--top:38%;--right:3%;--dur:34s;--delay:-9s;--r:4deg;--dx1:-22px;--dy1:-22px;--dx2:16px;--dy2:-52px;--dx3:-26px;--dy3:-16px;--o:1">
-      <svg viewBox="0 0 140 140"><use href="#icAngel"/></svg>
-    </span>
-
-    <!-- QUERUBIM — esquerda central -->
-    <span class="angel angel--hide-sm"
-          style="--s:78px;--top:52%;--left:7%;--dur:23s;--delay:-5s;--r:6deg;--dx1:18px;--dy1:-20px;--dx2:-12px;--dy2:-38px;--dx3:22px;--dy3:-14px;--o:1">
-      <svg viewBox="0 0 140 140"><use href="#icAngel"/></svg>
-    </span>
-
-    <!-- ANJO — direita inferior -->
-    <span class="angel angel--soft"
-          style="--s:116px;--bottom:16%;--right:9%;--dur:31s;--delay:-14s;--r:-5deg;--dx1:-20px;--dy1:-24px;--dx2:14px;--dy2:-44px;--dx3:-24px;--dy3:-18px;--o:1">
-      <svg viewBox="0 0 140 140"><use href="#icAngel"/></svg>
-    </span>
-
-    <!-- QUERUBIM — direita -->
-    <span class="angel angel--hide-sm"
-          style="--s:68px;--top:70%;--right:26%;--dur:21s;--delay:-7.5s;--r:4deg;--dx1:16px;--dy1:-18px;--dx2:-10px;--dy2:-34px;--dx3:20px;--dy3:-12px;--o:1">
-      <svg viewBox="0 0 140 140"><use href="#icAngel"/></svg>
-    </span>
-
-    <!-- ANJO — esquerda inferior -->
-    <span class="angel angel--hide-xs"
-          style="--s:96px;--bottom:11%;--left:15%;--dur:27s;--delay:-18s;--r:3deg;--dx1:20px;--dy1:-22px;--dx2:-14px;--dy2:-42px;--dx3:26px;--dy3:-16px;--o:1">
-      <svg viewBox="0 0 140 140"><use href="#icAngel"/></svg>
-    </span>
-
-    <!-- QUERUBIM — superior esquerda -->
-    <span class="angel angel--soft angel--hide-sm"
-          style="--s:62px;--top:8%;--left:31%;--dur:25s;--delay:-11s;--r:-5deg;--dx1:14px;--dy1:-16px;--dx2:-10px;--dy2:-30px;--dx3:18px;--dy3:-12px;--o:1">
-      <svg viewBox="0 0 140 140"><use href="#icAngel"/></svg>
-    </span>
-
+    <span class="angel angel--soft angel--hide-xs" style="--s:128px;--top:16%;--left:3%;--dur:29s;--delay:-2s;--r:-3deg;--dx1:20px;--dy1:-24px;--dx2:-14px;--dy2:-48px;--dx3:24px;--dy3:-18px;--o:1"><svg viewBox="0 0 140 140"><use href="#icAngel"/></svg></span>
+    <span class="angel" style="--s:170px;--top:38%;--right:3%;--dur:34s;--delay:-9s;--r:4deg;--dx1:-22px;--dy1:-22px;--dx2:16px;--dy2:-52px;--dx3:-26px;--dy3:-16px;--o:1"><svg viewBox="0 0 140 140"><use href="#icAngel"/></svg></span>
+    <span class="angel angel--hide-sm" style="--s:78px;--top:52%;--left:7%;--dur:23s;--delay:-5s;--r:6deg;--dx1:18px;--dy1:-20px;--dx2:-12px;--dy2:-38px;--dx3:22px;--dy3:-14px;--o:1"><svg viewBox="0 0 140 140"><use href="#icAngel"/></svg></span>
+    <span class="angel angel--soft" style="--s:116px;--bottom:16%;--right:9%;--dur:31s;--delay:-14s;--r:-5deg;--dx1:-20px;--dy1:-24px;--dx2:14px;--dy2:-44px;--dx3:-24px;--dy3:-18px;--o:1"><svg viewBox="0 0 140 140"><use href="#icAngel"/></svg></span>
+    <span class="angel angel--hide-sm" style="--s:68px;--top:70%;--right:26%;--dur:21s;--delay:-7.5s;--r:4deg;--dx1:16px;--dy1:-18px;--dx2:-10px;--dy2:-34px;--dx3:20px;--dy3:-12px;--o:1"><svg viewBox="0 0 140 140"><use href="#icAngel"/></svg></span>
+    <span class="angel angel--hide-xs" style="--s:96px;--bottom:11%;--left:15%;--dur:27s;--delay:-18s;--r:3deg;--dx1:20px;--dy1:-22px;--dx2:-14px;--dy2:-42px;--dx3:26px;--dy3:-16px;--o:1"><svg viewBox="0 0 140 140"><use href="#icAngel"/></svg></span>
+    <span class="angel angel--soft angel--hide-sm" style="--s:62px;--top:8%;--left:31%;--dur:25s;--delay:-11s;--r:-5deg;--dx1:14px;--dy1:-16px;--dx2:-10px;--dy2:-30px;--dx3:18px;--dy3:-12px;--o:1"><svg viewBox="0 0 140 140"><use href="#icAngel"/></svg></span>
   </div>
 
   <div class="hero-inner">
@@ -1764,33 +2041,24 @@ footer::before{
       <img src="/img/logo.png" alt="Logo FerArte — Ateliê de Artesanato, Gesso & Resina"
            onerror="this.onerror=null;this.src='/img/logo.jpg'">
     </div>
-
     <span class="hero-kicker">Ribeirão Preto · São Paulo</span>
-
-    <h1 class="hero-title">
-      <span class="gold">FerArte</span>
-    </h1>
+    <h1 class="hero-title"><span class="gold">FerArte</span></h1>
     <h2>Ateliê de Artesanato · Gesso &amp; Resina</h2>
-
     <p class="lead">
       Peças devocionais e decorativas feitas à mão, uma a uma, com tempo, afeto e amor.
       Aqui, cada escultura carrega uma história — e a nossa começou em 2025,
       quando decidimos que <strong style="font-weight:500;color:var(--dourado-claro)">nunca é tarde para recomeçar</strong>.
     </p>
-
     <div class="hero-actions">
       <a class="btn btn-gold" href="#produtos">Conhecer as Peças</a>
       <a class="btn btn-ghost" href="#historia">Nossa História</a>
     </div>
   </div>
 
-  <div class="hero-scroll" aria-hidden="true">
-    <i></i>
-    <span>Role</span>
-  </div>
+  <div class="hero-scroll" aria-hidden="true"><i></i><span>Role</span></div>
 </section>
 
-<!-- ================= PRODUTOS ================= -->
+<!-- PRODUTOS -->
 <section class="section" id="produtos">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1823,11 +2091,22 @@ footer::before{
 
     <p class="result-info" id="resultInfo"></p>
 
+    <!-- Botão do Relatório -->
+    <div class="report-cta-wrap reveal">
+      <p class="report-hint">
+        Marque itens no catálogo (✓ no canto de cada peça) para gerar um relatório só com os selecionados.
+        Sem seleção, o relatório inclui todos os produtos.
+      </p>
+      <button class="btn btn-ghost" id="btnOpenReport" type="button">
+        ✦ Gerar Relatório de Produtos
+      </button>
+    </div>
+
     <div id="catalogo" aria-live="polite"></div>
   </div>
 </section>
 
-<!-- ================= HISTÓRIA ================= -->
+<!-- HISTÓRIA -->
 <section class="section" id="historia">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1943,36 +2222,16 @@ footer::before{
     </div>
 
     <div class="timeline" id="timeline">
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2025</span>
-        <h4>O primeiro passo</h4>
-        <p>Fernando transforma um desejo antigo em projeto: nasce a FerArte, com uma bancada improvisada, moldes selecionados e a vontade de aprender.</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2025</span>
-        <h4>A primeira peça em gesso</h4>
-        <p>Uma pequena Nossa Senhora, torta e guardada por semanas, vira o primeiro pedido — feito por uma amiga, pago com um abraço e muitos elogios.</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2025</span>
-        <h4>O encontro com a resina cristal</h4>
-        <p>Meses de testes, proporções e erros até dominar a transparência do material. Nasce a identidade visual do ateliê.</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">2025</span>
-        <h4>A pintura à mão</h4>
-        <p>Camadas finas, pigmentos testados um a um e a descoberta de que nenhuma peça sai exatamente igual à outra.</p>
-      </div>
-      <div class="tl-item"><span class="tl-dot"></span>
-        <span class="tl-year">Hoje</span>
-        <h4>Em constante aperfeiçoamento</h4>
-        <p>Novos moldes, modelagem 3D, novas técnicas e novos acabamentos. A produção segue em pequenos lotes, feita com tempo, cuidado e amor.</p>
-      </div>
+      <div class="tl-item"><span class="tl-dot"></span><span class="tl-year">2025</span><h4>O primeiro passo</h4><p>Fernando transforma um desejo antigo em projeto: nasce a FerArte, com uma bancada improvisada, moldes selecionados e a vontade de aprender.</p></div>
+      <div class="tl-item"><span class="tl-dot"></span><span class="tl-year">2025</span><h4>A primeira peça em gesso</h4><p>Uma pequena Nossa Senhora, torta e guardada por semanas, vira o primeiro pedido — feito por uma amiga, pago com um abraço e muitos elogios.</p></div>
+      <div class="tl-item"><span class="tl-dot"></span><span class="tl-year">2025</span><h4>O encontro com a resina cristal</h4><p>Meses de testes, proporções e erros até dominar a transparência do material. Nasce a identidade visual do ateliê.</p></div>
+      <div class="tl-item"><span class="tl-dot"></span><span class="tl-year">2025</span><h4>A pintura à mão</h4><p>Camadas finas, pigmentos testados um a um e a descoberta de que nenhuma peça sai exatamente igual à outra.</p></div>
+      <div class="tl-item"><span class="tl-dot"></span><span class="tl-year">Hoje</span><h4>Em constante aperfeiçoamento</h4><p>Novos moldes, modelagem 3D, novas técnicas e novos acabamentos. A produção segue em pequenos lotes, feita com tempo, cuidado e amor.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ================= VALORES ================= -->
+<!-- VALORES -->
 <section class="section" id="valores">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1981,33 +2240,16 @@ footer::before{
       <p>Quatro compromissos que orientam cada peça que sai do ateliê.</p>
       <div class="divider"></div>
     </div>
-
     <div class="pillars">
-      <article class="pillar reveal">
-        <div class="ico">✋</div>
-        <h3>Feito à Mão</h3>
-        <p>Nenhuma peça é idêntica à outra. Os moldes são selecionados com cuidado ou criados em 3D, o acabamento é manual e a pintura é feita pincel a pincel.</p>
-      </article>
-      <article class="pillar reveal">
-        <div class="ico">✦</div>
-        <h3>Fé com Significado</h3>
-        <p>Cada escultura devocional é pensada para ocupar um lugar de oração — não apenas de decoração.</p>
-      </article>
-      <article class="pillar reveal">
-        <div class="ico">◈</div>
-        <h3>Materiais Selecionados</h3>
-        <p>Resina cristal de alta transparência e gesso de qualidade, escolhidos para garantir durabilidade e beleza.</p>
-      </article>
-      <article class="pillar reveal">
-        <div class="ico">♡</div>
-        <h3>Atendimento Próximo</h3>
-        <p>Você fala direto com quem faz. Dúvidas, prazos, personalizações e embalagens especiais são tratados um a um.</p>
-      </article>
+      <article class="pillar reveal"><div class="ico">✋</div><h3>Feito à Mão</h3><p>Nenhuma peça é idêntica à outra. Os moldes são selecionados com cuidado ou criados em 3D, o acabamento é manual e a pintura é feita pincel a pincel.</p></article>
+      <article class="pillar reveal"><div class="ico">✦</div><h3>Fé com Significado</h3><p>Cada escultura devocional é pensada para ocupar um lugar de oração — não apenas de decoração.</p></article>
+      <article class="pillar reveal"><div class="ico">◈</div><h3>Materiais Selecionados</h3><p>Resina cristal de alta transparência e gesso de qualidade, escolhidos para garantir durabilidade e beleza.</p></article>
+      <article class="pillar reveal"><div class="ico">♡</div><h3>Atendimento Próximo</h3><p>Você fala direto com quem faz. Dúvidas, prazos, personalizações e embalagens especiais são tratados um a um.</p></article>
     </div>
   </div>
 </section>
 
-<!-- ================= PROCESSO ================= -->
+<!-- PROCESSO -->
 <section class="section" id="processo">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -2016,37 +2258,18 @@ footer::before{
       <p>O caminho completo de uma escultura FerArte — e por que ele leva tempo.</p>
       <div class="divider"></div>
     </div>
-
     <div class="steps">
-      <div class="step reveal">
-        <h3>Seleção de moldes e criação 3D</h3>
-        <p>Os moldes são cuidadosamente selecionados para garantir acabamento e qualidade em cada peça. Para projetos exclusivos e personalizados, desenvolvemos a modelagem digital em 3D, que é produzida com alta precisão por meio de impressão 3D.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Preparação do material</h3>
-        <p>Para a resina: pesagem precisa e mistura lenta para evitar bolhas. Para o gesso: proporção e tempo de pega controlados.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Vazamento e cura</h3>
-        <p>O material é vertido no molde e descansa o tempo necessário. A pressa aqui significaria peças frágeis ou opacas.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Acabamento manual</h3>
-        <p>Lixamento delicado, remoção de rebarbas e polimento. Na resina, é essa etapa que revela a transparência cristalina.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Pintura à mão</h3>
-        <p>Feita em camadas finas, com secagem entre demãos. É onde cada peça ganha personalidade — e pequenas variações.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Inspeção e embalagem</h3>
-        <p>Checagem de detalhes, proteção individual com plástico-bolha e caixa reforçada para envio seguro.</p>
-      </div>
+      <div class="step reveal"><h3>Seleção de moldes e criação 3D</h3><p>Os moldes são cuidadosamente selecionados para garantir acabamento e qualidade em cada peça. Para projetos exclusivos e personalizados, desenvolvemos a modelagem digital em 3D, que é produzida com alta precisão por meio de impressão 3D.</p></div>
+      <div class="step reveal"><h3>Preparação do material</h3><p>Para a resina: pesagem precisa e mistura lenta para evitar bolhas. Para o gesso: proporção e tempo de pega controlados.</p></div>
+      <div class="step reveal"><h3>Vazamento e cura</h3><p>O material é vertido no molde e descansa o tempo necessário. A pressa aqui significaria peças frágeis ou opacas.</p></div>
+      <div class="step reveal"><h3>Acabamento manual</h3><p>Lixamento delicado, remoção de rebarbas e polimento. Na resina, é essa etapa que revela a transparência cristalina.</p></div>
+      <div class="step reveal"><h3>Pintura à mão</h3><p>Feita em camadas finas, com secagem entre demãos. É onde cada peça ganha personalidade — e pequenas variações.</p></div>
+      <div class="step reveal"><h3>Inspeção e embalagem</h3><p>Checagem de detalhes, proteção individual com plástico-bolha e caixa reforçada para envio seguro.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ================= MATERIAIS ================= -->
+<!-- MATERIAIS -->
 <section class="section" id="materiais">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -2055,15 +2278,11 @@ footer::before{
       <p>Dois materiais, duas personalidades. Entenda as diferenças antes de escolher sua peça.</p>
       <div class="divider"></div>
     </div>
-
     <div class="materials">
       <article class="material reveal">
         <h3 class="gold">Resina Cristal</h3>
         <span class="tag">Transparência · Leveza · Brilho</span>
-        <p>
-          A resina cristal é um material sintético de alta transparência, que permite criar peças
-          luminosas e delicadas, com um brilho que lembra vidro ou cristal lapidado.
-        </p>
+        <p>A resina cristal é um material sintético de alta transparência, que permite criar peças luminosas e delicadas, com um brilho que lembra vidro ou cristal lapidado.</p>
         <ul>
           <li>Aparência translúcida e sofisticada</li>
           <li>Excelente definição de detalhes finos</li>
@@ -2072,14 +2291,10 @@ footer::before{
           <li>Pode ser polida para recuperar o brilho original</li>
         </ul>
       </article>
-
       <article class="material reveal">
         <h3 class="gold">Gesso Artesanal</h3>
         <span class="tag">Textura · Aconchego · Pintura à mão</span>
-        <p>
-          O gesso é um material mineral, de aparência fosca e textura quente, tradicionalmente usado
-          em esculturas e imagens sacras. Na FerArte, é sempre pintado à mão.
-        </p>
+        <p>O gesso é um material mineral, de aparência fosca e textura quente, tradicionalmente usado em esculturas e imagens sacras. Na FerArte, é sempre pintado à mão.</p>
         <ul>
           <li>Acabamento fosco e artesanal</li>
           <li>Pintura à mão em camadas, peça por peça</li>
@@ -2092,7 +2307,7 @@ footer::before{
   </div>
 </section>
 
-<!-- ================= CUIDADOS ================= -->
+<!-- CUIDADOS -->
 <section class="section" id="cuidados">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -2101,37 +2316,18 @@ footer::before{
       <p>Pequenos hábitos que preservam a beleza da peça por muitos anos.</p>
       <div class="divider"></div>
     </div>
-
     <div class="care">
-      <div class="care-item reveal">
-        <h4><i>◌</i> Limpeza suave</h4>
-        <p>Use pano macio e seco ou levemente úmido. Nunca utilize álcool, thinner ou produtos abrasivos.</p>
-      </div>
-      <div class="care-item reveal">
-        <h4><i>☀</i> Evite sol direto</h4>
-        <p>A exposição prolongada ao sol pode amarelar a resina e desbotar a pintura do gesso.</p>
-      </div>
-      <div class="care-item reveal">
-        <h4><i>⚑</i> Superfície estável</h4>
-        <p>Posicione em superfícies planas e firmes, longe de quinas e do alcance de crianças pequenas.</p>
-      </div>
-      <div class="care-item reveal">
-        <h4><i>♨</i> Longe do calor</h4>
-        <p>Não aproxime de fornos, aquecedores ou chamas. Porta-velas devem ser usados sempre com supervisão.</p>
-      </div>
-      <div class="care-item reveal">
-        <h4><i>✥</i> Transporte protegido</h4>
-        <p>Ao mover a peça, segure pela base. Guarde sempre com proteção individual em plástico-bolha.</p>
-      </div>
-      <div class="care-item reveal">
-        <h4><i>✦</i> Brilho da resina</h4>
-        <p>Com o tempo, a resina pode ficar opaca. Um pano de microfibra com polimento leve recupera o brilho.</p>
-      </div>
+      <div class="care-item reveal"><h4><i>◌</i> Limpeza suave</h4><p>Use pano macio e seco ou levemente úmido. Nunca utilize álcool, thinner ou produtos abrasivos.</p></div>
+      <div class="care-item reveal"><h4><i>☀</i> Evite sol direto</h4><p>A exposição prolongada ao sol pode amarelar a resina e desbotar a pintura do gesso.</p></div>
+      <div class="care-item reveal"><h4><i>⚑</i> Superfície estável</h4><p>Posicione em superfícies planas e firmes, longe de quinas e do alcance de crianças pequenas.</p></div>
+      <div class="care-item reveal"><h4><i>♨</i> Longe do calor</h4><p>Não aproxime de fornos, aquecedores ou chamas. Porta-velas devem ser usados sempre com supervisão.</p></div>
+      <div class="care-item reveal"><h4><i>✥</i> Transporte protegido</h4><p>Ao mover a peça, segure pela base. Guarde sempre com proteção individual em plástico-bolha.</p></div>
+      <div class="care-item reveal"><h4><i>✦</i> Brilho da resina</h4><p>Com o tempo, a resina pode ficar opaca. Um pano de microfibra com polimento leve recupera o brilho.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ================= DEPOIMENTOS ================= -->
+<!-- DEPOIMENTOS -->
 <section class="section" id="depoimentos">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -2140,39 +2336,27 @@ footer::before{
       <p>Histórias de quem encontrou uma peça FerArte e levou para casa.</p>
       <div class="divider"></div>
     </div>
-
     <div class="testi">
       <article class="testi-card reveal">
         <div class="stars">★★★★★</div>
         <p>Comprei uma Nossa Senhora Lumina em resina para o oratório da minha mãe. A peça é ainda mais bonita ao vivo — a luz atravessa e parece que ilumina o quarto inteiro. Embalagem impecável.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">C</div>
-          <div><strong>Carla M.</strong><small>Ribeirão Preto · SP</small></div>
-        </div>
+        <div class="testi-author"><div class="testi-avatar">C</div><div><strong>Carla M.</strong><small>Ribeirão Preto · SP</small></div></div>
       </article>
-
       <article class="testi-card reveal">
         <div class="stars">★★★★★</div>
         <p>Presenteei minha comadre com a Sagrada Família em gesso no batizado do meu afilhado. Ela chorou. Dá para ver o cuidado em cada detalhe da pintura. Voltarei com certeza.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">R</div>
-          <div><strong>Renata A.</strong><small>Sertãozinho · SP</small></div>
-        </div>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><strong>Renata A.</strong><small>Sertãozinho · SP</small></div></div>
       </article>
-
       <article class="testi-card reveal">
         <div class="stars">★★★★★</div>
         <p>Atendimento humano de verdade. Tirei dúvidas pelo WhatsApp, recebi fotos reais das peças antes de fechar o pedido e chegou tudo antes do prazo. Qualidade e confiança.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">P</div>
-          <div><strong>Paulo H.</strong><small>Campinas · SP</small></div>
-        </div>
+        <div class="testi-author"><div class="testi-avatar">P</div><div><strong>Paulo H.</strong><small>Campinas · SP</small></div></div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ================= FAQ ================= -->
+<!-- FAQ -->
 <section class="section" id="faq">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -2181,67 +2365,19 @@ footer::before{
       <p>Se a sua pergunta não estiver aqui, é só chamar no WhatsApp.</p>
       <div class="divider"></div>
     </div>
-
     <div class="faq reveal">
-      <details open>
-        <summary>Como faço para comprar uma peça?</summary>
-        <div class="faq-body">
-          Escolha a peça na seção de produtos e clique em “Tenho interesse”. Você será direcionado
-          ao WhatsApp com a mensagem do produto já preenchida. A partir daí conversamos sobre
-          disponibilidade, prazo de produção, frete e forma de pagamento.
-        </div>
-      </details>
-      <details>
-        <summary>As peças são produzidas sob encomenda?</summary>
-        <div class="faq-body">
-          Trabalhamos com pequenos lotes prontos e com produção sob encomenda. Peças em pronta-entrega
-          seguem em até 3 dias úteis. Peças sob encomenda levam em média de 7 a 15 dias úteis,
-          dependendo do modelo e do acabamento.
-        </div>
-      </details>
-      <details>
-        <summary>Qual a diferença entre resina cristal e gesso?</summary>
-        <div class="faq-body">
-          A resina cristal é translúcida, mais leve e com brilho vítreo. O gesso é fosco, mais pesado
-          e sempre pintado à mão. Ambos são duráveis, mas exigem cuidados semelhantes: longe do sol
-          direto e de produtos abrasivos.
-        </div>
-      </details>
-      <details>
-        <summary>As peças são idênticas às fotos?</summary>
-        <div class="faq-body">
-          Cada peça é feita e pintada manualmente, por isso podem existir pequenas variações de tom,
-          textura e expressão. Essas diferenças são intencionais e garantem que a sua peça seja única.
-        </div>
-      </details>
-      <details>
-        <summary>Vocês enviam para todo o Brasil?</summary>
-        <div class="faq-body">
-          Sim. As peças são embaladas individualmente em plástico-bolha e acondicionadas em caixa
-          reforçada. O frete é calculado por CEP via Correios ou transportadora, e o código de
-          rastreio é enviado assim que o pedido é despachado.
-        </div>
-      </details>
-      <details>
-        <summary>É possível personalizar uma peça?</summary>
-        <div class="faq-body">
-          Em muitos casos, sim: cor da pintura, base, tamanho e até pequenas adaptações no modelo.
-          A viabilidade e o prazo são avaliados caso a caso pelo WhatsApp.
-        </div>
-      </details>
-      <details>
-        <summary>Como funciona a troca em caso de dano no transporte?</summary>
-        <div class="faq-body">
-          Pedimos que o unboxing seja filmado ou fotografado. Em caso de avaria no transporte,
-          envie as imagens em até 72 horas após o recebimento e resolvemos a substituição ou o
-          reembolso, conforme o caso.
-        </div>
-      </details>
+      <details open><summary>Como faço para comprar uma peça?</summary><div class="faq-body">Escolha a peça na seção de produtos e clique em “Tenho interesse”. Você será direcionado ao WhatsApp com a mensagem do produto já preenchida. A partir daí conversamos sobre disponibilidade, prazo de produção, frete e forma de pagamento.</div></details>
+      <details><summary>As peças são produzidas sob encomenda?</summary><div class="faq-body">Trabalhamos com pequenos lotes prontos e com produção sob encomenda. Peças em pronta-entrega seguem em até 3 dias úteis. Peças sob encomenda levam em média de 7 a 15 dias úteis, dependendo do modelo e do acabamento.</div></details>
+      <details><summary>Qual a diferença entre resina cristal e gesso?</summary><div class="faq-body">A resina cristal é translúcida, mais leve e com brilho vítreo. O gesso é fosco, mais pesado e sempre pintado à mão. Ambos são duráveis, mas exigem cuidados semelhantes: longe do sol direto e de produtos abrasivos.</div></details>
+      <details><summary>As peças são idênticas às fotos?</summary><div class="faq-body">Cada peça é feita e pintada manualmente, por isso podem existir pequenas variações de tom, textura e expressão. Essas diferenças são intencionais e garantem que a sua peça seja única.</div></details>
+      <details><summary>Vocês enviam para todo o Brasil?</summary><div class="faq-body">Sim. As peças são embaladas individualmente em plástico-bolha e acondicionadas em caixa reforçada. O frete é calculado por CEP via Correios ou transportadora, e o código de rastreio é enviado assim que o pedido é despachado.</div></details>
+      <details><summary>É possível personalizar uma peça?</summary><div class="faq-body">Em muitos casos, sim: cor da pintura, base, tamanho e até pequenas adaptações no modelo. A viabilidade e o prazo são avaliados caso a caso pelo WhatsApp.</div></details>
+      <details><summary>Como funciona a troca em caso de dano no transporte?</summary><div class="faq-body">Pedimos que o unboxing seja filmado ou fotografado. Em caso de avaria no transporte, envie as imagens em até 72 horas após o recebimento e resolvemos a substituição ou o reembolso, conforme o caso.</div></details>
     </div>
   </div>
 </section>
 
-<!-- ================= CONTATO ================= -->
+<!-- CONTATO -->
 <section class="section" id="contato">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -2250,41 +2386,28 @@ footer::before{
       <p>Atendimento direto com quem faz. Tire dúvidas, peça fotos reais ou encomende sua peça.</p>
       <div class="divider"></div>
     </div>
-
     <div class="contact-grid">
       <article class="contact-card reveal">
-        <div class="ico">✆</div>
-        <h3>WhatsApp</h3>
-        <p>
-          Atendimento de segunda a sábado, das 9h às 18h.<br>
-          <a href="https://wa.me/5516999999999?text=Ol%C3%A1%2C%20FerArte!%20Gostaria%20de%20saber%20mais%20sobre%20as%20pe%C3%A7as." target="_blank" rel="noopener">(16) 99999-9999</a>
+        <div class="ico">✆</div><h3>WhatsApp</h3>
+        <p>Atendimento de segunda a sábado, das 9h às 18h.<br>
+          <a href="https://wa.me/5516988049605?text=Ol%C3%A1%2C%20FerArte!%20Gostaria%20de%20saber%20mais%20sobre%20as%20pe%C3%A7as." target="_blank" rel="noopener">(16) 99999-9999</a>
         </p>
       </article>
-
       <article class="contact-card reveal">
-        <div class="ico">✉</div>
-        <h3>E-mail</h3>
-        <p>
-          Para encomendas, parcerias e lojistas:<br>
+        <div class="ico">✉</div><h3>E-mail</h3>
+        <p>Para encomendas, parcerias e lojistas:<br>
           <a href="mailto:contato@ferarte.com.br">contato@ferarte.com.br</a>
         </p>
       </article>
-
       <article class="contact-card reveal">
-        <div class="ico">⌖</div>
-        <h3>Ateliê</h3>
-        <p>
-          Ribeirão Preto · São Paulo<br>
-          Visitas com agendamento prévio<br>
+        <div class="ico">⌖</div><h3>Ateliê</h3>
+        <p>Ribeirão Preto · São Paulo<br>Visitas com agendamento prévio<br>
           <span style="opacity:.6;font-size:.82rem">(endereço completo enviado no atendimento)</span>
         </p>
       </article>
-
       <article class="contact-card reveal">
-        <div class="ico">◎</div>
-        <h3>Redes Sociais</h3>
-        <p>
-          Acompanhe o dia a dia do ateliê:<br>
+        <div class="ico">◎</div><h3>Redes Sociais</h3>
+        <p>Acompanhe o dia a dia do ateliê:<br>
           <a href="#" target="_blank" rel="noopener">Instagram</a> ·
           <a href="#" target="_blank" rel="noopener">Facebook</a> ·
           <a href="#" target="_blank" rel="noopener">Pinterest</a>
@@ -2295,7 +2418,7 @@ footer::before{
     <div class="cta-band reveal">
       <h2 class="glow-title">Nunca é tarde para começar.<br><span class="gold">Nem para presentear com significado.</span></h2>
       <p>Conte para a gente o que você procura. Se a peça ainda não existir, talvez a gente possa criar juntos.</p>
-      <a class="btn btn-gold" href="https://wa.me/5516999999999?text=Ol%C3%A1%2C%20FerArte!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">
+      <a class="btn btn-gold" href="https://wa.me/5516988049605?text=Ol%C3%A1%2C%20FerArte!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">
         Chamar no WhatsApp
       </a>
     </div>
@@ -2304,7 +2427,7 @@ footer::before{
 
 </main>
 
-<!-- ================= FOOTER ================= -->
+<!-- FOOTER -->
 <footer>
   <div class="foot-grid">
     <div class="foot-brand">
@@ -2312,7 +2435,6 @@ footer::before{
       <h3 class="gold">FerArte</h3>
       <p>Ateliê de Artesanato em gesso e resina cristal. Peças devocionais e decorativas feitas à mão, uma a uma, em Ribeirão Preto/SP.</p>
     </div>
-
     <div class="foot-col">
       <h4>Navegue</h4>
       <ul>
@@ -2322,7 +2444,6 @@ footer::before{
         <li><a href="#processo">Processo Artesanal</a></li>
       </ul>
     </div>
-
     <div class="foot-col">
       <h4>Informações</h4>
       <ul>
@@ -2332,27 +2453,25 @@ footer::before{
         <li><a href="#contato">Contato</a></li>
       </ul>
     </div>
-
     <div class="foot-col">
       <h4>Atendimento</h4>
       <ul>
         <li>Seg a Sáb · 9h às 18h</li>
-        <li><a href="https://wa.me/5516999999999" target="_blank" rel="noopener">(16) 99999-9999</a></li>
+        <li><a href="https://wa.me/5516988049605" target="_blank" rel="noopener">(16) 99999-9999</a></li>
         <li><a href="mailto:contato@ferarte.com.br">contato@ferarte.com.br</a></li>
         <li>Ribeirão Preto · SP</li>
       </ul>
     </div>
   </div>
-
   <div class="foot-bottom">
     <span>© <span id="ano"></span> FerArte Ateliê de Artesanato · Todos os direitos reservados.</span>
     <span>Feito à mão, com amor. ✦</span>
   </div>
 </footer>
 
-<!-- ================= WHATSAPP FLUTUANTE ================= -->
+<!-- WHATSAPP -->
 <a class="whats" id="whatsFloat"
-   href="https://wa.me/5516999999999?text=Ol%C3%A1%2C%20FerArte!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+   href="https://wa.me/5516988049605?text=Ol%C3%A1%2C%20FerArte!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
    target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
   <span class="whats-label">Fale com a FerArte</span>
   <svg viewBox="0 0 32 32" aria-hidden="true">
@@ -2360,7 +2479,7 @@ footer::before{
   </svg>
 </a>
 
-<!-- ================= BOTÃO DE MÚSICA ================= -->
+<!-- MÚSICA -->
 <button class="music-toggle" id="musicToggle" type="button"
         aria-label="Ativar música de fundo" aria-pressed="false"
         title="Ativar música">
@@ -2369,13 +2488,12 @@ footer::before{
   <span class="mt-bars" aria-hidden="true"><i></i><i></i><i></i></span>
 </button>
 
-<!-- Áudio de fundo: song/tema.mp3 (loop infinito) -->
 <audio id="bgMusic" src="song/tema.mp3" loop preload="auto"></audio>
 
 <!-- BACK TO TOP -->
 <button class="to-top" id="toTop" aria-label="Voltar ao topo">▲</button>
 
-<!-- ================= LIGHTBOX ================= -->
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visualizar imagem">
   <div class="lightbox-inner">
     <button class="lb-close" id="lbClose" aria-label="Fechar">✕</button>
@@ -2386,11 +2504,78 @@ footer::before{
   </div>
 </div>
 
+<!-- BARRA DE SELEÇÃO FLUTUANTE -->
+<div class="selection-bar" id="selectionBar" aria-hidden="true">
+  <span class="selection-count" id="selectionCount"><b>0</b> itens selecionados</span>
+  <button class="btn btn-ghost" id="btnClearSelection" type="button">Limpar</button>
+  <button class="btn btn-gold" id="btnReportSelected" type="button">✦ Gerar Relatório</button>
+</div>
+
+<!-- RELATÓRIO DE PRODUTOS -->
+<section class="report-modal" id="relatorio" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="reportTitle">
+  <div class="report-container">
+    <div class="report-toolbar no-print">
+      <button class="btn btn-gold" id="btnPrintReport" type="button">🖨 Imprimir / Salvar PDF</button>
+      <button class="btn btn-ghost" id="btnRestoreAll" type="button">↺ Restaurar Todos</button>
+      <button class="btn btn-ghost" id="btnClearReport" type="button">Limpar Valores</button>
+      <button class="btn btn-ghost" id="btnCloseReport" type="button">✕ Fechar</button>
+    </div>
+
+    <div class="report-sheet" id="reportSheet">
+      <header class="report-header">
+        <div class="report-brand">
+          <img src="/img/logo.png" alt="FerArte" onerror="this.onerror=null;this.src='/img/logo.jpg'">
+          <div class="report-brand-text">
+            <h1 class="gold">FerArte</h1>
+            <p>Ateliê de Artesanato · Gesso &amp; Resina</p>
+            <p class="report-loc">Ribeirão Preto · SP</p>
+          </div>
+        </div>
+        <div class="report-meta">
+          <h2 id="reportTitle">Relatório de Produtos</h2>
+          <p>Data: <span id="reportDate"></span></p>
+          <p>Documento de uso interno</p>
+        </div>
+      </header>
+
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th class="col-num">#</th>
+            <th class="col-img">Imagem</th>
+            <th class="col-code">Código</th>
+            <th class="col-name">Produto</th>
+            <th class="col-qty">Qtde</th>
+            <th class="col-price">Valor Unit.</th>
+            <th class="col-total">Total</th>
+            <th class="col-del no-print" aria-label="Ações"></th>
+          </tr>
+        </thead>
+        <tbody id="reportBody"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="4" class="report-total-label">TOTAL GERAL</td>
+            <td class="report-total-qty" id="reportTotalQty">0</td>
+            <td></td>
+            <td class="report-total-value" id="reportGrandTotal">R$ 0,00</td>
+            <td class="col-del no-print"></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <footer class="report-footer">
+        <p>FerArte Ateliê de Artesanato · contato@ferarte.com.br · (16) 99999-9999</p>
+        <p>Documento gerado em <span id="reportDate2"></span></p>
+      </footer>
+    </div>
+  </div>
+</section>
+
 <script>
 /* ============================================================
    CONFIGURAÇÃO
    ============================================================ */
-const WHATSAPP = '5516999999999'; // ← troque pelo número real (DDI + DDD + número)
+const WHATSAPP = '5516988049605';
 
 /* ============================================================
    BASE DE PRODUTOS
@@ -2479,6 +2664,11 @@ const PRODUTOS = [
 ];
 
 /* ============================================================
+   SELEÇÃO DE PRODUTOS (NOVO)
+   ============================================================ */
+const selectedCodes = new Set();
+
+/* ============================================================
    UTILITÁRIOS
    ============================================================ */
 const norm = s => (s || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
@@ -2532,12 +2722,13 @@ function imgTag(produto, idx, cls){
 }
 
 /* ============================================================
-   RENDER DOS CARDS
+   CATÁLOGO
    ============================================================ */
 const catalogo = document.getElementById('catalogo');
 const resultInfo = document.getElementById('resultInfo');
 
 function cardHTML(p, pi){
+  const isSelected = selectedCodes.has(p.codigo);
   const thumbs = Array.from({length:p.imgs}, (_,i) =>
     `<button class="thumb ${i===0?'active':''}" data-idx="${i}" aria-label="Ver imagem ${i+1}">${imgTag(p,i,'thumb-img')}</button>`
   ).join('');
@@ -2547,8 +2738,15 @@ function cardHTML(p, pi){
   );
 
   return `
-  <article class="card" data-pi="${pi}" data-codigo="${p.codigo}">
+  <article class="card ${isSelected ? 'is-selected' : ''}" data-pi="${pi}" data-codigo="${p.codigo}">
     <div class="card-media" data-action="zoom">
+      <button class="card-select ${isSelected ? 'is-selected' : ''}" type="button"
+              data-codigo="${p.codigo}"
+              aria-label="Selecionar ${escAttr(p.nome)} para o relatório"
+              aria-pressed="${isSelected}"
+              title="Selecionar para o relatório">
+        <span class="card-select-check" aria-hidden="true">✓</span>
+      </button>
       <span class="badge">${escAttr(p.material)}</span>
       <div class="main-wrap">${imgTag(p,0,'card-main')}</div>
       <div class="thumbs">${thumbs}</div>
@@ -2570,9 +2768,6 @@ function cardHTML(p, pi){
   </article>`;
 }
 
-/* ============================================================
-   FILTROS E AGRUPAMENTO
-   ============================================================ */
 const estado = { q:'', material:'todos', tema:'todos' };
 
 const MATERIAL_DESCRICAO = {
@@ -2606,7 +2801,6 @@ function render(){
 
   temas.forEach(tema => {
     const materiais = Object.keys(grupos[tema]).sort((a,b) => a.localeCompare(b,'pt-BR'));
-
     materiais.forEach(material => {
       const lista = grupos[tema][material].slice().sort((a,b) =>
         a.nome.localeCompare(b.nome, 'pt-BR', { sensitivity:'base' })
@@ -2651,12 +2845,43 @@ function render(){
 
   resultInfo.innerHTML = `<b>${total}</b> ${total === 1 ? 'peça encontrada' : 'peças encontradas'} de ${PRODUTOS.length}`;
   observarCards();
+  updateSelectionBar();
 }
 
 /* ============================================================
-   INTERAÇÕES DOS CARDS
+   BARRA DE SELEÇÃO
+   ============================================================ */
+function updateSelectionBar(){
+  const bar = document.getElementById('selectionBar');
+  const countEl = document.getElementById('selectionCount');
+  if (!bar) return;
+  const n = selectedCodes.size;
+  if (countEl) countEl.innerHTML = `<b>${n}</b> ${n === 1 ? 'item selecionado' : 'itens selecionados'}`;
+  bar.classList.toggle('show', n > 0);
+  bar.setAttribute('aria-hidden', n > 0 ? 'false' : 'true');
+}
+
+/* ============================================================
+   CARDS — cliques
    ============================================================ */
 catalogo.addEventListener('click', (e) => {
+  const selectBtn = e.target.closest('.card-select');
+  if (selectBtn) {
+    e.stopPropagation();
+    e.preventDefault();
+    const card = selectBtn.closest('.card');
+    if (!card) return;
+    const code = card.dataset.codigo;
+    if (selectedCodes.has(code)) selectedCodes.delete(code);
+    else selectedCodes.add(code);
+    const isSel = selectedCodes.has(code);
+    card.classList.toggle('is-selected', isSel);
+    selectBtn.classList.toggle('is-selected', isSel);
+    selectBtn.setAttribute('aria-pressed', String(isSel));
+    updateSelectionBar();
+    return;
+  }
+
   const thumb = e.target.closest('.thumb');
   const card  = e.target.closest('.card');
   if (!card) return;
@@ -2676,6 +2901,31 @@ catalogo.addEventListener('click', (e) => {
     abrirLightbox(pi, 0);
   }
 });
+
+/* ============================================================
+   BOTÕES DA BARRA DE SELEÇÃO
+   ============================================================ */
+const btnClearSelection = document.getElementById('btnClearSelection');
+const btnReportSelected = document.getElementById('btnReportSelected');
+
+if (btnClearSelection) {
+  btnClearSelection.addEventListener('click', () => {
+    selectedCodes.clear();
+    document.querySelectorAll('.card.is-selected').forEach(c => c.classList.remove('is-selected'));
+    document.querySelectorAll('.card-select.is-selected').forEach(b => {
+      b.classList.remove('is-selected');
+      b.setAttribute('aria-pressed', 'false');
+    });
+    updateSelectionBar();
+  });
+}
+
+if (btnReportSelected) {
+  btnReportSelected.addEventListener('click', () => {
+    if (selectedCodes.size === 0) return;
+    if (typeof window.abrirRelatorio === 'function') window.abrirRelatorio('selection');
+  });
+}
 
 /* ============================================================
    LIGHTBOX
@@ -2735,14 +2985,12 @@ inputBusca.addEventListener('input', () => {
   clearTimeout(debounce);
   debounce = setTimeout(() => { estado.q = inputBusca.value; render(); }, 180);
 });
-
 document.getElementById('limpar').addEventListener('click', () => {
   inputBusca.value = '';
   estado.q = '';
   render();
   inputBusca.focus();
 });
-
 document.querySelectorAll('.chip').forEach(chip => {
   chip.addEventListener('click', () => {
     const tipo = chip.dataset.tipo;
@@ -2781,7 +3029,7 @@ window.addEventListener('scroll', () => {
 toTop.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
 
 /* ============================================================
-   REVEAL / OBSERVERS
+   REVEAL
    ============================================================ */
 const io = new IntersectionObserver((entries) => {
   entries.forEach(en => {
@@ -2795,20 +3043,17 @@ const io = new IntersectionObserver((entries) => {
 function observarCards(){
   catalogo.querySelectorAll('.card:not(.in)').forEach(c => io.observe(c));
 }
-
 document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
 
 /* ============================================================
-   CAMPO DE ESTRELAS DO HERO
+   ESTRELAS
    ============================================================ */
 (function criarEstrelas(){
   const field = document.getElementById('starfield');
   if (!field) return;
-
   const cores = ['#ffffff','#fff6d5','#f7e9b0','#d4af37','#dbe9ff','#fbe3ea'];
   const total = window.innerWidth < 640 ? 46 : 90;
   let html = '';
-
   for (let i = 0; i < total; i++){
     const sparkle = Math.random() < 0.28;
     const tamanho = sparkle
@@ -2820,11 +3065,9 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     const dur   = (Math.random() * 4 + 2.2).toFixed(2);
     const delay = (Math.random() * 7).toFixed(2);
     const op    = (Math.random() * 0.65 + 0.35).toFixed(2);
-
     html += `<i class="star${sparkle ? ' sparkle' : ''}"
       style="--x:${x}%;--y:${y}%;--s:${tamanho}px;--c:${cor};--dur:${dur}s;--delay:-${delay}s;--o:${op}"></i>`;
   }
-
   field.innerHTML = html;
 })();
 
@@ -2837,11 +3080,10 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
   const label = document.getElementById('musicLabel');
   if (!audio || !btn) return;
 
-  const VOLUME = 0.45;
   audio.loop   = true;
-  audio.volume = VOLUME;
+  audio.volume = 0.45;
 
-  let decisaoDoUsuario = false;
+  let userDeactivated = false;
 
   function atualizarBotao(){
     const tocando = !audio.paused && !audio.ended;
@@ -2853,7 +3095,7 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
   }
 
   function tentarTocar(){
-    if (!audio.paused) return;
+    if (userDeactivated) return;
     const p = audio.play();
     if (p && typeof p.then === 'function'){
       p.then(atualizarBotao).catch(() => { atualizarBotao(); });
@@ -2862,53 +3104,57 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     }
   }
 
+  tentarTocar();
+  window.addEventListener('load', tentarTocar);
+  document.addEventListener('DOMContentLoaded', tentarTocar);
+
+  const GESTOS = ['pointerdown','touchstart','keydown','scroll','wheel','mousemove'];
+  function destravar(e){
+    if (userDeactivated) return;
+    if (e && e.target && e.target.closest && e.target.closest('#musicToggle')) return;
+    removerGestos();
+    if (audio.paused) tentarTocar();
+  }
+  function removerGestos(){
+    GESTOS.forEach(ev => window.removeEventListener(ev, destravar, true));
+  }
+  GESTOS.forEach(ev => window.addEventListener(ev, destravar, { passive:true, capture:true }));
+
+  btn.addEventListener('click', () => {
+    if (audio.paused){
+      userDeactivated = false;
+      tentarTocar();
+    } else {
+      userDeactivated = true;
+      audio.pause();
+      removerGestos();
+    }
+    atualizarBotao();
+  });
+
   audio.addEventListener('play',  atualizarBotao);
   audio.addEventListener('pause', atualizarBotao);
-  audio.addEventListener('ended', () => { audio.currentTime = 0; tentarTocar(); });
+  audio.addEventListener('ended', () => {
+    if (!userDeactivated){ audio.currentTime = 0; tentarTocar(); }
+  });
   audio.addEventListener('error', () => {
     btn.classList.add('is-error');
     btn.title = 'Áudio indisponível';
     if (label) label.textContent = 'Áudio indisponível';
   });
 
-  const GESTOS = ['pointerdown','touchstart','keydown','scroll','wheel'];
-  function removerGestos(){
-    GESTOS.forEach(ev => window.removeEventListener(ev, destravar, true));
-  }
-  function destravar(e){
-    if (e && e.target && e.target.closest && e.target.closest('#musicToggle')) return;
-    removerGestos();
-    if (!decisaoDoUsuario && audio.paused) tentarTocar();
-  }
-  GESTOS.forEach(ev => window.addEventListener(ev, destravar, { passive:true, capture:true }));
-
-  btn.addEventListener('click', () => {
-    decisaoDoUsuario = true;
-    removerGestos();
-    if (audio.paused) tentarTocar();
-    else              audio.pause();
-  });
-
-  if (document.readyState === 'complete'){
-    if (!decisaoDoUsuario) tentarTocar();
-  } else {
-    window.addEventListener('load', () => {
-      if (!decisaoDoUsuario) tentarTocar();
-    });
-  }
-
   atualizarBotao();
 })();
 
 /* ============================================================
-   MASCOTE FERIEL - LÓGICA
+   MASCOTE FERIEL
    ============================================================ */
 (function setupFeriel() {
   const container = document.getElementById('ferielContainer');
   const speechBubble = document.getElementById('ferielSpeech');
   const btnToggle = document.getElementById('toggleFeriel');
   const activator = document.getElementById('ferielActivator');
-  
+
   let isActive = true;
   let isHovered = false;
   let isTalking = false;
@@ -2921,27 +3167,17 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     "Muito obrigado pela sua visita! 💖 Espero que a FerArte tenha trazido um pouquinho de inspiração e encanto ao seu dia. Volte sempre que desejar, será uma alegria recebê-lo(a) novamente. Até breve, e que muitas bênçãos acompanhem você! 👼✨🌷"
   ];
 
-  // Movimento Aleatório
   function scheduleNextMove(delay = 0) {
     clearTimeout(moveTimeout);
     moveTimeout = setTimeout(() => {
-      // Se não estiver ativo, ou estiver com hover, ou falando: aguarda e verifica de novo
-      if (!isActive || isHovered || isTalking) {
-        scheduleNextMove(1000); 
-        return;
-      }
-
+      if (!isActive || isHovered || isTalking) { scheduleNextMove(1000); return; }
       const w = window.innerWidth;
       const h = window.innerHeight;
-      const size = 108; // Tamanho do mascote
-      const pad = 30; // Margem de segurança
-
+      const size = 108;
+      const pad = 30;
       const x = Math.random() * (w - size - pad * 2) + pad;
       const y = Math.random() * (h - size - pad * 2) + pad;
-
       container.style.transform = `translate(${x}px, ${y}px)`;
-
-      // Chance de dançar ao chegar (espera 8s para a transição terminar)
       if (Math.random() > 0.5) {
         setTimeout(() => {
           if (!isActive || isHovered || isTalking) return;
@@ -2949,56 +3185,43 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
           setTimeout(() => container.classList.remove('dancing'), 3000);
         }, 8000);
       }
-
-      // Agenda próximo movimento (entre 8 e 15 segundos)
       scheduleNextMove(8000 + Math.random() * 7000);
     }, delay);
   }
-
-  // Inicia movimento
   scheduleNextMove(2000);
 
-  // Eventos de Mouse
-  container.addEventListener('mouseenter', () => { 
-    isHovered = true; 
+  container.addEventListener('mouseenter', () => {
+    isHovered = true;
     if (!isTalking) container.classList.remove('dancing');
-    clearTimeout(moveTimeout); // Cancela o próximo movimento
+    clearTimeout(moveTimeout);
   });
-  
-  container.addEventListener('mouseleave', () => { 
-    isHovered = false; 
-    if (!isTalking) scheduleNextMove(1000); // Retoma movimento após 1s
+  container.addEventListener('mouseleave', () => {
+    isHovered = false;
+    if (!isTalking) scheduleNextMove(1000);
   });
 
-  // Balões de Fala (Clique)
   container.addEventListener('click', (e) => {
     if (e.target.closest('#toggleFeriel')) return;
-    
     if (!isTalking) {
-      // Começa a falar
       isTalking = true;
       messageIndex = 0;
       container.classList.remove('dancing');
-      container.classList.add('talking'); // Aplica a flutuação suave
-      clearTimeout(moveTimeout); // Para de voar
+      container.classList.add('talking');
+      clearTimeout(moveTimeout);
     } else {
-      // Avança para a próxima mensagem
       messageIndex++;
     }
-
     if (messageIndex < messages.length) {
       speechBubble.textContent = messages[messageIndex];
       speechBubble.classList.add('show');
     } else {
-      // Fim das mensagens: fecha o balão e volta a voar
       speechBubble.classList.remove('show');
       isTalking = false;
       container.classList.remove('talking');
-      scheduleNextMove(1000); // Retoma o voo
+      scheduleNextMove(1000);
     }
   });
 
-  // Desativar mascote
   btnToggle.addEventListener('click', (e) => {
     e.stopPropagation();
     isActive = false;
@@ -3011,13 +3234,233 @@ document.querySelectorAll('.reveal, .tl-item').forEach(el => io.observe(el));
     container.classList.remove('dancing');
   });
 
-  // Ativar mascote
   activator.addEventListener('click', () => {
     isActive = true;
     container.style.display = 'block';
     activator.classList.remove('show');
     scheduleNextMove(1000);
   });
+})();
+
+/* ============================================================
+   RELATÓRIO DE PRODUTOS
+   ============================================================ */
+(function setupReport(){
+  const modal        = document.getElementById('relatorio');
+  const btnOpen      = document.getElementById('btnOpenReport');
+  const btnClose     = document.getElementById('btnCloseReport');
+  const btnPrint     = document.getElementById('btnPrintReport');
+  const btnClear     = document.getElementById('btnClearReport');
+  const btnRestore   = document.getElementById('btnRestoreAll');
+  const tbody        = document.getElementById('reportBody');
+  const totalQtyEl   = document.getElementById('reportTotalQty');
+  const grandTotalEl = document.getElementById('reportGrandTotal');
+
+  if (!modal || !tbody) return;
+
+  const state = {};
+  PRODUTOS.forEach(p => state[p.codigo] = { qty: 0, price: 0 });
+
+  // Códigos atualmente visíveis no relatório
+  let reportItems = [];
+
+  function fmtBRL(n){
+    return (Number(n) || 0).toLocaleString('pt-BR', {
+      style: 'currency', currency: 'BRL'
+    });
+  }
+
+  function parseBR(s){
+    if (!s) return 0;
+    s = String(s).trim().replace(/[^\d,.-]/g, '');
+    if (!s) return 0;
+    const lastComma = s.lastIndexOf(',');
+    const lastDot   = s.lastIndexOf('.');
+    if (lastComma > lastDot){
+      s = s.replace(/\./g, '').replace(',', '.');
+    } else if (lastDot > lastComma){
+      s = s.replace(/,/g, '');
+    }
+    const n = parseFloat(s);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function fmtPriceInput(n){
+    if (!n) return '';
+    return Number(n).toFixed(2).replace('.', ',');
+  }
+
+  /* ---------- Render ---------- */
+  function renderRows(){
+    const sorted = reportItems
+      .map(c => PRODUTOS.find(p => p.codigo === c))
+      .filter(Boolean)
+      .sort((a,b) => a.nome.localeCompare(b.nome, 'pt-BR', { sensitivity:'base' }));
+
+    if (sorted.length === 0){
+      tbody.innerHTML = `<tr class="report-empty-row"><td colspan="8">Nenhum item no relatório. Clique em <b>↺ Restaurar Todos</b> para voltar à lista completa ou selecione itens no catálogo.</td></tr>`;
+      updateTotals();
+      return;
+    }
+
+    tbody.innerHTML = sorted.map((p, i) => {
+      const st = state[p.codigo];
+      const lt = st.qty * st.price;
+      return `
+        <tr data-codigo="${p.codigo}">
+          <td class="col-num">${i+1}</td>
+          <td class="col-img">${imgTag(p, 0, 'report-img')}</td>
+          <td class="col-code"><span class="report-code">${escAttr(p.codigo)}</span></td>
+          <td class="col-name"><span class="report-name">${escAttr(p.nome)}</span></td>
+          <td class="col-qty">
+            <input type="text" inputmode="numeric" pattern="[0-9]*"
+                   class="report-input report-qty"
+                   value="${st.qty || ''}" placeholder="0" aria-label="Quantidade">
+          </td>
+          <td class="col-price">
+            <input type="text" inputmode="decimal"
+                   class="report-input report-price"
+                   value="${fmtPriceInput(st.price)}" placeholder="0,00"
+                   aria-label="Valor unitário">
+          </td>
+          <td class="col-total report-line-total">${lt ? fmtBRL(lt) : '—'}</td>
+          <td class="col-del no-print">
+            <button type="button" class="report-del" data-codigo="${p.codigo}"
+                    aria-label="Remover ${escAttr(p.nome)} do relatório"
+                    title="Remover item">✕</button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    updateTotals();
+  }
+
+  function updateTotals(){
+    let total = 0, items = 0;
+    // Soma apenas os itens que estão visíveis no relatório atual
+    reportItems.forEach(code => {
+      const st = state[code];
+      if (!st) return;
+      total += st.qty * st.price;
+      items += st.qty;
+    });
+    if (totalQtyEl)   totalQtyEl.textContent   = items;
+    if (grandTotalEl) grandTotalEl.textContent = fmtBRL(total);
+  }
+
+  /* ---------- Edição de valores ---------- */
+  tbody.addEventListener('input', (e) => {
+    const row = e.target.closest('tr');
+    if (!row) return;
+    const codigo = row.dataset.codigo;
+    const st = state[codigo];
+    if (!st) return;
+
+    if (e.target.classList.contains('report-qty')){
+      st.qty = parseInt(String(e.target.value).replace(/\D/g,''), 10) || 0;
+    } else if (e.target.classList.contains('report-price')){
+      st.price = parseBR(e.target.value);
+    }
+
+    const lineTotal = row.querySelector('.report-line-total');
+    if (lineTotal){
+      const lt = st.qty * st.price;
+      lineTotal.textContent = lt ? fmtBRL(lt) : '—';
+    }
+    updateTotals();
+  });
+
+  tbody.addEventListener('blur', (e) => {
+    if (!e.target || !e.target.classList || !e.target.classList.contains('report-price')) return;
+    const row = e.target.closest('tr');
+    if (!row) return;
+    const st = state[row.dataset.codigo];
+    if (!st) return;
+    e.target.value = fmtPriceInput(st.price);
+  }, true);
+
+  /* ---------- Excluir linha do relatório ---------- */
+  tbody.addEventListener('click', (e) => {
+    const btn = e.target.closest('.report-del');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    const code = btn.dataset.codigo;
+    // Remove apenas da lista visível — valores ficam preservados em `state`
+    reportItems = reportItems.filter(c => c !== code);
+    renderRows();
+  });
+
+  /* ---------- Datas ---------- */
+  function setDate(){
+    const now = new Date();
+    const d   = now.toLocaleDateString('pt-BR', { day:'2-digit', month:'2-digit', year:'numeric' });
+    const t   = now.toLocaleTimeString('pt-BR', { hour:'2-digit', minute:'2-digit' });
+    const s   = `${d} às ${t}`;
+    const d1  = document.getElementById('reportDate');
+    const d2  = document.getElementById('reportDate2');
+    if (d1) d1.textContent = s;
+    if (d2) d2.textContent = s;
+  }
+
+  /* ---------- Abrir / Fechar ---------- */
+  function openModal(mode = 'all'){
+    if (mode === 'selection'){
+      reportItems = [...selectedCodes];
+    } else {
+      reportItems = PRODUTOS.map(p => p.codigo);
+    }
+    setDate();
+    renderRows();
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  function clearAll(){
+    Object.keys(state).forEach(k => { state[k].qty = 0; state[k].price = 0; });
+    renderRows();
+  }
+  function restoreAll(){
+    reportItems = PRODUTOS.map(p => p.codigo);
+    renderRows();
+  }
+
+  /* ---------- Eventos ---------- */
+  if (btnOpen) {
+    btnOpen.addEventListener('click', () => {
+      const mode = selectedCodes.size > 0 ? 'selection' : 'all';
+      openModal(mode);
+    });
+  }
+  if (btnClose)  btnClose.addEventListener('click', closeModal);
+  if (btnRestore) btnRestore.addEventListener('click', restoreAll);
+  if (btnClear) btnClear.addEventListener('click', () => {
+    if (confirm('Limpar todos os valores (quantidades e preços) do relatório?')) clearAll();
+  });
+  if (btnPrint) btnPrint.addEventListener('click', () => {
+    window.print();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Expõe para a barra de seleção
+  window.abrirRelatorio = openModal;
+
+  /* ---------- Init ---------- */
+  renderRows();
+  setDate();
 })();
 
 /* ============================================================
